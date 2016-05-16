@@ -14,7 +14,7 @@ public class Player {
       this.playerColor = playerColor;
       money = 1500;
       numInJail = 0; 
-      location = 32;
+      location = 11;
       inJail = false;
       isBankrupt = false;
       colorMode(RGB);
@@ -63,28 +63,28 @@ public class Player {
     else {
       setColor();
       if (location == 0) {
-        ellipse(935, 920 + (playerNum * 5), 25, 25);
+        ellipse(665 + (playerNum * 5), 695, 15, 15);
       }
       else if (location < 10) {
-        ellipse(827.5 - (location - 1) * 82, 920 + (playerNum * 5), 25, 25);  //935  //827.5 //747 //80.5
+        ellipse(575 - (location - 1) * 60 + (playerNum * 5), 695, 15, 15);  
       }
       else if (location == 10) {
-        ellipse(70, 920 + (playerNum * 5), 25, 25);
+        ellipse(30 + (playerNum * 5), 695, 15, 15);
       }
       else if (location < 20) {
-        ellipse(70 - (playerNum * 5), 827.5 - (location - 11) * 82, 25, 25); //827.5
+        ellipse(30, 575 + (playerNum * 5) - (location - 11) * 60, 15, 15);
       }
       else if (location == 20) {
-        ellipse(70, 75 - (playerNum * 5), 25, 25);
+        ellipse(70, 75 - (playerNum * 5), 15, 15);
       }
       else if (location < 30) {
-        ellipse(172.5 + (location - 21) * 82, 75 - (playerNum * 5), 25, 25);
+        ellipse(172.5 + (location - 21) * 82, 75 - (playerNum * 5), 15, 15);
       }
       else if (location == 30) {
-        ellipse(930 + (playerNum * 5), 70, 25, 25);
+        ellipse(930 + (playerNum * 5), 70, 15, 15);
       }
       else if (location < 40) {
-        ellipse(930 + (playerNum * 5), 172 + (location - 31) * 82, 25, 25); //173.5
+        ellipse(930 + (playerNum * 5), 172 + (location - 31) * 82, 15, 15); //173.5
       } 
     }
   }
