@@ -7,5 +7,17 @@ DEVELOPMENT LOG:
 	Dhiraj:
 		- setup the README
 		- got initial monopoly board image
+5.14.16:
+	Dhiraj: 
+		- got dice to kind of work
+		- little funky
+5.15.16:
+	Dhiraj:
+		-got rid of the dice stuff since it was the wrong place to start
+		-instead starting on the board, imported board image,
+		-created Player class, set up accessors, mutators, useful variables for players, 
+		-GOT THE MOVEMENT FOR PLAYERS WORKING FOR THE BOARD.
+
 PROJECT PLAN:
 DEMO VERSION:
+
