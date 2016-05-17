@@ -13,7 +13,7 @@ void setup() {
   buttonHover = color(205, 90, 90);
   mainMenuButtons[0] = new txtButton(width / 2 - 45, height * 3 / 4, "PLAY", 40, buttonNormal, buttonHover);
   mainMenuButtons[1] = new txtButton(width / 2 - 45, height * 3 / 4 + 65, "EXIT", 40, buttonNormal, buttonHover);
-  mainMenuScreen = loadImage("../Images/mms.jpg");
+  mainMenuScreen = loadImage("../Images/mms.png");
   mainMenuScreen.resize(1000, 720);
   font = createFont("Courier", 20, true);
 }
