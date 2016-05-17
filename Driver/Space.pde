@@ -11,9 +11,9 @@ public class Space{
      purchased = false;
      monopolized = false;
   }
-  public Space(int space,String name_){
+  public Space(int space,String name){
     this(space);
-    name = name_;
+    this.name = name;
   }
   public void initializeVars(int space){
     location = space;
