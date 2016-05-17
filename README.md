@@ -45,18 +45,16 @@ DEVELOPMENT LOG:
 		-Added new parameters to account for more than one player 
 
 5.16.16:
-	IN CLASS:
-
-	   - Did it together:
+	
+	Dhiraj & Jackey:
 
 	     - added the space and utilties to further our progress
 
 	     - on this venture.
+
+	Dhiraj: hard coded each space for each location in the Space file and also started working on player properties owned. 
 	
-
-	AT HOME: 
-
-	     - Dhiraj: hard coded each space for each location in the Space file		and also started working on player properties owned. 
+	Jackey: Added main menu screen along with setting states for game and player select (in progress). Optimized game movement.
 
 PROJECT PLAN: 
 
