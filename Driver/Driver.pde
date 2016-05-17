@@ -11,16 +11,18 @@ void setup() {
   state = 0;
   buttonNormal = color(255, 0, 0);
   buttonHover = color(205, 90, 90);
-  mainMenuButtons[0] = new txtButton(width / 2 - 45, height * 3 / 4, "PLAY", 40, buttonNormal, buttonHover);
-  mainMenuButtons[1] = new txtButton(width / 2 - 45, height * 3 / 4 + 65, "EXIT", 40, buttonNormal, buttonHover);
+  mainMenuButtons[0] = new txtButton(width / 6 - 20, height * 1 / 4, "PLAY", 70, buttonNormal, buttonHover);
+  mainMenuButtons[1] = new txtButton(width - 260, height * 1 / 4, "EXIT", 70, buttonNormal, buttonHover);
   mainMenuScreen = loadImage("../Images/mms.png");
   mainMenuScreen.resize(1000, 720);
-  font = createFont("Courier", 20, true);
+  font = createFont("../Fonts/BebasNeue.otf", 24, true);
 }
 
 void draw() {
   if (state == 0) {
     background(mainMenuScreen);
+    textSize(100);
+    textFont(font);
     mainMenuButtons[0].draw();
     mainMenuButtons[1].draw();
   }
