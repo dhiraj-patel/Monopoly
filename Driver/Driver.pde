@@ -1,12 +1,14 @@
 static int state; //0 Main Menu, 1 Player Select, 2 Game 
 mainMenu newMainMenu;
 Board newBoard;
+playerSelect newPlayerSelect;
 
 void setup() {
   size(1000, 720);
   state = 0;
   newMainMenu = new mainMenu();
   newBoard = new Board();
+  newPlayerSelect = new playerSelect();
 }
 
 void draw() {
@@ -14,12 +16,11 @@ void draw() {
     newMainMenu.draw();
   }
   if (state == 1) {
-    background(128, 128, 128);
+    newPlayerSelect.draw();
   }
   if (state == 2) {
     newBoard.draw();
   }
-    
 }
 
 void mousePressed() {
@@ -32,4 +33,4 @@ void mousePressed() {
       exit();
     }
   }
-}  
+}

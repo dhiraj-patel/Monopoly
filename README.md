@@ -74,6 +74,15 @@ DEVELOPMENT LOG:
 	AT HOME:
 	
 		- Jackey: Added new pictures for player select screen. Made code neater by placing them in new tabs.
+
+5.18.16:
+
+	IN CLASS:
+
+		- Dhiraj: added chance cards text		
+
+		- Jackey: worked on player select screen
+		
  
 PROJECT PLAN: 
 
