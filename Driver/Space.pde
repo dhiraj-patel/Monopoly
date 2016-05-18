@@ -20,7 +20,7 @@ public class Space {
   
   public void initializeVars(int space) {
     location = space;
-    // BROWNS BROWNS BROWNS
+    //BROWN BROWN BROWN
     if (space == 1) {
       cost = 60;
       spaceColor = "brown";
@@ -43,7 +43,7 @@ public class Space {
       rentPrice = 4;
       mortgage = 30;
     }
-    // RAILROADS RAILROADS RAILROADS
+    //RAILROAD RAILROAD RAILROAD
     else if (space == 5) {
       cost = 200;
       spaceColor = "black";
@@ -63,7 +63,7 @@ public class Space {
       numOfHotels = 0;
       name = "Pennsylvania Railraod";
       isRailroad = true;
-       //     rentPrice = 2;
+      //rentPrice = 2;
       mortgage = 100;
     }
     else if (space == 25) {
@@ -74,7 +74,7 @@ public class Space {
       numOfHotels = 0;
       name = "B&O Railraod";
       isRailroad = true;
-      //      rentPrice = 2;
+      //rentPrice = 2;
       mortgage = 100;
     }
     else if (space == 35) {
@@ -85,11 +85,10 @@ public class Space {
       numOfHotels = 0;
       name = "Short Line";
       isRailroad = true;
-       //     rentPrice = 2;
+      //rentPrice = 2;
       mortgage = 100;
     }
-    
-    // SKYBLUES SKYBLUES SKYBLUES    
+    //LIGHT BLUE LIGHT BLUE LIGHT BLUE
     else if (space == 6) {
       cost = 100;
       spaceColor = "skyblue";
@@ -123,7 +122,7 @@ public class Space {
       rentPrice = 8;
       mortgage = 60;
     }
-    // PURPLES PURPLES PURPLES 
+    //PURPLE PURPLE PURPLE
     else if (space == 11) {
       cost = 140;
       spaceColor = "purple";
@@ -157,7 +156,7 @@ public class Space {
       rentPrice = 12;
       mortgage = 80;
     }
-    // ORANGES ORANGES ORANGES
+    //ORANGE ORANGE ORANGE
     else if (space == 16) {
       cost = 180;
       spaceColor = "orange";
@@ -191,7 +190,7 @@ public class Space {
       rentPrice = 16;
       mortgage = 100;
     }   
-    // RED RED RED RED RED RED RED
+    //RED RED RED
     else if (space == 21) {
       cost = 220;
       spaceColor = "red";
@@ -225,7 +224,7 @@ public class Space {
       rentPrice = 20;
       mortgage = 120;
     }   
-    // YELLOW YELLOW YELLOW
+    //YELLOW YELLOW YELLOW
     else if (space == 26) {
       cost = 260;
       spaceColor = "yellow";
@@ -248,7 +247,6 @@ public class Space {
       rentPrice = 22;
       mortgage = 130;
     }   
-    
     else if (space == 29) {
       cost = 280;
       spaceColor = "red";
@@ -294,7 +292,7 @@ public class Space {
       rentPrice = 28;
       mortgage = 160;
     }         
-    // BLUES BLUES BLUES 
+    //BLUES BLUES BLUES 
     else if (space == 37) {
       cost = 350;
       spaceColor = "blue";
@@ -330,7 +328,7 @@ public class Space {
     purchased = false;
   }
   
-  // accessors
+  //accessors
   public Player getOwner() {
     if (purchased) {
       return owner;
