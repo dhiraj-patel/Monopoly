@@ -57,6 +57,7 @@ DEVELOPMENT LOG:
 	Jackey: Added main menu screen along with setting states for game and player select (in progress). Optimized game movement.
 
 5.17.16:
+
 	IN CLASS: 
 	   
 	   - Dhiraj: added the method to get the price of the railroad based on how many the player owns
@@ -64,12 +65,17 @@ DEVELOPMENT LOG:
 	     - also created the arraylist of properties that he owns, and added the accessors and mutators for that. 
 
 
-	   - JACKEY:
-	     - chagned the font for the opening background
+	   - Jackey:
+	   
+	     - changed the font for the opening background
 
-	     - stylist editing.
+	     - stylistic editing.
 
-	     - added a new state, and added some buttons. 
+	     - added a new state and some buttons.
+		 
+	AT HOME:
+	
+		- Jackey: Added new pictures for player select screen. Made code neater by placing them in new tabs.
  
 PROJECT PLAN: 
 

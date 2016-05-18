@@ -1,5 +1,5 @@
-public class Space{
-  int location,cost,monopolyNum,numOfHouses,numOfHotels, rentPrice, mortgage;
+public class Space {
+  int location, cost, monopolyNum, numOfHouses, numOfHotels, rentPrice, mortgage;
   String name;
   String spaceColor;
   boolean purchased; 
