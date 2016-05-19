@@ -1,5 +1,14 @@
-public class Chance {
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.concurrent.TimeUnit;
+import java.util.*;
+public class Chance extends JFrame implements ActionListener {
+  public boolean finished;
+  public Container pane;
+  public Player player;
   private ArrayList<String>cards;     
+  private String action;
   public Chance() {
     cards = new ArrayList<String>();
     cards.add("Advance to Go (Collect $200)");
@@ -21,10 +30,48 @@ public class Chance {
     cards.add("You have won a crossword competition - collect $100");
     // Constructor should generate a random chance card and display it as a gui message. ....
     // there are 17 possible chance cards  
+    
+    finished = false;
+    this.setTitle("Player "+player.playerNum+", you have landed on Chance");
+    this.setSize(400,200);
+    this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+    pane = this.getContentPane();
+    pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
+    JLabel l1 = new JLabel(action);
+    l1.setAlignmentX(Component.CENTER_ALIGNMENT);
+    JButton b1 = new JButton("OK");
+    b1.addActionListener(this);
+    b1.setActionCommand("OK");
+    b1.setAlignmentX(Component.CENTER_ALIGNMENT);
+    pane.add(l1);
+    pane.add(b1);
   }
-  public String getRandomChanceCard(){
+  public void actionPerformed(ActionEvent e){
+    String event = e.getActionCommand();
+    if(event.equals("OK")){
+      int q = getRandomChanceCard();
+      executeAction(q);
+      finished = true;
+    }
+    finished = true;
+  }
+  
+  
+  public int getRandomChanceCard(){
     int cardNum = (int)(Math.random()*17);
-    String chosenCard = cards.get(cardNum);
-    return chosenCard;
+    return cardNum;
+  }  
+  public void display(){
+  }  
+  
+  public void executeAction(int actNum){
+    if(actNum == 1){
+      System.out.println("test");
+    }
   }
+    
+    
+  
 }
+
+    
