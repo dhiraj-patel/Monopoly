@@ -83,6 +83,10 @@ DEVELOPMENT LOG:
 
 		- Jackey: worked on player select screen
 		
+	AT HOME:
+	
+		- Jackey: added a little sidebar done with paint. finished char select screen. will be working on getting the game actually to work.
+		
  
 PROJECT PLAN: 
 

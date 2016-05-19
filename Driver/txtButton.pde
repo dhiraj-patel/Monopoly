@@ -17,7 +17,7 @@ class txtButton {
  
   void draw() {
     //colorMode(HSB);
-    textAlign(LEFT, BOTTOM);
+    textAlign(CENTER);
     textSize(size);
     over();
     if (over) {
@@ -30,7 +30,7 @@ class txtButton {
   }
  
   void over() {
-    if (mouseX >= x && mouseX <= x + textWidth(text) && mouseY <= y && mouseY >= y - size) {
+    if (mouseX >= x - 130  && mouseX <= x + textWidth(text) - 50 && mouseY <= y + 35 && mouseY >= y - size - 35) {
       over = true;
     }
     else {

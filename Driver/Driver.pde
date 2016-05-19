@@ -7,7 +7,6 @@ void setup() {
   size(1000, 720);
   state = 0;
   newMainMenu = new mainMenu();
-  newBoard = new Board();
   newPlayerSelect = new playerSelect();
 }
 
@@ -31,6 +30,12 @@ void mousePressed() {
     }
     else if (newMainMenu.mainMenuButtons[1].over == true) {
       exit();
+    }
+  }
+  if (state == 1) {
+    if (newPlayerSelect.playerSelectButtons[0].over == true) {
+      newBoard = new Board(2);
+      state = 2;
     }
   }
 }
