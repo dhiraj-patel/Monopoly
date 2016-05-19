@@ -7,7 +7,7 @@ public class Player {
   int numInJail;
   boolean inJail;
   boolean isBankrupt;
-  
+  ArrayList<Integer>properties;
   public Player(String name, int playerNum, String playerColor) {
       this.name = name;
       this.playerNum = playerNum;
@@ -18,12 +18,12 @@ public class Player {
       inJail = false;
       isBankrupt = false;
       colorMode(RGB);
+      properties = new ArrayList<Integer>();
   }
   
   public int getMoney() {
       return money;
   }
-
   public void setMoney(int money) {
      this.money = money;
   }
@@ -35,7 +35,14 @@ public class Player {
        money += 200;
      }
   }
-  
+  public void buyLocation(Space s){
+    if(!s.owned){
+      s.owned = true;
+      s.setOwner(this);
+      properties.add(s.location);
+    }
+  }
+    
   public void setColor() {
     if (playerColor.equals("green")) {
       fill(0, 255, 0);
