@@ -87,6 +87,12 @@ DEVELOPMENT LOG:
 	
 		- Jackey: added a little sidebar done with paint. finished char select screen. will be working on getting the game actually to work.
 		
+5.19.16:
+
+	IN HOME:
+		
+		- Jackey: Added dice capabilities. Fonts are working appropriately. Game will start with appropiate number of players.
+		
  
 PROJECT PLAN: 
 

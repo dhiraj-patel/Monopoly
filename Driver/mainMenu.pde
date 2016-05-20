@@ -18,6 +18,7 @@ class mainMenu {
   
   void draw() {
     background(bg);
+    textFont(font);
     mainMenuButtons[0].draw();
     mainMenuButtons[1].draw();
   }

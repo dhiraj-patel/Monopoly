@@ -2,12 +2,14 @@ static int state; //0 Main Menu, 1 Player Select, 2 Game
 mainMenu newMainMenu;
 Board newBoard;
 playerSelect newPlayerSelect;
+Die newDice;
 
 void setup() {
   size(1000, 720);
-  state = 0;
+  state = 1;
   newMainMenu = new mainMenu();
   newPlayerSelect = new playerSelect();
+  newDice = new Die();
 }
 
 void draw() {
@@ -19,6 +21,7 @@ void draw() {
   }
   if (state == 2) {
     newBoard.draw();
+    newDice.draw();
   }
 }
 
