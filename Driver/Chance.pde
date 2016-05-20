@@ -9,6 +9,7 @@ public class Chance extends JFrame implements ActionListener {
   public Player player;
   private ArrayList<String>cards;     
   private String action;
+  
   public Chance() {
     cards = new ArrayList<String>();
     cards.add("Advance to Go (Collect $200)");
@@ -46,6 +47,7 @@ public class Chance extends JFrame implements ActionListener {
     pane.add(l1);
     pane.add(b1);
   }
+  
   public void actionPerformed(ActionEvent e){
     String event = e.getActionCommand();
     if(event.equals("OK")){
@@ -56,16 +58,16 @@ public class Chance extends JFrame implements ActionListener {
     finished = true;
   }
   
-  
   public int getRandomChanceCard(){
     int cardNum = (int)(Math.random()*17);
     return cardNum;
-  }  
-  public void display(){
+  }
+  
+  public void display() {
   }  
   
   public void executeAction(int actNum){
-    if(actNum == 1){
+    if (actNum == 1){
       System.out.println("test");
     }
   }
