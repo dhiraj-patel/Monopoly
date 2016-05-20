@@ -91,7 +91,9 @@ DEVELOPMENT LOG:
 
 	IN HOME:
 		
-		- Jackey: Added dice capabilities. Fonts are working appropriately. Game will start with appropiate number of players.
+		- Dhiraj: Started houses.
+		
+		- Jackey: Added dice capabilities. Fonts are working appropriately. Game will start with appropiate number of players. Cleaned up houses and started gameState.
 		
  
 PROJECT PLAN: 
