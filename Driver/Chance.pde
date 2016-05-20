@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.concurrent.TimeUnit;
 import java.util.*;
+
 public class Chance extends JFrame implements ActionListener {
   public boolean finished;
   public Container pane;

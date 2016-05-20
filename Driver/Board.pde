@@ -2,7 +2,7 @@ class Board {
   PImage board, gui;
   PFont font;
   int player;
-  Player p1, p2, p3, p4;
+  Player[] numPlayers;
   
   Board(int player) {
     this.player = player;
@@ -12,29 +12,30 @@ class Board {
     board.resize(720, 720);
     gui = loadImage("../Images/gui.png");
     gui.resize(280, 720);
+    numPlayers = new Player[player];
     if (player == 2) {
-      p1 = new Player("Player 1", 1, "red");
-      p2 = new Player("Player 2", 2, "blue");
+      numPlayers[0] = new Player("Player 1", 1, "red");
+      numPlayers[1] = new Player("Player 2", 2, "blue");
     }
     else if (player == 3) {
-      p1 = new Player("Player 1", 1, "red");
-      p2 = new Player("Player 2", 2, "blue");
-      p3 = new Player("Player 3", 3, "green");
+      numPlayers[0] = new Player("Player 1", 1, "red");
+      numPlayers[1] = new Player("Player 2", 2, "blue");
+      numPlayers[2] = new Player("Player 3", 3, "green");
     }
     else if (player == 4) {
-      p1 = new Player("Player 1", 1, "red");
-      p2 = new Player("Player 2", 1, "red");
-      p3 = new Player("Player 3", 1, "red");
-      p4 = new Player("Player 4", 1, "red");
-    } 
+      numPlayers[0] = new Player("Player 1", 1, "red");
+      numPlayers[1] = new Player("Player 2", 2, "blue");
+      numPlayers[2] = new Player("Player 3", 3, "green");
+      numPlayers[3] = new Player("Player 4", 4, "yellow");
+    }
   }
   
   void draw() {
     background(255, 255, 255);
     image(board, 0, 0);
     image(gui, 720, 0);
-    if (player == 2) {
-      
+    for (int i = 0; i < player; i ++) {
+      numPlayers[i].draw();
     }
   }
 }
