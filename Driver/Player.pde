@@ -36,8 +36,8 @@ public class Player {
      }
   }
   public void buyLocation(Space s){
-    if(!s.owned){
-      s.owned = true;
+    if(!s.purchased){
+      s.purchased = true;
       s.setOwner(this);
       properties.add(s.location);
     }
