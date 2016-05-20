@@ -3,6 +3,7 @@ class Board {
   PFont font;
   int player;
   Player[] numPlayers;
+  txtButton next;
   
   Board(int player) {
     this.player = player;
