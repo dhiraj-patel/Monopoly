@@ -95,7 +95,12 @@ DEVELOPMENT LOG:
 		
 		- Jackey: Added dice capabilities. Fonts are working appropriately. Game will start with appropiate number of players. Cleaned up houses and started gameState.
 		
- 
+5.20.16
+
+	IN HOME:
+	
+		- Jackey: worked on gameplay
+		
 PROJECT PLAN: 
 
 DEMO VERSION: 

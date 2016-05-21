@@ -3,6 +3,7 @@ mainMenu newMainMenu;
 Board newBoard;
 playerSelect newPlayerSelect;
 Die newDice;
+Game newGame;
 
 void setup() {
   size(1000, 720);
@@ -38,6 +39,7 @@ void mousePressed() {
   if (state == 1) {
     if (newPlayerSelect.playerSelectButtons[0].over == true) {
       newBoard = new Board(2);
+      newGame = new Game(2);
       state = 2;
     }
   }
