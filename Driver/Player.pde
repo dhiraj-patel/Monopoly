@@ -30,7 +30,7 @@ public class Player {
      this.money = money;
   }
   
-  public void movePlayer(int spaces) {
+  public void move(int spaces) {
      location += spaces;
      if (location >= 40) {
        location -= 40;

@@ -10,13 +10,25 @@ class Die {
     font = createFont("../Fonts/BebasNeue.otf", 24, true);
   }
   
-  int[] roll() {
+  void roll() {
     for (int i = 0; i < 2; i ++) {
       setOfDice[i] = r.nextInt(6) + 1;
     }
-    return setOfDice;
+  }
+  
+  int getTotal() {
+    int total = 0;
+    for (int i = 0; i < 2; i ++) {
+      total += setOfDice[i];
+    }
+    return total;
   }
     
+  void reset() {
+    for (int i = 0; i < 2; i ++) {
+      setOfDice[i] = 0;
+    }
+  }
   
   void draw() {
     fill(255, 255, 255);

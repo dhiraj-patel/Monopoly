@@ -1,8 +1,6 @@
 static int state; //0 Main Menu, 1 Player Select, 2 Game 
 mainMenu newMainMenu;
-Board newBoard;
 playerSelect newPlayerSelect;
-Die newDice;
 Game newGame;
 
 void setup() {
@@ -10,7 +8,6 @@ void setup() {
   state = 1;
   newMainMenu = new mainMenu();
   newPlayerSelect = new playerSelect();
-  newDice = new Die();
 }
 
 void draw() {
@@ -21,8 +18,7 @@ void draw() {
     newPlayerSelect.draw();
   }
   if (state == 2) {
-    newBoard.draw();
-    newDice.draw();
+    newGame.draw();
   }
 }
 
@@ -38,9 +34,26 @@ void mousePressed() {
   }
   if (state == 1) {
     if (newPlayerSelect.playerSelectButtons[0].over == true) {
-      newBoard = new Board(2);
       newGame = new Game(2);
       state = 2;
+    }
+    else if (newPlayerSelect.playerSelectButtons[1].over == true) {
+      newGame = new Game(3);
+      state = 2;
+    }
+    else if (newPlayerSelect.playerSelectButtons[2].over == true) {
+      newGame = new Game(4);
+      state = 2;
+    }
+  }
+  if (state == 2) {
+    if (newGame.newBoard.next[newGame.newBoard.currentPlayer].over) {
+      newGame.newBoard.nextPressed = true;
+    }
+    if (newGame.newBoard.done[newGame.newBoard.currentPlayer].over) {
+      newGame.newBoard.currentTurn += 1;
+      newGame.ranOnce = false;
+      newGame.newBoard.nextPressed = false;
     }
   }
 }

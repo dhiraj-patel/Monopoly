@@ -1,41 +1,71 @@
 class Board {
   PImage board, gui;
   PFont font;
-  int player;
+  int totalPlayers, currentPlayer, currentTurn;
+  boolean nextPressed;
+  txtButton[] next;
+  txtButton[] done;
   Player[] numPlayers;
-  txtButton next;
   
-  Board(int player) {
-    this.player = player;
+  Board(int totalPlayers) {
+    this.totalPlayers = totalPlayers;
     colorMode(RGB);
     font = createFont("../Fonts/BebasNeue.otf", 24, true);
     board = loadImage("../Images/board.jpg");
     board.resize(720, 720);
     gui = loadImage("../Images/gui.png");
     gui.resize(280, 720);
-    numPlayers = new Player[player];
-    if (player == 2) {
+    currentPlayer = 0;
+    currentTurn = 0;
+    nextPressed = false;
+    next = new txtButton[totalPlayers];
+    done = new txtButton[totalPlayers];
+    numPlayers = new Player[totalPlayers];
+    if (totalPlayers == 2) {
       numPlayers[0] = new Player("Player 1", 1, "red");
       numPlayers[1] = new Player("Player 2", 2, "blue");
+      next[0] = new txtButton(800, 20, ">", 28, color(0, 0, 0), color(155, 155, 155));
+      next[1] = new txtButton(800, 198, ">", 28, color(0, 0, 0), color(155, 155, 155));
+      done[0] = new txtButton(800, 20, "DONE", 28, color(0, 0, 0), color(155, 155, 155));
+      done[1] = new txtButton(800, 198, "DONE", 28, color(0, 0, 0), color(155, 155, 155));
     }
-    else if (player == 3) {
+    else if (totalPlayers == 3) {
       numPlayers[0] = new Player("Player 1", 1, "red");
       numPlayers[1] = new Player("Player 2", 2, "blue");
       numPlayers[2] = new Player("Player 3", 3, "green");
+      next[0] = new txtButton(800, 20, ">", 28, color(0, 0, 0), color(155, 155, 155));
+      next[1] = new txtButton(800, 198, ">", 28, color(0, 0, 0), color(155, 155, 155));
+      next[2] = new txtButton(800, 379, ">", 28, color(0, 0, 0), color(155, 155, 155));
+      done[0] = new txtButton(800, 20, "DONE", 28, color(0, 0, 0), color(155, 155, 155));
+      done[1] = new txtButton(800, 198, "DONE", 28, color(0, 0, 0), color(155, 155, 155));
+      done[2] = new txtButton(800, 379, "DONE", 28, color(0, 0, 0), color(155, 155, 155));
     }
-    else if (player == 4) {
+    else if (totalPlayers == 4) {
       numPlayers[0] = new Player("Player 1", 1, "red");
       numPlayers[1] = new Player("Player 2", 2, "blue");
       numPlayers[2] = new Player("Player 3", 3, "green");
       numPlayers[3] = new Player("Player 4", 4, "yellow");
+      next[0] = new txtButton(800, 20, ">", 28, color(0, 0, 0), color(155, 155, 155));
+      next[1] = new txtButton(800, 198, ">", 28, color(0, 0, 0), color(155, 155, 155));
+      next[2] = new txtButton(800, 379, ">", 28, color(0, 0, 0), color(155, 155, 155));
+      next[3] = new txtButton(800, 558, ">", 28, color(0, 0, 0), color(155, 155, 155));
+      done[0] = new txtButton(800, 20, "DONE", 28, color(0, 0, 0), color(155, 155, 155));
+      done[1] = new txtButton(800, 198, "DONE", 28, color(0, 0, 0), color(155, 155, 155));
+      done[2] = new txtButton(800, 379, "DONE", 28, color(0, 0, 0), color(155, 155, 155));
+      done[3] = new txtButton(800, 558, "DONE", 28, color(0, 0, 0), color(155, 155, 155));
     }
+  }
+  
+  void setCurrentPlayer() {
+    currentPlayer = currentTurn % totalPlayers;
   }
   
   void draw() {
     background(255, 255, 255);
     image(board, 0, 0);
     image(gui, 720, 0);
-    for (int i = 0; i < player; i ++) {
+    setCurrentPlayer();
+    for (int i = 0; i < totalPlayers; i ++) {
       numPlayers[i].draw();
     }
   }

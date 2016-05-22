@@ -1,28 +1,38 @@
 class Game {
-  int currentTurn;
-  int currentPlayer;
   int totalPlayers;
-  txtButton next;
+  boolean ranOnce;
+  Die newDie;
+  Board newBoard;
   
   Game(int totalPlayers) {
-    currentTurn = 0;
-    currentPlayer = 0;
     this.totalPlayers = totalPlayers;
-    next = new txtButton(800, 20, ">", 8, 
+    newDie = new Die();
+    newBoard = new Board(totalPlayers);
+    ranOnce = false;
   }
-  
-  void setCurrentPlayer() {
-    if (currentTurn % totalPlayers == 0) {
-      currentPlayer = totalPlayers;
-    }
-    else {
-      currentPlayer = currentTurn % totalPlayers;
-    }
-  }   
-  
+
   void draw() {
-    
-    if (cur
+    newBoard.draw();
+    if (!newBoard.nextPressed) {
+      println("hello");
+      newDie.reset();
+      newDie.draw();
+      newBoard.next[newBoard.currentPlayer].draw();
+    }
+    else if (newBoard.nextPressed && !ranOnce) {
+      println("hi");
+      newDie.roll();
+      newDie.draw();
+      newBoard.numPlayers[newBoard.currentPlayer].move(newDie.getTotal());
+      newBoard.draw();
+      ranOnce = true;
+    }
+    else if (newBoard.nextPressed && ranOnce) {
+      println("bye");
+      newBoard.done[newBoard.currentPlayer].draw();
+      newDie.draw();
+    }
+      
   }
 }
    
