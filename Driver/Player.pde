@@ -7,6 +7,7 @@ public class Player {
   int numInJail;
   boolean inJail;
   boolean isBankrupt;
+  boolean hasJFC;
   ArrayList<Integer> properties;
   
   public Player(String name, int playerNum, String playerColor) {
@@ -17,6 +18,7 @@ public class Player {
       numInJail = 0; 
       location = 0;
       inJail = false;
+      hasJFC = false;
       isBankrupt = false;
       colorMode(RGB);
       properties = new ArrayList<Integer>();
@@ -30,6 +32,12 @@ public class Player {
      this.money = money;
   }
   
+  public void setLocation(int location){
+    this.location = location;
+  }
+  public void setJFC(boolean b){
+    hasJFC = b;
+  }
   public void move(int spaces) {
      location += spaces;
      if (location >= 40) {
