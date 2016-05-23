@@ -24,6 +24,7 @@ public class Chance{
     cards.add("You have been elected chairman of the board – pay each player $50");
     cards.add("Your building loan matures – collect $150");
     cards.add("You have won a crossword competition - collect $100");
+    Collections.shuffle(cards);
     finished = false;
   }
 
@@ -34,9 +35,9 @@ public class Chance{
   }
  
   public void display() { 
-    if ((player.location == 7)||(player.location == 22)||(player.location == 36)) {   
+    //if ((player.location == 7)||(player.location == 22)||(player.location == 36)) {   
       JOptionPane.showMessageDialog(frame, getChanceCard());
-    }  
+    //}  
   }
 }
 
