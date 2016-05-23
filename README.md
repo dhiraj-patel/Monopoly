@@ -107,6 +107,12 @@ DEVELOPMENT LOG:
 		
 		- Jackey: worked on getting player movement going. worked on die rolling. worked on getting sequencing of actions going. current bug with no more moving after second turn.
 		
+5.22.16
+
+	IN HOME:
+	
+		- Jackey: completed getting player movement going. completed dice rolling. fixed earlier bug.
+		
 PROJECT PLAN: 
 
 DEMO VERSION: 

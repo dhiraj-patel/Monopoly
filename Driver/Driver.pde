@@ -5,7 +5,7 @@ Game newGame;
 
 void setup() {
   size(1000, 720);
-  state = 1;
+  state = 0;
   newMainMenu = new mainMenu();
   newPlayerSelect = new playerSelect();
 }
@@ -48,12 +48,16 @@ void mousePressed() {
   }
   if (state == 2) {
     if (newGame.newBoard.next[newGame.newBoard.currentPlayer].over) {
+      println("YES");
       newGame.newBoard.nextPressed = true;
+      newGame.newBoard.next[newGame.newBoard.currentPlayer].over = false;
     }
     if (newGame.newBoard.done[newGame.newBoard.currentPlayer].over) {
+      println("PRESSED");
       newGame.newBoard.currentTurn += 1;
       newGame.ranOnce = false;
       newGame.newBoard.nextPressed = false;
+      newGame.newBoard.done[newGame.newBoard.currentPlayer].over = false;
     }
   }
 }

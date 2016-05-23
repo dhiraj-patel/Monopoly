@@ -10,9 +10,9 @@ class playerSelect {
     buttonHover = color(205, 90, 90);
     bg = loadImage("../Images/mm.png");
     bg.resize(1000, 720);
-    playerSelectButtons[0] = new txtButton(width / 2, height / 4, "TWO PLAYER", 30, buttonNormal, buttonHover);
-    playerSelectButtons[1] = new txtButton(width / 2, height / 2, "THREE PLAYER", 30, buttonNormal, buttonHover);
-    playerSelectButtons[2] = new txtButton(width / 2, height * 3 / 4, "FOUR PLAYER", 30, buttonNormal, buttonHover);
+    playerSelectButtons[0] = new txtButton(width / 2 - 65, height / 4 - 20, "TWO PLAYER", 30, buttonNormal, buttonHover);
+    playerSelectButtons[1] = new txtButton(width / 2 - 65, height / 2 - 20, "THREE PLAYER", 30, buttonNormal, buttonHover);
+    playerSelectButtons[2] = new txtButton(width / 2 - 65, height * 3 / 4 - 20, "FOUR PLAYER", 30, buttonNormal, buttonHover);
     font = createFont("../Fonts/BebasNeue.otf", 24, true);
   }
   

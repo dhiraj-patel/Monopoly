@@ -14,13 +14,11 @@ class Game {
   void draw() {
     newBoard.draw();
     if (!newBoard.nextPressed) {
-      println("hello");
       newDie.reset();
       newDie.draw();
       newBoard.next[newBoard.currentPlayer].draw();
     }
     else if (newBoard.nextPressed && !ranOnce) {
-      println("hi");
       newDie.roll();
       newDie.draw();
       newBoard.numPlayers[newBoard.currentPlayer].move(newDie.getTotal());
@@ -28,7 +26,6 @@ class Game {
       ranOnce = true;
     }
     else if (newBoard.nextPressed && ranOnce) {
-      println("bye");
       newBoard.done[newBoard.currentPlayer].draw();
       newDie.draw();
     }

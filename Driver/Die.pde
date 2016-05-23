@@ -36,7 +36,7 @@ class Die {
     textFont(font);
     textSize(30);
     fill(0, 0, 0);
-    text(Integer.toString(setOfDice[0]), 340, 355);
-    text(Integer.toString(setOfDice[1]), 380, 355);
+    text(Integer.toString(setOfDice[0]), 335, 353);
+    text(Integer.toString(setOfDice[1]), 375, 353);
   }
 }
