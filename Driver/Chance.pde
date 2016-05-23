@@ -1,12 +1,6 @@
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.concurrent.TimeUnit;
-import java.util.*;
-
-public class Chance extends JFrame implements ActionListener {
+public class Chance{
   public boolean finished;
-  public Container pane;
   public Player player;
   private ArrayList<String>cards;     
   private String action;
@@ -30,51 +24,20 @@ public class Chance extends JFrame implements ActionListener {
     cards.add("You have been elected chairman of the board – pay each player $50");
     cards.add("Your building loan matures – collect $150");
     cards.add("You have won a crossword competition - collect $100");
-    // Constructor should generate a random chance card and display it as a gui message. ....
-    // there are 17 possible chance cards  
-    
     finished = false;
-    this.setTitle("Player "+player.playerNum+", you have landed on Chance");
-    this.setSize(400,200);
-    this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-    pane = this.getContentPane();
-    pane.setLayout(new BoxLayout(pane,BoxLayout.Y_AXIS));
-    JLabel l1 = new JLabel(action);
-    l1.setAlignmentX(Component.CENTER_ALIGNMENT);
-    JButton b1 = new JButton("OK");
-    b1.addActionListener(this);
-    b1.setActionCommand("OK");
-    b1.setAlignmentX(Component.CENTER_ALIGNMENT);
-    pane.add(l1);
-    pane.add(b1);
   }
-  
-  public void actionPerformed(ActionEvent e){
-    String event = e.getActionCommand();
-    if(event.equals("OK")){
-      int q = getRandomChanceCard();
-      executeAction(q);
-      finished = true;
-    }
-    finished = true;
+
+  public String getChanceCard(){
+    String removed = cards.remove(0);
+    cards.add(removed);
+    return removed;
   }
-  
-  public int getRandomChanceCard(){
-    int cardNum = (int)(Math.random()*17);
-    return cardNum;
+ 
+  public void display() { 
+    if ((player.location == 7)||(player.location == 22)||(player.location == 36)) {   
+      JOptionPane.showMessageDialog(frame, getChanceCard());
+    }  
   }
-  
-  public void display() {
-  }  
-  
-  public void executeAction(int actNum){
-    if (actNum == 1){
-      System.out.println("test");
-    }
-  }
-    
-    
-  
 }
 
     
