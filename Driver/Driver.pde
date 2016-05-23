@@ -48,16 +48,17 @@ void mousePressed() {
   }
   if (state == 2) {
     if (newGame.newBoard.next[newGame.newBoard.currentPlayer].over) {
-      println("YES");
       newGame.newBoard.nextPressed = true;
       newGame.newBoard.next[newGame.newBoard.currentPlayer].over = false;
     }
     if (newGame.newBoard.done[newGame.newBoard.currentPlayer].over) {
-      println("PRESSED");
       newGame.newBoard.currentTurn += 1;
       newGame.ranOnce = false;
       newGame.newBoard.nextPressed = false;
       newGame.newBoard.done[newGame.newBoard.currentPlayer].over = false;
+    }
+    if (newGame.newBoard.nextDouble[newGame.newBoard.currentPlayer].over) {
+      newGame.newBoard.nextDouble[newGame.newBoard.currentPlayer].over = false;
     }
   }
 }

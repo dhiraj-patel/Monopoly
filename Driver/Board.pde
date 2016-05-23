@@ -4,6 +4,8 @@ class Board {
   int totalPlayers, currentPlayer, currentTurn;
   boolean nextPressed;
   txtButton[] next;
+  txtButton[] nextDouble;
+  txtButton[] nextTriple;
   txtButton[] done;
   Player[] numPlayers;
   
@@ -19,6 +21,8 @@ class Board {
     currentTurn = 0;
     nextPressed = false;
     next = new txtButton[totalPlayers];
+    nextDouble = new txtButton[totalPlayers];
+    nextTriple = new txtButton[totalPlayers];
     done = new txtButton[totalPlayers];
     numPlayers = new Player[totalPlayers];
     if (totalPlayers == 2) {
@@ -26,6 +30,10 @@ class Board {
       numPlayers[1] = new Player("Player 2", 2, "blue");
       next[0] = new txtButton(800, 17, ">", 28, color(0, 0, 0), color(155, 155, 155));
       next[1] = new txtButton(800, 195, ">", 28, color(0, 0, 0), color(155, 155, 155));
+      nextDouble[0] = new txtButton(800, 17, ">>", 28, color(0, 0, 0), color(155, 155, 155));
+      nextDouble[1] = new txtButton(800, 195, ">>", 28, color(0, 0, 0), color(155, 155, 155));
+      nextTriple[0] = new txtButton(800, 17, ">>>", 28, color(0, 0, 0), color(155, 155, 155));
+      nextTriple[1] = new txtButton(800, 195, ">>>", 28, color(0, 0, 0), color(155, 155, 155));
       done[0] = new txtButton(800, 15, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
       done[1] = new txtButton(800, 193, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
     }
@@ -36,6 +44,12 @@ class Board {
       next[0] = new txtButton(800, 17, ">", 28, color(0, 0, 0), color(155, 155, 155));
       next[1] = new txtButton(800, 195, ">", 28, color(0, 0, 0), color(155, 155, 155));
       next[2] = new txtButton(800, 376, ">", 28, color(0, 0, 0), color(155, 155, 155));
+      nextDouble[0] = new txtButton(800, 17, ">>", 28, color(0, 0, 0), color(155, 155, 155));
+      nextDouble[1] = new txtButton(800, 195, ">>", 28, color(0, 0, 0), color(155, 155, 155));
+      nextDouble[2] = new txtButton(800, 376, ">>", 28, color(0, 0, 0), color(155, 155, 155));
+      nextTriple[0] = new txtButton(800, 17, ">>>", 28, color(0, 0, 0), color(155, 155, 155));
+      nextTriple[1] = new txtButton(800, 195, ">>>", 28, color(0, 0, 0), color(155, 155, 155));
+      nextTriple[2] = new txtButton(800, 376, ">>>", 28, color(0, 0, 0), color(155, 155, 155));
       done[0] = new txtButton(800, 15, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
       done[1] = new txtButton(800, 193, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
       done[2] = new txtButton(800, 374, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
@@ -49,6 +63,14 @@ class Board {
       next[1] = new txtButton(800, 195, ">", 28, color(0, 0, 0), color(155, 155, 155));
       next[2] = new txtButton(800, 376, ">", 28, color(0, 0, 0), color(155, 155, 155));
       next[3] = new txtButton(800, 555, ">", 28, color(0, 0, 0), color(155, 155, 155));
+      nextDouble[0] = new txtButton(800, 17, ">>", 28, color(0, 0, 0), color(155, 155, 155));
+      nextDouble[1] = new txtButton(800, 195, ">>", 28, color(0, 0, 0), color(155, 155, 155));
+      nextDouble[2] = new txtButton(800, 376, ">>", 28, color(0, 0, 0), color(155, 155, 155));
+      nextDouble[3] = new txtButton(800, 555, ">>", 28, color(0, 0, 0), color(155, 155, 155));
+      nextTriple[0] = new txtButton(800, 17, ">>>", 28, color(0, 0, 0), color(155, 155, 155));
+      nextTriple[1] = new txtButton(800, 195, ">>>", 28, color(0, 0, 0), color(155, 155, 155));
+      nextTriple[2] = new txtButton(800, 376, ">>>", 28, color(0, 0, 0), color(155, 155, 155));
+      nextTriple[3] = new txtButton(800, 555, ">>>", 28, color(0, 0, 0), color(155, 155, 155));
       done[0] = new txtButton(800, 15, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
       done[1] = new txtButton(800, 193, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
       done[2] = new txtButton(800, 374, "DONE", 16, color(0, 0, 0), color(155, 155, 155));

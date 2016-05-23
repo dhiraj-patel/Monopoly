@@ -13,11 +13,13 @@ class Game {
 
   void draw() {
     newBoard.draw();
+    //if the next button wasn't pressed
     if (!newBoard.nextPressed) {
       newDie.reset();
       newDie.draw();
       newBoard.next[newBoard.currentPlayer].draw();
     }
+    //action that happens once the next is pressed
     else if (newBoard.nextPressed && !ranOnce) {
       newDie.roll();
       newDie.draw();
@@ -25,6 +27,22 @@ class Game {
       newBoard.draw();
       ranOnce = true;
     }
+    else if (newBoard.nextPressed && newDie.isDouble()) {
+      newDie.doubleCount += 1;
+      if (newDie.doubleCount == 3) {
+        newDie.doubleCount = 0;
+        newBoard.numPlayers[newBoard.currentPlayer].goToJail();
+      }
+      else if (newDie.doubleCount == 1) {
+        newBoard.nextDouble[newBoard.currentPlayer].draw();
+        newDie.draw();
+      }
+      else if (newDie.doubleCount == 2) {
+        newBoard.nextTriple[newBoard.currentPlayer].draw();
+      }
+        
+    }
+    //what happens after the next is pressed and continually happens
     else if (newBoard.nextPressed && ranOnce) {
       newBoard.done[newBoard.currentPlayer].draw();
       newDie.draw();

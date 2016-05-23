@@ -3,11 +3,13 @@ class Die {
   Random r;
   int[] setOfDice;
   PFont font;
+  int doubleCount;
   
   Die() {
     r = new Random();
     setOfDice = new int[2];
     font = createFont("../Fonts/BebasNeue.otf", 24, true);
+    doubleCount = 0;
   }
   
   void roll() {
@@ -22,6 +24,10 @@ class Die {
       total += setOfDice[i];
     }
     return total;
+  }
+  
+  boolean isDouble() {
+    return setOfDice[0] == setOfDice[1];
   }
     
   void reset() {

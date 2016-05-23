@@ -38,6 +38,11 @@ public class Player {
      }
   }
   
+  public void goToJail() {
+    location = 10;
+    inJail = true;
+  }
+  
   public void buyLocation(Space s) {
     if (!s.purchased) {
       s.purchased = true;
