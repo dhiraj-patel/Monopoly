@@ -111,7 +111,8 @@ DEVELOPMENT LOG:
 
 	IN HOME:
 	
-		- Jackey: completed getting player movement going. completed dice rolling. fixed earlier bug.
+		- Jackey: completed getting player movement going. completed dice rolling. fixed earlier bug. Worked on rolling doubles.
+		
 		
 PROJECT PLAN: 
 
