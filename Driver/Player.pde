@@ -8,8 +8,9 @@ public class Player {
   boolean inJail;
   boolean isBankrupt;
   ArrayList<Integer> properties;
-  
+  PImage token; 
   public Player(String name, int playerNum, String playerColor) {
+      setImage();
       this.name = name;
       this.playerNum = playerNum;
       this.playerColor = playerColor;
@@ -25,7 +26,17 @@ public class Player {
   public int getMoney() {
       return money;
   }
-  
+  public void setImage(){
+    int r = (int)(Math.random()*8);    
+    if(r == 0){ token = loadImage("../Images/Pieces/boot.png"); }
+    else if(r == 1){ token = loadImage("../Images/Pieces/car.png"); }
+    else if(r == 2){ token = loadImage("../Images/Pieces/dog.png"); }
+    else if(r == 3){ token = loadImage("../Images/Pieces/hat.png"); }
+    else if(r == 4){ token = loadImage("../Images/Pieces/iron.png"); }
+    else if(r == 5){ token = loadImage("../Images/Pieces/ship.png"); }
+    else if(r == 6){ token = loadImage("../Images/Pieces/thimble.png"); }
+    else if(r == 7){ token = loadImage("../Images/Pieces/wheelbarrow.png"); }
+  }
   public void setMoney(int money) {
      this.money = money;
   }
@@ -73,28 +84,29 @@ public class Player {
     else {
       setColor();
       if (location == 0) {
-        ellipse(665 + (playerNum * 5), 695, 15, 15);
+        image(token, 665 + (playerNum * 5), 695, 15, 15);
       }
+    
       else if (location < 10) {
-        ellipse(575 - (location - 1) * 60 + (playerNum * 5), 695, 15, 15);  
+       image(token,575 - (location - 1) * 60 + (playerNum * 5), 695, 15, 15);  
       }
       else if (location == 10) {
-        ellipse(30 + (playerNum * 5), 695, 15, 15);
+        image(token,30 + (playerNum * 5), 695, 15, 15);
       }
       else if (location < 20) {
-        ellipse(30, 575 - (location - 11) * 60 + (playerNum * 5), 15, 15);
+        image(token,30, 575 - (location - 11) * 60 + (playerNum * 5), 15, 15);
       }
       else if (location == 20) {
-        ellipse(25 + (playerNum * 5), 30, 15, 15);
+        image(token,25 + (playerNum * 5), 30, 15, 15);
       }
       else if (location < 30) {
-        ellipse(100 + (location - 21) * 60 + (playerNum * 5), 30, 15, 15);
+        image(token,100 + (location - 21) * 60 + (playerNum * 5), 30, 15, 15);
       }
       else if (location == 30) {
-        ellipse(680, 25 + (playerNum * 5), 15, 15);
+        image(token,680, 25 + (playerNum * 5), 15, 15);
       }
       else if (location < 40) {
-        ellipse(680, 100 + (location - 31) * 60 + (playerNum * 5), 15, 15);
+        image(token,680, 100 + (location - 31) * 60 + (playerNum * 5), 15, 15);
       } 
     }
   }
