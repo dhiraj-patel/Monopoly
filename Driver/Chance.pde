@@ -30,7 +30,7 @@ public class Chance{
   
   
   public void execute(Player actor, String action){
-    if(action.equals("Advance to Go (Collect $200)"){
+    if(action.equals("Advance to Go (Collect $200)")){
       actor.setLocation(40);
       actor.setMoney(actor.getMoney()+200);
     }
@@ -92,6 +92,34 @@ public class Chance{
       actor.setLocation(10);
       actor.goToJail();
     }
+    if(action.equals("Make general repairs on all your property – for each house pay $25 – for each hotel $100")){
+      // do some shit here;
+    }
+    if(action.equals("Pay poor tax of $15")){ 
+      actor.setMoney(actor.getMoney()-15);
+    }
+    if(action.equals("Take a trip to Reading Railroad – if you pass Go collect $200")) {
+      if(actor.location>5){
+        actor.setMoney(actor.getMoney()+200); // pass go
+      }
+      actor.setLocation(5);
+    }
+    if(action.equals("Take a walk on the Boardwalk – advance token to Boardwalk")) {
+      if(actor.location == 0 || actor.location < 39){
+        actor.setMoney(actor.getMoney()+200);
+      }
+      actor.setLocation(39);
+    }
+    if(action.equals("You have been elected chairman of the board – pay each player $50")) {
+      // i dont know what to do here
+    }
+    if(action.equals("Your building loan matures – collect $150")){
+      actor.setMoney(actor.getMoney()+150);
+    }
+    if(action.equals("You have won a crossword competition - collect $100")){
+      actor.setMoney(actor.getMoney()+100);
+    }
+      
   }
   public String getChanceCard(){
     String removed = cards.remove(0);
@@ -99,9 +127,10 @@ public class Chance{
     return removed;
   }
  
-  public void display() { 
+  public void run() { 
     //if ((player.location == 7)||(player.location == 22)||(player.location == 36)) {   
       JOptionPane.showMessageDialog(frame, getChanceCard());
+      execute(player,getChanceCard());
     //}  
   }
 }
