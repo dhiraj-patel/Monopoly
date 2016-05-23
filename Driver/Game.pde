@@ -1,6 +1,6 @@
 class Game {
   int totalPlayers;
-  boolean ranOnce;
+  boolean ranOnce, ranOnce2;
   Die newDie;
   Board newBoard;
   
@@ -8,6 +8,7 @@ class Game {
     this.totalPlayers = totalPlayers;
     newDie = new Die();
     newBoard = new Board(totalPlayers);
+    ranOnce = false;
     ranOnce = false;
   }
 
@@ -27,25 +28,31 @@ class Game {
       newBoard.draw();
       ranOnce = true;
     }
-    else if (newBoard.nextPressed && newDie.isDouble()) {
-      newDie.doubleCount += 1;
-      if (newDie.doubleCount == 3) {
-        newDie.doubleCount = 0;
-        newBoard.numPlayers[newBoard.currentPlayer].goToJail();
-      }
-      else if (newDie.doubleCount == 1) {
-        newBoard.nextDouble[newBoard.currentPlayer].draw();
-        newDie.draw();
-      }
-      else if (newDie.doubleCount == 2) {
-        newBoard.nextTriple[newBoard.currentPlayer].draw();
-      }
-        
-    }
     //what happens after the next is pressed and continually happens
     else if (newBoard.nextPressed && ranOnce) {
-      newBoard.done[newBoard.currentPlayer].draw();
-      newDie.draw();
+      if (newDie.isDouble()) {
+        if (!ranOnce2) {
+          newDie.doubleCount += 1;
+          ranOnce2 = true;
+        }
+        if (newDie.doubleCount == 1) {
+          newBoard.nextDouble[newBoard.currentPlayer].draw();
+          newDie.draw();
+        }
+        else if (newDie.doubleCount == 2) {
+          newBoard.nextTriple[newBoard.currentPlayer].draw();
+          newDie.draw();
+        }
+        else if (newDie.doubleCount == 3) {
+          newDie.doubleCount = 0;
+          newBoard.numPlayers[newBoard.currentPlayer].goToJail();
+        }
+      }
+      else {   
+        newBoard.done[newBoard.currentPlayer].draw();
+        newDie.doubleCount = 0;
+        newDie.draw();
+      }
     }
       
   }

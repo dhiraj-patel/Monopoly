@@ -58,7 +58,14 @@ void mousePressed() {
       newGame.newBoard.done[newGame.newBoard.currentPlayer].over = false;
     }
     if (newGame.newBoard.nextDouble[newGame.newBoard.currentPlayer].over) {
+      newGame.ranOnce = false;
       newGame.newBoard.nextDouble[newGame.newBoard.currentPlayer].over = false;
+      newGame.ranOnce2 = false;
+    }
+    if (newGame.newBoard.nextTriple[newGame.newBoard.currentPlayer].over) {
+      newGame.ranOnce = false;
+      newGame.newBoard.nextDouble[newGame.newBoard.currentPlayer].over = false;
+      newGame.ranOnce2 = false;
     }
   }
 }
