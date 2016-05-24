@@ -74,7 +74,7 @@ public class Chance{
       actor.setMoney(actor.getMoney()+50);
     }
     if(action.equals("Get out of Jail free – this card may be kept until needed, or traded/sold")){
-      actor.setJFC(true);
+      actor.setJFC(actor.JFCNum+1);
       // need to add the part where the player can use it.
     }
     if(action.equals("Go back 3 spaces")){
@@ -111,7 +111,7 @@ public class Chance{
       actor.setLocation(39);
     }
     if(action.equals("You have been elected chairman of the board – pay each player $50")) {
-      // i dont know what to do here
+      
     }
     if(action.equals("Your building loan matures – collect $150")){
       actor.setMoney(actor.getMoney()+150);
@@ -121,18 +121,18 @@ public class Chance{
     }
       
   }
-  public String getChanceCard(){
+  
+  // main method for choosing chances 
+  public void getChanceCard(){
     String removed = cards.remove(0);
-    cards.add(removed);
-    return removed;
+    if(!(removed.equals("Get out of Jail free – this card may be kept until needed, or traded/sold"))){
+      cards.add(removed);
+    }
+    JOptionPane.showMessageDialog(frame,removed);
+    execute(player,removed);
   }
+  
  
-  public void run() { 
-    //if ((player.location == 7)||(player.location == 22)||(player.location == 36)) {   
-      JOptionPane.showMessageDialog(frame, getChanceCard());
-      execute(player,getChanceCard());
-    //}  
-  }
 }
 
     

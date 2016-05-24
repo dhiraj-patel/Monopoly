@@ -7,7 +7,7 @@ public class Player {
   int numInJail;
   boolean inJail;
   boolean isBankrupt;
-  boolean hasJFC;
+  int JFCNum;
   ArrayList<Integer> properties;
   
   public Player(String name, int playerNum, String playerColor) {
@@ -18,7 +18,7 @@ public class Player {
       numInJail = 0; 
       location = 0;
       inJail = false;
-      hasJFC = false;
+      JFCNum = 0;
       isBankrupt = false;
       colorMode(RGB);
       properties = new ArrayList<Integer>();
@@ -35,8 +35,8 @@ public class Player {
   public void setLocation(int location){
     this.location = location;
   }
-  public void setJFC(boolean b){
-    hasJFC = b;
+  public void setJFC(int b){
+    JFCNum += b;
   }
   public void move(int spaces) {
      location += spaces;
