@@ -30,6 +30,7 @@ class Game {
       newBoard.draw();
       if (newBoard.numPlayers[newBoard.currentPlayer].location == 7 || newBoard.numPlayers[newBoard.currentPlayer].location == 22 || newBoard.numPlayers[newBoard.currentPlayer].location == 36) {
         newChance.getChanceCard(newBoard.numPlayers[newBoard.currentPlayer]);
+        //exceptions for interactions with other players
         if (newChance.action.equals("You have been elected chairman of the board – pay each player $50")) {
           for (int i = 0; i < newBoard.totalPlayers; i ++) {
             if (!newBoard.numPlayers[i].equals(newBoard.numPlayers[newBoard.currentPlayer])) {

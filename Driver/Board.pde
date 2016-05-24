@@ -89,10 +89,24 @@ class Board {
     setCurrentPlayer();
     for (int i = 0; i < totalPlayers; i ++) {
       numPlayers[i].draw();
-      textSize(15);
-      fill(0,0,0);
-      text(("Money : $ "+numPlayers[i].getMoney()),725,42);
     }
+    textSize(12);
+    fill(0, 0, 0);
+    if (totalPlayers == 2) {
+      text(("$" + numPlayers[0].getMoney()), 724, 30);
+      text(("$" + numPlayers[1].getMoney()), 724, 210);
+    }
+    else if (totalPlayers == 3) {
+      text(("$" + numPlayers[0].getMoney()), 724, 30);
+      text(("$" + numPlayers[1].getMoney()), 724, 210);
+      text(("$" + numPlayers[2].getMoney()), 724, 390);
+    }
+    else if (totalPlayers == 4) {
+      text(("$" + numPlayers[0].getMoney()), 724, 30);
+      text(("$" + numPlayers[1].getMoney()), 724, 210);
+      text(("$" + numPlayers[2].getMoney()), 724, 390);
+      text(("$" + numPlayers[3].getMoney()), 724, 570);
+    } 
   }
 }
     

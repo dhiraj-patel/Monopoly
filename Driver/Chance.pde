@@ -100,7 +100,7 @@ public class Chance {
     if (action.equals("Make general repairs on all your property – for each house pay $25 – for each hotel $100")) {
       // needs more work
       int cost = 0;
-      cost = cost + actor.numOfHouses + actor.numOfHotels;
+      cost = cost + (25 * actor.numOfHouses) + (100 * actor.numOfHotels);
       actor.money -= cost;
     }
     if (action.equals("Pay poor tax of $15")) { 

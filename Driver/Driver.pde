@@ -5,7 +5,7 @@ Game newGame;
 
 void setup() {
   size(1000, 720);
-  state = 0;
+  state = 1;
   newMainMenu = new mainMenu();
   newPlayerSelect = new playerSelect();
 }

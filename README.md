@@ -112,7 +112,14 @@ DEVELOPMENT LOG:
 	IN HOME:
 	
 		- Jackey: completed getting player movement going. completed dice rolling. fixed earlier bug. Worked on rolling doubles.
+	
+5.23.16
+
+	IN HOME:
+	
+		- Dhiraj: worked and completed chance cards
 		
+		- Jackey: implemented chance cards and included an exception for a case. fixed up side panel. Fixed rolling doubles.
 		
 PROJECT PLAN: 
 
