@@ -89,6 +89,9 @@ class Board {
     setCurrentPlayer();
     for (int i = 0; i < totalPlayers; i ++) {
       numPlayers[i].draw();
+      textSize(15);
+      fill(0,0,0);
+      text(("Money : $ "+numPlayers[i].getMoney()),725,42);
     }
   }
 }
