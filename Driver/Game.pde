@@ -30,7 +30,7 @@ class Game {
     }
     //what happens after the next is pressed and continually happens
     else if (newBoard.nextPressed && ranOnce) {
-      if (newDie.isDouble()) {
+      if (newDie.isDouble() && !newBoard.numPlayers[newBoard.currentPlayer].inJail) {
         if (!ranOnce2) {
           newDie.doubleCount += 1;
           ranOnce2 = true;
@@ -44,11 +44,12 @@ class Game {
           newDie.draw();
         }
         else if (newDie.doubleCount == 3) {
-          newDie.doubleCount = 0;
           newBoard.numPlayers[newBoard.currentPlayer].goToJail();
+          newDie.draw();
+          newBoard.done[newBoard.currentPlayer].draw();
         }
       }
-      else {   
+      else {
         newBoard.done[newBoard.currentPlayer].draw();
         newDie.doubleCount = 0;
         newDie.draw();
