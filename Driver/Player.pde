@@ -4,40 +4,44 @@ public class Player {
   public String playerColor;
   int playerNum;
   String name;
-  int numInJail;
+  int numInJail, numOfHouses, numOfHotels;
   boolean inJail;
   boolean isBankrupt;
   int JFCNum;
   ArrayList<Integer> properties;
   
   public Player(String name, int playerNum, String playerColor) {
-      this.name = name;
-      this.playerNum = playerNum;
-      this.playerColor = playerColor;
-      money = 1500;
-      numInJail = 0; 
-      location = 0;
-      inJail = false;
-      JFCNum = 0;
-      isBankrupt = false;
-      colorMode(RGB);
-      properties = new ArrayList<Integer>();
+    this.name = name;
+    this.playerNum = playerNum;
+    this.playerColor = playerColor;
+    money = 1500;
+    numInJail = 0; 
+    location = 0;
+    inJail = false;
+    JFCNum = 0;
+    isBankrupt = false;
+    colorMode(RGB);
+    numOfHouses = 0;
+    numOfHotels = 0;
+    properties = new ArrayList<Integer>();
   }
   
   public int getMoney() {
-      return money;
+    return money;
   }
 
   public void setMoney(int money) {
-     this.money = money;
+    this.money = money;
   }
   
   public void setLocation(int location){
     this.location = location;
   }
-  public void setJFC(int b){
-    JFCNum += b;
+  
+  public void incrementJFC() {
+    JFCNum ++;
   }
+  
   public void move(int spaces) {
      location += spaces;
      if (location >= 40) {

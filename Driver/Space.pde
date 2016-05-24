@@ -13,7 +13,7 @@ public class Space {
      monopolized = false;
   }
   
-  public Space(int space,String name) {
+  public Space(int space, String name) {
     this(space);
     this.name = name;
   }
@@ -142,7 +142,7 @@ public class Space {
       numOfHotels = 0;
       name = "States Avenue";
       isRailroad = false;
-            rentPrice = 10;
+      rentPrice = 10;
       mortgage = 70;
     }
     else if (space == 14) {

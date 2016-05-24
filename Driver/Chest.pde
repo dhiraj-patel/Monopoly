@@ -28,7 +28,6 @@ public class Chest{
     finished = false;
   }
   
-  
   public void execute(Player actor, String action){
   }
   public String getChestCard(){
