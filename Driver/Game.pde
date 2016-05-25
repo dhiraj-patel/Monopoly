@@ -15,6 +15,14 @@ class Game {
     ranOnce = false;
     ranOnce = false;
   }
+  
+  void checkEvent() {
+    if (newBoard.numPlayers[newBoard.currentPlayer].location == 2 || newBoard.numPlayers[newBoard.currentPlayer].location == 17 || newBoard.numPlayers[newBoard.currentPlayer].location == 33) {
+      newChest.getChestCard(newBoard.numPlayers[newBoard.currentPlayer]);
+    }
+    if (newBoard.numPlayers[newBoard.curr
+    
+  }
 
   void draw() {
     newBoard.draw();
