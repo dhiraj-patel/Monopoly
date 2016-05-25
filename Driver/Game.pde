@@ -28,6 +28,7 @@ class Game {
       newDie.draw();
       newBoard.numPlayers[newBoard.currentPlayer].move(newDie.getTotal());
       newBoard.draw();
+      // drawing Chance cards
       if (newBoard.numPlayers[newBoard.currentPlayer].location == 7 || newBoard.numPlayers[newBoard.currentPlayer].location == 22 || newBoard.numPlayers[newBoard.currentPlayer].location == 36) {
         newChance.getChanceCard(newBoard.numPlayers[newBoard.currentPlayer]);
         //exceptions for interactions with other players
@@ -39,9 +40,31 @@ class Game {
             }
           }
         }
-        //will continue Chance cards 
+        else if (newChance.action.equals("Advance token to nearest Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total ten times the amount thrown.")) {
+          if (newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].purchased) {
+            newDie.roll();
+            newBoard.numPlayers[newBoard.currentPlayer].money -= newDie.getTotal() * 10;
+            newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].owner.money += newDie.getTotal() * 10;
+          }
+        }
+        else if (newChance.action.equals("Advance token to the nearest Railroad and pay owner twice the rental to which he/she is otherwise entitled. If Railroad is unowned, you may buy it from the Bank.")) {
+          if (newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].purchased) {
+            newBoard.numPlayers[newBoard.currentPlayer].money -= newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].rentPrice * 2;
+            newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].owner.money += newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].rentPrice * 2;
+          }
+        }
+        else if (newChance.action.equals("Go back 3 spaces")) {
+          //WILL CONTINUE FROM HERE
+        }
         
       }
+      else if (newBoard.numPlayers[newBoard.currentPlayer].location == 4) {
+        newBoard.numPlayers[newBoard.currentPlayer].money -= 200;
+      }
+      else if (newBoard.numPlayers[newBoard.currentPlayer].location == 38) {
+        newBoard.numPlayers[newBoard.currentPlayer].money -= 100;
+      }
+        
       
       ranOnce = true;
     }

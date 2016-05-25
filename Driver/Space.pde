@@ -3,14 +3,16 @@ public class Space {
   String name;
   String spaceColor;
   boolean purchased; 
+  boolean buyable;
   boolean monopolized; 
   boolean isRailroad;
   Player owner;
   
   public Space(int space) {
-     initializeVars(space);
+     buyable = true;
      purchased = false;
      monopolized = false;
+     initializeVars(space);  
   }
   
   public Space(int space, String name) {
@@ -20,6 +22,10 @@ public class Space {
   
   public void initializeVars(int space) {
     location = space;
+    //NON BUYABLES
+    if (space == 0 || space == 2 || space == 4 || space == 7 || space == 10 || space == 17 || space == 20 || space == 22 || space == 30 || space == 33 || space == 36 || space == 38) {
+      buyable = false;
+    }
     //BROWN BROWN BROWN
     if (space == 1) {
       cost = 60;

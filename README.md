@@ -121,6 +121,12 @@ DEVELOPMENT LOG:
 		
 		- Jackey: implemented chance cards and included an exception for a case. fixed up side panel. Fixed rolling doubles.
 		
-PROJECT PLAN: 
+5.24.16
+
+	IN HOME:
+	
+		- Jackey: Kept checking for exceptions in Chance
+		
+PROJECT PLAN:
 
 DEMO VERSION: 

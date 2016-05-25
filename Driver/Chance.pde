@@ -54,19 +54,16 @@ public class Chance {
         
     }
     if (action.equals("Advance token to the nearest Railroad and pay owner twice the rental to which he/she is otherwise entitled. If Railroad is unowned, you may buy it from the Bank.")) {
-      if (actor.location > 0 && actor.location < 5) {
+      if (actor.location == 36) {
+        actor.setMoney(actor.getMoney() + 200);
         actor.setLocation(5);
       }
-      else if (actor.location > 5 && actor.location < 15) {
+      else if (actor.location == 7) {
         actor.setLocation(15);
       }
-      else if (actor.location > 15 && actor.location < 25) {
+      else if (actor.location == 22) {
         actor.setLocation(25);
       }
-      else if (actor.location > 25 && actor.location < 35) {
-        actor.setLocation(35);
-      }
-      // need to add the owned part here
     }
     if (action.equals("Advance to St. Charles Place – if you pass Go, collect $200")) {
       if (actor.location > 11) {
@@ -81,24 +78,12 @@ public class Chance {
       actor.incrementJFC();
     }
     if (action.equals("Go back 3 spaces")) {
-      if (actor.location == 0) {
-        actor.setLocation(37);
-      }
-      else if (actor.location == 1) {
-        actor.setLocation(38);
-      }
-      else if (actor.location == 2) {
-        actor.setLocation(39);
-      }
-      else {
-        actor.setLocation(actor.location - 3);
-      }
+      actor.setLocation(actor.location - 3);
     }
     if (action.equals("Go directly to Jail – do not pass Go, do not collect $200")) {
       actor.goToJail();
     }
     if (action.equals("Make general repairs on all your property – for each house pay $25 – for each hotel $100")) {
-      // needs more work
       int cost = 0;
       cost = cost + (25 * actor.numOfHouses) + (100 * actor.numOfHotels);
       actor.money -= cost;

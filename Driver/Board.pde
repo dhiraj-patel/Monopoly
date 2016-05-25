@@ -8,6 +8,7 @@ class Board {
   txtButton[] nextTriple;
   txtButton[] done;
   Player[] numPlayers;
+  Space[] Spaces;
   
   Board(int totalPlayers) {
     this.totalPlayers = totalPlayers;
@@ -75,6 +76,10 @@ class Board {
       done[1] = new txtButton(800, 193, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
       done[2] = new txtButton(800, 374, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
       done[3] = new txtButton(800, 553, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
+    }
+    Spaces = new Space[40];
+    for (int i = 0; i < 40; i ++) {
+      Spaces[i] = new Space(i);
     }
   }
   
