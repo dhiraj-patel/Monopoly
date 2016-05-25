@@ -82,6 +82,7 @@ public class Chance {
     }
     if (action.equals("Go directly to Jail – do not pass Go, do not collect $200")) {
       actor.goToJail();
+      actor.numInJail = 0;
     }
     if (action.equals("Make general repairs on all your property – for each house pay $25 – for each hotel $100")) {
       int cost = 0;
@@ -98,9 +99,6 @@ public class Chance {
       actor.setLocation(5);
     }
     if (action.equals("Take a walk on the Boardwalk – advance token to Boardwalk")) {
-      if (actor.location == 0 || actor.location < 39) {
-        actor.setMoney(actor.getMoney() + 200);
-      }
       actor.setLocation(39);
     }
     if (action.equals("Your building loan matures – collect $150")) {

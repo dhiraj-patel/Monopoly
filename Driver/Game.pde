@@ -4,12 +4,14 @@ class Game {
   Die newDie;
   Board newBoard;
   Chance newChance;
+  Chest newChest;
   
   Game(int totalPlayers) {
     this.totalPlayers = totalPlayers;
     newDie = new Die();
     newBoard = new Board(totalPlayers);
     newChance = new Chance();
+    newChest = new Chest();
     ranOnce = false;
     ranOnce = false;
   }
@@ -54,7 +56,14 @@ class Game {
           }
         }
         else if (newChance.action.equals("Go back 3 spaces")) {
-          //WILL CONTINUE FROM HERE
+          if (newBoard.numPlayers[newBoard.currentPlayer].location == 4) {
+            newBoard.numPlayers[newBoard.currentPlayer].money -= 200;
+          }
+          else if (newBoard.numPlayers[newBoard.currentPlayer].location == 19) {
+          }
+          else if (newBoard.numPlayers[newBoard.currentPlayer].location == 33) {
+            newChest.getChestCard();
+          }
         }
         
       }
