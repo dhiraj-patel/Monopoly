@@ -47,13 +47,13 @@ class Game {
         if (newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].purchased) {
           newDie.roll();
           newBoard.numPlayers[newBoard.currentPlayer].money -= newDie.getTotal() * 10;
-          newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].owner.money += newDie.getTotal() * 10;
+          //newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].owner.money += newDie.getTotal() * 10;
         }
       } 
       else if (newChance.action.equals("Advance token to the nearest Railroad and pay owner twice the rental to which he/she is otherwise entitled. If Railroad is unowned, you may buy it from the Bank.")) {
         if (newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].purchased) {
           newBoard.numPlayers[newBoard.currentPlayer].money -= newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].rentPrice * 2;
-          newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].owner.money += newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].rentPrice * 2;
+          //newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].owner.money += newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].rentPrice * 2;
         }
       } 
       else if (newChance.action.equals("Go back 3 spaces")) {

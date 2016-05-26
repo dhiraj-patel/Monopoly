@@ -2,8 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.concurrent.TimeUnit;
-Player current;
-Player owner;
+Player current, owner;
 public class Space extends JFrame implements ActionListener{
   int location, cost, monopolyNum, numOfHouses, numOfHotels, rentPrice, mortgage, oneHousePrice, oneHouseRent,twoHouseRent,threeHouseRent,fourHouseRent,hotelRent;
   String name;
@@ -460,7 +459,10 @@ public class Space extends JFrame implements ActionListener{
       hotelRent = 2000;
     }        
   }
-  
+  public void buyProperty(Player newOwn){
+    newOwn.properties.add(this.location);
+    this.setOwner(newOwn);
+  }
   //mutators
   public void setOwner(Player owner) {
     this.owner = owner;
@@ -537,33 +539,67 @@ public class Space extends JFrame implements ActionListener{
      // currentProperty.add(b2);
     }
     else{
-      current.setMoney(10000000000); 
-      // need the correct thing here 
+      // code to pay the owner of the property the correct rent!
+      this.payOwner();
     }
   }
-  /*
+  
+  
+  public void payOwner(){
+    if(this.numOfHotels>1){
+      current.setMoney(current.getMoney()-this.hotelRent);
+      owner.setMoney(owner.getMoney()+this.hotelRent);
+    }
+    else if(this.numOfHouses == 4){
+      current.setMoney(current.getMoney()-this.fourHouseRent);
+      owner.setMoney(owner.getMoney()+this.fourHouseRent);
+    }
+    else if(this.numOfHouses == 3){
+      current.setMoney(current.getMoney()-this.threeHouseRent);
+      owner.setMoney(owner.getMoney()+this.threeHouseRent);
+    }
+    else if(this.numOfHouses == 2){
+      current.setMoney(current.getMoney()-this.twoHouseRent);
+      owner.setMoney(owner.getMoney()+this.twoHouseRent);
+    }
+    else if(this.numOfHouses == 1){
+      current.setMoney(current.getMoney()-this.oneHouseRent);
+      owner.setMoney(owner.getMoney()+this.oneHouseRent);
+    }
+    else{
+      current.setMoney(current.getMoney()-this.rentPrice);
+      owner.setMoney(owner.getMoney()+this.rentPrice);
+    }
+  }
+      
+    
   public void actionPerformed(ActionEvent e){
     String event = e.getActionCommand();
     if(event.equals("Buy")){
-        if(current.getMoney()<this.cost){
-          JOptionPane.showMessageDialog(this,"Not enough money to buy this property","WARNING!",JOptionPane.ERROR_MESSAGE);
-          terminate();
-        }else{
-          int reply = JOptionPane.showConfirmDialog(this,"Are you sure you want to buy this property?","CONFIRM YOUR CHOICE!",JOptionPane.YES_NO_OPTION);
-          if(reply == JOptionPane.YES_OPTION){
-              prop.buyProperty(player);
-              terminate();
-          }else{
-          //terminate();//temp, this will eventually be replaced by auction.
-          }
-        }
+      if(current.money<this.cost){
+        JOptionPane.showMessageDialog(this,"Not enough money to buy this property","WARNING!",JOptionPane.ERROR_MESSAGE);
       }else{
-        terminate();//temp, this will eventually be replaced by an auction.
-       }
-        player.getDisplayer().updateProperty();
+        int reply = JOptionPane.showConfirmDialog(this,"Are you sure you want to buy this property?","CONFIRM YOUR CHOICE!",JOptionPane.YES_NO_OPTION);
+        if(reply == JOptionPane.YES_OPTION){
+          current.properties.add(this.location);
+          buyProperty(current);
+        }else{
+          //terminate();//temp, this will eventually be replaced by auction.
+        }
       }
+    }else{
+    }
+    //player.getDisplayer().updateProperty();  ADD IT TO THE LIST OF PROPERTIES THAT THE PLAYER HAS?
+  }
+    
+  public void terminate(){    
+    
+  }
+      
+      
+      
 
-      */
+  
 
   
   
