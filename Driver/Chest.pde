@@ -82,18 +82,16 @@ public class Chest{
       actor.setMoney(actor.getMoney()+100);
     }
   }
-  public String getChestCard(){
-    String removed = chestCards.remove(0);
-    chestCards.add(removed);
-    return removed;
-  }
  
-  public void run() { 
-    //if ((player.location == 7)||(player.location == 22)||(player.location == 36)) {   
-      JOptionPane.showMessageDialog(frame, getChestCard());
-      execute(player,getChestCard());
-    //}  
-  }
+  public void getChestCard(Player actor){
+    action = chestCards.remove(0);
+    if (!(action.equals("Get out of jail free – this card may be kept until needed, or sold"))) {
+      chestCards.add(action);
+    }
+    JOptionPane.showMessageDialog(frame, action);
+    execute(actor, action);
+  }  
+  
 }
 
     
