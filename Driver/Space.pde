@@ -4,9 +4,9 @@ import java.awt.event.*;
 import java.util.concurrent.TimeUnit;
 
 public class Space extends JFrame implements ActionListener{
-  int location, cost, monopolyNum, numOfHouses, numOfHotels, rentPrice, mortgage, oneHousePrice, oneHouseRent,twoHouseRent,threeHouseRent,fourHouseRent,hotelRent;
+  int location, cost, monopolyNum, numOfHouses, rentPrice, mortgage, oneHousePrice, oneHouseRent,twoHouseRent,threeHouseRent,fourHouseRent,hotelRent;
   String name, spaceColor;
-  boolean purchased, buyable, monopolized, isRailroad; 
+  boolean purchased, buyable, monopolized, isRailroad, hasHotel; 
   Player current, owner;
   JPanel currentProperty;
   
@@ -37,7 +37,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "brown";
       monopolyNum = 2;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;;
       name = "Mediterranean Avenue";
       isRailroad = false;
       rentPrice = 2;
@@ -54,7 +54,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "brown";
       monopolyNum = 2;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;;
       name = "Baltic Avenue";
       isRailroad = false;
       rentPrice = 4;
@@ -72,7 +72,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "black";
       monopolyNum = 4;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Reading Railraod";
       isRailroad = true;
       //rentPrice = ;
@@ -83,7 +83,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "black";
       monopolyNum = 4;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Pennsylvania Railraod";
       isRailroad = true;
       //rentPrice = 2;
@@ -94,7 +94,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "black";
       monopolyNum = 4;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "B&O Railraod";
       isRailroad = true;
       //rentPrice = 2;
@@ -105,7 +105,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "black";
       monopolyNum = 4;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Short Line";
       isRailroad = true;
       //rentPrice = 2;
@@ -117,7 +117,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "skyblue";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Oriental Avenue";
       isRailroad = false;
       rentPrice = 6;
@@ -134,7 +134,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "skyblue";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Vermont Avenue";
       isRailroad = false;
       rentPrice = 6;
@@ -151,7 +151,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "skyblue";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Connecticut Avenue";
       isRailroad = false;
       rentPrice = 8;
@@ -169,7 +169,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "purple";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "St. Charles Place";
       isRailroad = false;
       rentPrice = 10;
@@ -186,7 +186,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "purple";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "States Avenue";
       isRailroad = false;
       rentPrice = 10;
@@ -203,7 +203,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "purple";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Virginia Avenue";
       isRailroad = false;
       rentPrice = 12;
@@ -221,7 +221,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "orange";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "St. James Place";
       isRailroad = false;
       rentPrice = 14;
@@ -238,7 +238,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "orange";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Tennessee Avenue";
       isRailroad = false;
       rentPrice = 14;
@@ -255,7 +255,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "orange";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "New York Avenue";
       isRailroad = false;
       rentPrice = 16;
@@ -273,7 +273,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "red";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Kentucky Avenue";
       isRailroad = false;
       rentPrice = 18;
@@ -290,7 +290,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "red";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Indiana Avenue";
       isRailroad = false;
       rentPrice = 18;
@@ -307,7 +307,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "red";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Illinois Avenue";
       isRailroad = false;
       rentPrice = 20;
@@ -325,7 +325,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "yellow";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Atlantic Avenue";
       isRailroad = false;
       rentPrice = 22;
@@ -342,7 +342,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "red";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Ventnor Avenue";
       isRailroad = false;
       rentPrice = 22;
@@ -359,7 +359,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "red";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Marvin Gardens";
       isRailroad = false;
       rentPrice = 22;
@@ -377,7 +377,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "green";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Pacific Avenue";
       isRailroad = false;
       rentPrice = 26;
@@ -394,7 +394,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "green";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "North Carolina Avenue";
       isRailroad = false;
       rentPrice = 26;
@@ -411,7 +411,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "green";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Pennsylvania Avenue";
       isRailroad = false;
       rentPrice = 28;
@@ -429,7 +429,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "blue";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Park Place";
       isRailroad = false;
       rentPrice = 35;
@@ -446,7 +446,7 @@ public class Space extends JFrame implements ActionListener{
       spaceColor = "blue";
       monopolyNum = 3;
       numOfHouses = 0;
-      numOfHotels = 0;
+      hasHotel = false;
       name = "Boardwalk";
       isRailroad = false;
       rentPrice = 50;
@@ -536,7 +536,7 @@ public class Space extends JFrame implements ActionListener{
   
   
   public void payOwner(){
-    if(this.numOfHotels>1){
+    if(this.hasHotel){
       current.setMoney(current.getMoney()-this.hotelRent);
       owner.setMoney(owner.getMoney()+this.hotelRent);
     }
