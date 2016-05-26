@@ -127,6 +127,12 @@ DEVELOPMENT LOG:
 	
 		- Jackey: Kept checking for exceptions in Chance
 		
+5.25.16
+
+	IN HOME:
+	
+		- Jackey: made massive progress in going in/out of jail with rolling doubles. reorganized code to make cleaner. implemented JFC and paying 50 to get out. Still need to work on why paying 50 or using JFC doesn't get you out of jail and including what happens when you land on a property in checkEvent()
+		
 PROJECT PLAN:
 
 DEMO VERSION: 

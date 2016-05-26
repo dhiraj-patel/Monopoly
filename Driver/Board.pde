@@ -9,6 +9,8 @@ class Board {
   txtButton[] done;
   Player[] numPlayers;
   Space[] Spaces;
+  txtButton[] useJFC;
+  txtButton[] payOutOfJail;
   
   Board(int totalPlayers) {
     this.totalPlayers = totalPlayers;
@@ -26,6 +28,8 @@ class Board {
     nextTriple = new txtButton[totalPlayers];
     done = new txtButton[totalPlayers];
     numPlayers = new Player[totalPlayers];
+    useJFC = new txtButton[totalPlayers];
+    payOutOfJail = new txtButton[totalPlayers];
     if (totalPlayers == 2) {
       numPlayers[0] = new Player("Player 1", 1, "red");
       numPlayers[1] = new Player("Player 2", 2, "blue");
@@ -37,6 +41,10 @@ class Board {
       nextTriple[1] = new txtButton(800, 195, ">>>", 28, color(0, 0, 0), color(155, 155, 155));
       done[0] = new txtButton(800, 15, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
       done[1] = new txtButton(800, 193, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
+      useJFC[0] = new txtButton(724, 40, "Use JFC", 12, color(0, 0, 0), color(155, 155, 155));
+      useJFC[1] = new txtButton(724, 220, "Use JFC", 12, color(0, 0, 0), color(155, 155, 155));
+      payOutOfJail[0] = new txtButton(724, 50, "Pay 50", 12, color(0, 0, 0), color(155, 155, 155));
+      payOutOfJail[1] = new txtButton(724, 230, "Pay 50", 12, color(0, 0, 0), color(155, 155, 155));
     }
     else if (totalPlayers == 3) {
       numPlayers[0] = new Player("Player 1", 1, "red");
@@ -54,6 +62,12 @@ class Board {
       done[0] = new txtButton(800, 15, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
       done[1] = new txtButton(800, 193, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
       done[2] = new txtButton(800, 374, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
+      useJFC[0] = new txtButton(724, 40, "Use JFC", 12, color(0, 0, 0), color(155, 155, 155));
+      useJFC[1] = new txtButton(724, 220, "Use JFC", 12, color(0, 0, 0), color(155, 155, 155));
+      useJFC[2] = new txtButton(724, 400, "Use JFC", 12, color(0, 0, 0), color(155, 155, 155));
+      payOutOfJail[0] = new txtButton(724, 50, "Pay 50", 12, color(0, 0, 0), color(155, 155, 155));
+      payOutOfJail[1] = new txtButton(724, 230, "Pay 50", 12, color(0, 0, 0), color(155, 155, 155));
+      payOutOfJail[2] = new txtButton(724, 410, "Pay 50", 12, color(0, 0, 0), color(155, 155, 155));
     }
     else if (totalPlayers == 4) {
       numPlayers[0] = new Player("Player 1", 1, "red");
@@ -76,6 +90,14 @@ class Board {
       done[1] = new txtButton(800, 193, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
       done[2] = new txtButton(800, 374, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
       done[3] = new txtButton(800, 553, "DONE", 16, color(0, 0, 0), color(155, 155, 155));
+      useJFC[0] = new txtButton(724, 40, "Use JFC", 12, color(0, 0, 0), color(155, 155, 155));
+      useJFC[1] = new txtButton(724, 220, "Use JFC", 12, color(0, 0, 0), color(155, 155, 155));
+      useJFC[2] = new txtButton(724, 400, "Use JFC", 12, color(0, 0, 0), color(155, 155, 155));
+      useJFC[3] = new txtButton(724, 580, "Use JFC", 12, color(0, 0, 0), color(155, 155, 155));
+      payOutOfJail[0] = new txtButton(724, 50, "Pay 50", 12, color(0, 0, 0), color(155, 155, 155));
+      payOutOfJail[1] = new txtButton(724, 230, "Pay 50", 12, color(0, 0, 0), color(155, 155, 155));
+      payOutOfJail[2] = new txtButton(724, 410, "Pay 50", 12, color(0, 0, 0), color(155, 155, 155));
+      payOutOfJail[3] = new txtButton(724, 590, "Pay 50", 12, color(0, 0, 0), color(155, 155, 155));
     }
     Spaces = new Space[40];
     for (int i = 0; i < 40; i ++) {

@@ -15,7 +15,7 @@ public class Player {
     this.playerNum = playerNum;
     this.playerColor = playerColor;
     money = 1500;
-    numInJail = 0; 
+    numInJail = -1; 
     location = 0;
     inJail = false;
     JFCNum = 0;

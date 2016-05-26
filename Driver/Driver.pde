@@ -52,9 +52,13 @@ void mousePressed() {
       newGame.newBoard.next[newGame.newBoard.currentPlayer].over = false;
     }
     if (newGame.newBoard.done[newGame.newBoard.currentPlayer].over) {
+      if (newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].inJail) {
+        newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].numInJail ++;
+      }
       newGame.newBoard.currentTurn += 1;
       newGame.ranOnce = false;
       newGame.newBoard.nextPressed = false;
+      newGame.newDie.doubleCount = 0;
       newGame.newBoard.done[newGame.newBoard.currentPlayer].over = false;
     }
     if (newGame.newBoard.nextDouble[newGame.newBoard.currentPlayer].over) {
@@ -64,8 +68,18 @@ void mousePressed() {
     }
     if (newGame.newBoard.nextTriple[newGame.newBoard.currentPlayer].over) {
       newGame.ranOnce = false;
-      newGame.newBoard.nextDouble[newGame.newBoard.currentPlayer].over = false;
+      newGame.newBoard.nextTriple[newGame.newBoard.currentPlayer].over = false;
       newGame.ranOnce2 = false;
+    }
+    if (newGame.newBoard.payOutOfJail[newGame.newBoard.currentPlayer].over) {
+      newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].money -= 50;
+      newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].inJail = true;
+      newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].numInJail = -1;
+    }
+    if (newGame.newBoard.useJFC[newGame.newBoard.currentPlayer].over) {
+      newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].JFCNum -= 1;
+      newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].inJail = true;
+      newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].numInJail = -1;
     }
   }
 }

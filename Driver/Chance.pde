@@ -82,7 +82,6 @@ public class Chance {
     }
     if (action.equals("Go directly to Jail – do not pass Go, do not collect $200")) {
       actor.goToJail();
-      actor.numInJail = 0;
     }
     if (action.equals("Make general repairs on all your property – for each house pay $25 – for each hotel $100")) {
       int cost = 0;
@@ -94,7 +93,7 @@ public class Chance {
     }
     if (action.equals("Take a trip to Reading Railroad – if you pass Go collect $200")) {
       if (actor.location > 5) {
-        actor.setMoney(actor.getMoney() + 200); // pass go
+        actor.setMoney(actor.getMoney() + 200);
       }
       actor.setLocation(5);
     }
