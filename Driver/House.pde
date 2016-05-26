@@ -47,7 +47,7 @@ public class House {
   }
   
   public int getNumHousesWithOutPieces(Space s) {
-    Player p = s.getOwner();
+    Player p = s.owner;
     String check = colorOfPieceBeingPlacedOn;
     int appearances = 0;
     

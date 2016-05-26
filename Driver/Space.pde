@@ -2,22 +2,22 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.concurrent.TimeUnit;
-Player current, owner;
+
 public class Space extends JFrame implements ActionListener{
   int location, cost, monopolyNum, numOfHouses, numOfHotels, rentPrice, mortgage, oneHousePrice, oneHouseRent,twoHouseRent,threeHouseRent,fourHouseRent,hotelRent;
-  String name;
-  String spaceColor;
-  boolean purchased; 
-  boolean buyable;
-  boolean monopolized; 
-  boolean isRailroad;
+  String name, spaceColor;
+  boolean purchased, buyable, monopolized, isRailroad; 
+  Player current, owner;
   JPanel currentProperty;
+  
   public Space(int space) {
      buyable = true;
      purchased = false;
      monopolized = false;
      initializeVars(space);  
      currentProperty = new JPanel();
+     owner = null;
+     current = null;
   }
   
   public Space(int space, String name) {
@@ -473,21 +473,11 @@ public class Space extends JFrame implements ActionListener{
     this.owner = null;
     purchased = false;
   }
-  
-  //accessors
-  public Player getOwner() {
-    if (purchased) {
-      return owner;
-    }
-    else {
-      return null;
-    }
-  }
-  
+
   public void display(){
-    if(!this.owned){
+    if(!this.purchased){
       currentProperty.setLayout(new BoxLayout(currentProperty,BoxLayout.X_AXIS));
-      JLabel l1 = new JLabel(this.name());
+      JLabel l1 = new JLabel(this.name);
       l1.setAlignmentX(Component.CENTER_ALIGNMENT);
       
       JLabel l2 = new JLabel("Rent $"+ this.rentPrice);
@@ -505,7 +495,7 @@ public class Space extends JFrame implements ActionListener{
       JLabel l6 = new JLabel("With 4 Houses $"+this.fourHouseRent);
       l6.setAlignmentX(Component.LEFT_ALIGNMENT);  
       
-      JLabel l7 = new JLabel("With Hotel $"+this.hotelPrice);
+      JLabel l7 = new JLabel("With Hotel $"+this.hotelRent);
       l7.setAlignmentX(Component.LEFT_ALIGNMENT);  
 
       JLabel l8 = new JLabel("Mortage Value $" + this.mortgage);
