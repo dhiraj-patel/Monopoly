@@ -506,7 +506,7 @@ public class Space extends JFrame implements ActionListener{
 
       JLabel l10 = new JLabel("Hotels, $"+this.oneHousePrice+" plus 4 houses");
       l10.setAlignmentX(Component.LEFT_ALIGNMENT);  
-    /*  
+
       JButton b1 = new JButton("Buy");
       b1.addActionListener(this);
       b1.setActionCommand("Buy");
@@ -514,7 +514,7 @@ public class Space extends JFrame implements ActionListener{
       JButton b2 = new JButton("Don't Buy");
       b2.addActionListener(this);
       b2.setActionCommand("Dont");
-  */
+
       currentProperty.add(l1);
       currentProperty.add(l2);
       currentProperty.add(l3);
@@ -525,16 +525,15 @@ public class Space extends JFrame implements ActionListener{
       currentProperty.add(l8);
       currentProperty.add(l9);
       currentProperty.add(l10);
-      //currentProperty.add(b1);
-     // currentProperty.add(b2);
+      currentProperty.add(b1);
+      currentProperty.add(b2);
     }
     else{
       // code to pay the owner of the property the correct rent!
       this.payOwner();
     }
   }
-  
-  
+   
   public void payOwner(){
     if(this.hasHotel){
       current.setMoney(current.getMoney()-this.hotelRent);
@@ -571,21 +570,12 @@ public class Space extends JFrame implements ActionListener{
       }else{
         int reply = JOptionPane.showConfirmDialog(this,"Are you sure you want to buy this property?","CONFIRM YOUR CHOICE!",JOptionPane.YES_NO_OPTION);
         if(reply == JOptionPane.YES_OPTION){
-          current.properties.add(this.location);
           buyProperty(current);
-        }else{
-          //terminate();//temp, this will eventually be replaced by auction.
         }
       }
-    }else{
     }
-    //player.getDisplayer().updateProperty();  ADD IT TO THE LIST OF PROPERTIES THAT THE PLAYER HAS?
   }
-    
-  public void terminate(){    
-    
-  }
-      
+
       
       
 
