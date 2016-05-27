@@ -36,7 +36,7 @@ class Game {
       } 
       else if (newBoard.numPlayers[newBoard.currentPlayer].location == 7 || newBoard.numPlayers[newBoard.currentPlayer].location == 22 || newBoard.numPlayers[newBoard.currentPlayer].location == 36) {
         newChance.getChanceCard(newBoard.numPlayers[newBoard.currentPlayer]);
-        if (newChance.action.equals("You have been elected chairman of the board – pay each player $50")) {
+        if (newChance.action.equals("YOU HAVE BEEN ELECTED CHAIRMAN OF THE BOARD. PAY EACH PLAYER $50.")) {
           for (int i = 0; i < newBoard.totalPlayers; i ++) {
             if (!newBoard.numPlayers[i].equals(newBoard.numPlayers[newBoard.currentPlayer])) {
               newBoard.numPlayers[i].money += 50;
@@ -44,30 +44,28 @@ class Game {
             }
           }
         } 
-        else if (newChance.action.equals("Advance token to nearest Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total ten times the amount thrown.")) {
+        else if (newChance.action.equals("ADVANCE TO THE NEAREST UTILITY. If UNOWNED, you may buy it from the Bank. If OWNED, throw dice and pay owner a total ten times amount thrown.")) {
           if (newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].purchased) {
             newDie.roll();
             newBoard.numPlayers[newBoard.currentPlayer].money -= newDie.getTotal() * 10;
             newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].owner.money += newDie.getTotal() * 10;
           }
         } 
-        else if (newChance.action.equals("Advance token to the nearest Railroad and pay owner twice the rental to which he/she is otherwise entitled. If Railroad is unowned, you may buy it from the Bank.")) {
+        else if (newChance.action.equals("ADVANCE TO THE NEAREST RAILROAD. If UNOWNED, you may buy it from the Bank. If OWNED, pay owner twice the rental to which they are otherwise entitled.")) {
           if (newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].purchased) {
             newBoard.numPlayers[newBoard.currentPlayer].money -= newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].rentPrice * 2;
             newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].owner.money += newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].rentPrice * 2;
           }
         } 
-        else if (newChance.action.equals("Go back 3 spaces")) {
+        else if (newChance.action.equals("GO BACK THREE SPACES.")) {
           isChanceCardGoBackThree = true;
           checkEvent();
           isChanceCardGoBackThree = false;
         }
-        else if (newChance.action.equals("Go directly to Jail – do not pass Go, do not collect $200")) {
+        else if (newChance.action.equals("GO TO JAIL. GO DIRECTLY TO JAIL, DO NOT PASS \"GO\", DO NOT COLLECT $200.")) {
           justGotIntoOrOutOfJail = true;
         }
       } 
-      else if (newBoard.numPlayers[newBoard.currentPlayer].location == 10 || newBoard.numPlayers[newBoard.currentPlayer].inJail) {
-      }
       else if (newBoard.numPlayers[newBoard.currentPlayer].location == 30) {
         newBoard.numPlayers[newBoard.currentPlayer].setLocation(10);
         newBoard.numPlayers[newBoard.currentPlayer].inJail = true;
@@ -75,12 +73,16 @@ class Game {
       else if (newBoard.numPlayers[newBoard.currentPlayer].location == 38) {
         newBoard.numPlayers[newBoard.currentPlayer].money -= 100;
       }
-    //CHECK FOR PROPERTIES
+      if (newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].buyable) {
+        newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].display();
+      }
+    }
+    //CHECK FOR PROPERTIES AND REST OF CHANCE CARDS
     }
   }
 
   void draw() {
-    println(newDie.doubleCount);
+    //println(newDie.doubleCount);
     newBoard.draw();
     //if the next button wasn't pressed
     if (!newBoard.nextPressed) {
