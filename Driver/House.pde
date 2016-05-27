@@ -51,9 +51,8 @@ public class House {
     String check = colorOfPieceBeingPlacedOn;
     int appearances = 0;
     
-    for (Integer i : p.properties) {
-      Space temp = new Space(i);
-      if (temp.spaceColor.equals(check)) {
+    for (Space i : p.properties) {
+      if (i.spaceColor.equals(check)) {
         appearances ++;
       }
     }

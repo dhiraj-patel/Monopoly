@@ -8,7 +8,7 @@ public class Player {
   boolean inJail;
   boolean isBankrupt;
   int JFCNum;
-  ArrayList<Integer> properties;
+  ArrayList<Space> properties;
   
   public Player(String name, int playerNum, String playerColor) {
     this.name = name;
@@ -23,7 +23,7 @@ public class Player {
     colorMode(RGB);
     numOfHouses = 0;
     numOfHotels = 0;
-    properties = new ArrayList<Integer>();
+    properties = new ArrayList<Space>();
   }
   
   public int getMoney() {
@@ -55,11 +55,11 @@ public class Player {
     inJail = true;
   }
   
-  public void buyLocation(Space s) {
+  public void buySpace(Space s) {
     if (!s.purchased) {
       s.purchased = true;
       s.setOwner(this);
-      properties.add(s.location);
+      properties.add(s);
     }
   }
     

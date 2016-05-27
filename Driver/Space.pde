@@ -4,16 +4,14 @@ import java.awt.event.*;
 import java.util.concurrent.TimeUnit;
 
 public class Space extends JFrame implements ActionListener {
-  int location, cost, monopolyNum, numOfHouses, rentPrice, mortgage, oneHousePrice, oneHouseRent, twoHouseRent, threeHouseRent, fourHouseRent, hotelRent;
+  int location, cost, monopolyNum, numOfHouses, rentPrice, mortgage, oneHousePrice, oneHouseRent, twoHouseRent, threeHouseRent, fourHouseRent, hotelRent, hotelPrice, oneRailroadPrice, twoRailroadPrice, threeRailroadPrice, fourRailroadPrice;
   String name, spaceColor;
-  boolean purchased, buyable, monopolized, isRailroad, hasHotel; 
+  boolean purchased, buyable, monopolized, isRailroad, isUtility, hasHotel; 
   Player current, owner;
   JPanel currentProperty;
   JFrame frame;
+  
   public Space(int space) {
-     buyable = true;
-     purchased = false;
-     monopolized = false;
      initializeVars(space);  
      currentProperty = new JPanel();
      frame = new JFrame("Current Property");
@@ -21,13 +19,11 @@ public class Space extends JFrame implements ActionListener {
      current = null;
   }
   
-  public Space(int space, String name) {
-    this(space);
-    this.name = name;
-  }
-  
   public void initializeVars(int space) {
     location = space;
+    buyable = true;
+    purchased = false;
+    monopolized = false;
     //NON BUYABLES
     if (space == 0 || space == 2 || space == 4 || space == 7 || space == 10 || space == 17 || space == 20 || space == 22 || space == 30 || space == 33 || space == 36 || space == 38) {
       buyable = false;
@@ -38,9 +34,10 @@ public class Space extends JFrame implements ActionListener {
       spaceColor = "brown";
       monopolyNum = 2;
       numOfHouses = 0;
-      hasHotel = false;;
+      hasHotel = false;
       name = "Mediterranean Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 2;
       mortgage = 30;
       oneHousePrice = 50;
@@ -55,9 +52,10 @@ public class Space extends JFrame implements ActionListener {
       spaceColor = "brown";
       monopolyNum = 2;
       numOfHouses = 0;
-      hasHotel = false;;
+      hasHotel = false;
       name = "Baltic Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 4;
       mortgage = 30;
       oneHousePrice = 50;
@@ -76,7 +74,11 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Reading Railraod";
       isRailroad = true;
-      //rentPrice = ;
+      isUtility = false;
+      oneRailroadPrice = 25;
+      twoRailroadPrice = 50;
+      threeRailroadPrice = 100;
+      fourRailroadPrice = 200;
       mortgage = 100;
     }
     else if (space == 15) {
@@ -87,7 +89,11 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Pennsylvania Railraod";
       isRailroad = true;
-      //rentPrice = 2;
+      isUtility = false;
+      oneRailroadPrice = 25;
+      twoRailroadPrice = 50;
+      threeRailroadPrice = 100;
+      fourRailroadPrice = 200;
       mortgage = 100;
     }
     else if (space == 25) {
@@ -98,7 +104,11 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "B&O Railraod";
       isRailroad = true;
-      //rentPrice = 2;
+      isUtility = false;
+      oneRailroadPrice = 25;
+      twoRailroadPrice = 50;
+      threeRailroadPrice = 100;
+      fourRailroadPrice = 200;
       mortgage = 100;
     }
     else if (space == 35) {
@@ -109,7 +119,11 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Short Line";
       isRailroad = true;
-      //rentPrice = 2;
+      isUtility = false;
+      oneRailroadPrice = 25;
+      twoRailroadPrice = 50;
+      threeRailroadPrice = 100;
+      fourRailroadPrice = 200;
       mortgage = 100;
     }
     //LIGHT BLUE LIGHT BLUE LIGHT BLUE
@@ -121,6 +135,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Oriental Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 6;
       mortgage = 50;
       oneHousePrice = 50;
@@ -138,6 +153,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Vermont Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 6;
       mortgage = 50;
       oneHousePrice = 50;
@@ -155,6 +171,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Connecticut Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 8;
       mortgage = 60;
       oneHousePrice = 50;
@@ -173,6 +190,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "St. Charles Place";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 10;
       mortgage = 70;
       oneHousePrice = 100;
@@ -190,6 +208,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "States Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 10;
       mortgage = 70;
       oneHousePrice = 100;
@@ -207,6 +226,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Virginia Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 12;
       mortgage = 80;
       oneHousePrice = 100;
@@ -225,6 +245,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "St. James Place";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 14;
       mortgage = 90;
       oneHousePrice = 100;
@@ -242,6 +263,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Tennessee Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 14;
       mortgage = 90;
       oneHousePrice = 100;
@@ -259,6 +281,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "New York Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 16;
       mortgage = 100;
       oneHousePrice = 100;
@@ -277,6 +300,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Kentucky Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 18;
       mortgage = 110;
       oneHousePrice = 150;
@@ -294,6 +318,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Indiana Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 18;
       mortgage = 110;
       oneHousePrice = 150;
@@ -311,6 +336,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Illinois Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 20;
       mortgage = 120;
       oneHousePrice = 150;
@@ -329,6 +355,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Atlantic Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 22;
       mortgage = 130;
       oneHousePrice = 150;
@@ -346,6 +373,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Ventnor Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 22;
       mortgage = 130;
       oneHousePrice = 150;
@@ -363,6 +391,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Marvin Gardens";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 22;
       mortgage = 140;
       oneHousePrice = 150;
@@ -381,6 +410,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Pacific Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 26;
       mortgage = 150;
       oneHousePrice = 200;
@@ -398,6 +428,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "North Carolina Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 26;
       mortgage = 150;
       oneHousePrice = 200;
@@ -415,6 +446,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Pennsylvania Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 28;
       mortgage = 160;
       oneHousePrice = 200;
@@ -433,6 +465,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Park Place";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 35;
       mortgage = 175;
       oneHousePrice = 200;
@@ -450,6 +483,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Boardwalk";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 50;
       mortgage = 200;
       oneHousePrice = 200;
@@ -458,11 +492,34 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 1400;
       fourHouseRent = 1700;
       hotelRent = 2000;
-    }        
+    }
+    // UTILITIES UTILITIES UTILITIES
+    else if (space == 12) {
+      cost = 150;
+      spaceColor = "white";
+      monopolyNum = 2;
+      hasHotel = false;
+      name = "Water Works";
+      isRailroad = false;
+      isUtility = true;
+      //rentPrice = 4x dice roll, if monopoly, 10x
+      mortgage = 75;
+    }
+    else if (space == 28) {
+      cost = 150;
+      spaceColor = "white";
+      monopolyNum = 2;
+      hasHotel = false;
+      name = "Electric Company";
+      isRailroad = false;
+      isUtility = true;
+      //rentPrice = 4x dice roll, if monopoly, 10x
+      mortgage = 75;
+    }
   }
   
-  public void buyProperty(Player newOwn) {
-    newOwn.properties.add(this.location);
+  public void buySpace(Player newOwn) {
+    newOwn.properties.add(this);
     this.setOwner(newOwn);
   }
 
@@ -534,36 +591,41 @@ public class Space extends JFrame implements ActionListener {
       frame.setSize(400,400);
       frame.add(currentProperty);
     }
-    else{
-      // code to pay the owner of the property the correct rent!
+    else {
       this.payOwner();
     }
   }
    
   public void payOwner() {
-    if (this.hasHotel) {
-      current.setMoney(current.getMoney() - this.hotelRent);
-      owner.setMoney(owner.getMoney() + this.hotelRent);
+    if (isRailroad) {
     }
-    else if (this.numOfHouses == 4) {
-      current.setMoney(current.getMoney() - this.fourHouseRent);
-      owner.setMoney(owner.getMoney() + this.fourHouseRent);
-    }
-    else if (this.numOfHouses == 3) {
-      current.setMoney(current.getMoney() - this.threeHouseRent);
-      owner.setMoney(owner.getMoney() + this.threeHouseRent);
-    }
-    else if (this.numOfHouses == 2) {
-      current.setMoney(current.getMoney() - this.twoHouseRent);
-      owner.setMoney(owner.getMoney() + this.twoHouseRent);
-    }
-    else if (this.numOfHouses == 1) {
-      current.setMoney(current.getMoney() - this.oneHouseRent);
-      owner.setMoney(owner.getMoney() + this.oneHouseRent);
+    else if (isUtility) {
     }
     else {
-      current.setMoney(current.getMoney() - this.rentPrice);
-      owner.setMoney(owner.getMoney() + this.rentPrice);
+      if (this.hasHotel) {
+        current.setMoney(current.getMoney() - this.hotelRent);
+        owner.setMoney(owner.getMoney() + this.hotelRent);
+      }
+      else if (this.numOfHouses == 4) {
+        current.setMoney(current.getMoney() - this.fourHouseRent);
+        owner.setMoney(owner.getMoney() + this.fourHouseRent);
+      }
+      else if (this.numOfHouses == 3) {
+        current.setMoney(current.getMoney() - this.threeHouseRent);
+        owner.setMoney(owner.getMoney() + this.threeHouseRent);
+      }
+      else if (this.numOfHouses == 2) {
+        current.setMoney(current.getMoney() - this.twoHouseRent);
+        owner.setMoney(owner.getMoney() + this.twoHouseRent);
+      }
+      else if (this.numOfHouses == 1) {
+        current.setMoney(current.getMoney() - this.oneHouseRent);
+        owner.setMoney(owner.getMoney() + this.oneHouseRent);
+      }
+      else {
+        current.setMoney(current.getMoney() - this.rentPrice);
+        owner.setMoney(owner.getMoney() + this.rentPrice);
+      }
     }
   }
       
@@ -577,19 +639,11 @@ public class Space extends JFrame implements ActionListener {
       else {
         int reply = JOptionPane.showConfirmDialog(this, "Are you sure you want to buy this property?", "CONFIRM YOUR CHOICE!", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
-          buyProperty(current);
+          buySpace(current);
         }
       }
     }
-  }
-
-      
-      
-
-  
-
-  
-  
+  }  
 }
   
  
