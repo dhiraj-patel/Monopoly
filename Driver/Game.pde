@@ -62,6 +62,9 @@ class Game {
           checkEvent();
           isChanceCardGoBackThree = false;
         }
+        else if (newChance.action.equals("Go directly to Jail – do not pass Go, do not collect $200")) {
+          justGotIntoOrOutOfJail = true;
+        }
       } 
       else if (newBoard.numPlayers[newBoard.currentPlayer].location == 10 || newBoard.numPlayers[newBoard.currentPlayer].inJail) {
       }
@@ -77,6 +80,7 @@ class Game {
   }
 
   void draw() {
+    println(newDie.doubleCount);
     newBoard.draw();
     //if the next button wasn't pressed
     if (!newBoard.nextPressed) {
@@ -89,7 +93,9 @@ class Game {
         if (newBoard.numPlayers[newBoard.currentPlayer].JFCNum > 0) {
           newBoard.useJFC[newBoard.currentPlayer].draw();
         }
-        newBoard.payOutOfJail[newBoard.currentPlayer].draw();
+        if (newBoard.numPlayers[newBoard.currentPlayer].money > 50) {
+          newBoard.payOutOfJail[newBoard.currentPlayer].draw();
+        }
       } 
     }
     //what happens once after the next is pressed

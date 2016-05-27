@@ -57,6 +57,7 @@ void mousePressed() {
       }
       newGame.newBoard.currentTurn += 1;
       newGame.ranOnce = false;
+      newGame.ranOnce2 = false;
       newGame.newBoard.nextPressed = false;
       newGame.justGotIntoOrOutOfJail = false;
       newGame.newDie.doubleCount = 0;
