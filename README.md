@@ -137,7 +137,7 @@ DEVELOPMENT LOG:
 
 	IN HOME:
 	
-		- Jackey: fixed up chance cards. still need to add exceptions and add check for properties in game class. fixed up rolling doubles and going in and out of jail.
+		- Jackey: fixed up chance cards. still need to add exceptions for chance like landing on a buyable property and calling display() and "check for properties" in general in game class. the space needs fixing for buying and not buying. needs the capability to buy hotels and houses. fixed up rolling doubles and going in and out of jail.
 		
 PROJECT PLAN:
 
