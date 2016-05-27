@@ -9,13 +9,14 @@ public class Space extends JFrame implements ActionListener {
   boolean purchased, buyable, monopolized, isRailroad, hasHotel; 
   Player current, owner;
   JPanel currentProperty;
-  
+  JFrame frame;
   public Space(int space) {
      buyable = true;
      purchased = false;
      monopolized = false;
      initializeVars(space);  
      currentProperty = new JPanel();
+     frame = new JFrame("Current Property");
      owner = null;
      current = null;
   }
@@ -477,36 +478,36 @@ public class Space extends JFrame implements ActionListener {
 
   public void display() {
     if (!purchased) {
-      currentProperty.setLayout(new BoxLayout(currentProperty,BoxLayout.X_AXIS));
+      currentProperty.setLayout(new BoxLayout(currentProperty,BoxLayout.Y_AXIS));
       JLabel l1 = new JLabel(this.name);
       l1.setAlignmentX(Component.CENTER_ALIGNMENT);
       
       JLabel l2 = new JLabel("Rent $" + this.rentPrice);
-      l2.setAlignmentX(Component.LEFT_ALIGNMENT);
+      l2.setAlignmentX(Component.CENTER_ALIGNMENT);
       
       JLabel l3 = new JLabel("With 1 House $" + this.oneHouseRent);
-      l3.setAlignmentX(Component.LEFT_ALIGNMENT);
+      l3.setAlignmentX(Component.CENTER_ALIGNMENT);
       
       JLabel l4 = new JLabel("With 2 Houses $" + this.twoHouseRent);
-      l4.setAlignmentX(Component.LEFT_ALIGNMENT);
+      l4.setAlignmentX(Component.CENTER_ALIGNMENT);
       
       JLabel l5 = new JLabel("With 3 Houses $" + this.threeHouseRent);
-      l5.setAlignmentX(Component.LEFT_ALIGNMENT);
+      l5.setAlignmentX(Component.CENTER_ALIGNMENT);
       
       JLabel l6 = new JLabel("With 4 Houses $" + this.fourHouseRent);
-      l6.setAlignmentX(Component.LEFT_ALIGNMENT);  
+      l6.setAlignmentX(Component.CENTER_ALIGNMENT);  
       
       JLabel l7 = new JLabel("With Hotel $" + this.hotelRent);
-      l7.setAlignmentX(Component.LEFT_ALIGNMENT);  
+      l7.setAlignmentX(Component.CENTER_ALIGNMENT);  
 
       JLabel l8 = new JLabel("Mortage Value $" + this.mortgage);
-      l8.setAlignmentX(Component.LEFT_ALIGNMENT); 
+      l8.setAlignmentX(Component.CENTER_ALIGNMENT); 
 
       JLabel l9 = new JLabel("House cost $" + this.oneHousePrice + " each");
-      l9.setAlignmentX(Component.LEFT_ALIGNMENT);  
+      l9.setAlignmentX(Component.CENTER_ALIGNMENT);  
 
       JLabel l10 = new JLabel("Hotels, $" + this.oneHousePrice + " plus 4 houses");
-      l10.setAlignmentX(Component.LEFT_ALIGNMENT);  
+      l10.setAlignmentX(Component.CENTER_ALIGNMENT);  
 
       JButton b1 = new JButton("Buy");
       b1.addActionListener(this);
@@ -528,6 +529,10 @@ public class Space extends JFrame implements ActionListener {
       currentProperty.add(l10);
       currentProperty.add(b1);
       currentProperty.add(b2);
+      
+      frame.setVisible(true);
+      frame.setSize(400,400);
+      frame.add(currentProperty);
     }
     else{
       // code to pay the owner of the property the correct rent!
