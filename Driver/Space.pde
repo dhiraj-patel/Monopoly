@@ -3,8 +3,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.concurrent.TimeUnit;
 
-public class Space extends JFrame implements ActionListener{
-  int location, cost, monopolyNum, numOfHouses, rentPrice, mortgage, oneHousePrice, oneHouseRent,twoHouseRent,threeHouseRent,fourHouseRent,hotelRent;
+public class Space extends JFrame implements ActionListener {
+  int location, cost, monopolyNum, numOfHouses, rentPrice, mortgage, oneHousePrice, oneHouseRent, twoHouseRent, threeHouseRent, fourHouseRent, hotelRent;
   String name, spaceColor;
   boolean purchased, buyable, monopolized, isRailroad, hasHotel; 
   Player current, owner;
@@ -459,11 +459,12 @@ public class Space extends JFrame implements ActionListener{
       hotelRent = 2000;
     }        
   }
-  public void buyProperty(Player newOwn){
+  
+  public void buyProperty(Player newOwn) {
     newOwn.properties.add(this.location);
     this.setOwner(newOwn);
   }
-  //mutators
+
   public void setOwner(Player owner) {
     this.owner = owner;
     purchased = true;
@@ -474,37 +475,37 @@ public class Space extends JFrame implements ActionListener{
     purchased = false;
   }
 
-  public void display(){
-    if(!this.purchased){
+  public void display() {
+    if (!purchased) {
       currentProperty.setLayout(new BoxLayout(currentProperty,BoxLayout.X_AXIS));
       JLabel l1 = new JLabel(this.name);
       l1.setAlignmentX(Component.CENTER_ALIGNMENT);
       
-      JLabel l2 = new JLabel("Rent $"+ this.rentPrice);
+      JLabel l2 = new JLabel("Rent $" + this.rentPrice);
       l2.setAlignmentX(Component.LEFT_ALIGNMENT);
       
-      JLabel l3 = new JLabel("With 1 House $"+this.oneHouseRent);
+      JLabel l3 = new JLabel("With 1 House $" + this.oneHouseRent);
       l3.setAlignmentX(Component.LEFT_ALIGNMENT);
       
-      JLabel l4 = new JLabel("With 2 Houses $"+this.twoHouseRent);
+      JLabel l4 = new JLabel("With 2 Houses $" + this.twoHouseRent);
       l4.setAlignmentX(Component.LEFT_ALIGNMENT);
       
-      JLabel l5 = new JLabel("With 3 Houses $"+this.threeHouseRent);
+      JLabel l5 = new JLabel("With 3 Houses $" + this.threeHouseRent);
       l5.setAlignmentX(Component.LEFT_ALIGNMENT);
       
-      JLabel l6 = new JLabel("With 4 Houses $"+this.fourHouseRent);
+      JLabel l6 = new JLabel("With 4 Houses $" + this.fourHouseRent);
       l6.setAlignmentX(Component.LEFT_ALIGNMENT);  
       
-      JLabel l7 = new JLabel("With Hotel $"+this.hotelRent);
+      JLabel l7 = new JLabel("With Hotel $" + this.hotelRent);
       l7.setAlignmentX(Component.LEFT_ALIGNMENT);  
 
       JLabel l8 = new JLabel("Mortage Value $" + this.mortgage);
       l8.setAlignmentX(Component.LEFT_ALIGNMENT); 
 
-      JLabel l9 = new JLabel("House cost $"+ this.oneHousePrice +" each");
+      JLabel l9 = new JLabel("House cost $" + this.oneHousePrice + " each");
       l9.setAlignmentX(Component.LEFT_ALIGNMENT);  
 
-      JLabel l10 = new JLabel("Hotels, $"+this.oneHousePrice+" plus 4 houses");
+      JLabel l10 = new JLabel("Hotels, $" + this.oneHousePrice + " plus 4 houses");
       l10.setAlignmentX(Component.LEFT_ALIGNMENT);  
 
       JButton b1 = new JButton("Buy");
@@ -513,7 +514,7 @@ public class Space extends JFrame implements ActionListener{
 
       JButton b2 = new JButton("Don't Buy");
       b2.addActionListener(this);
-      b2.setActionCommand("Dont");
+      b2.setActionCommand("Don't");
 
       currentProperty.add(l1);
       currentProperty.add(l2);
@@ -534,42 +535,43 @@ public class Space extends JFrame implements ActionListener{
     }
   }
    
-  public void payOwner(){
-    if(this.hasHotel){
-      current.setMoney(current.getMoney()-this.hotelRent);
-      owner.setMoney(owner.getMoney()+this.hotelRent);
+  public void payOwner() {
+    if (this.hasHotel) {
+      current.setMoney(current.getMoney() - this.hotelRent);
+      owner.setMoney(owner.getMoney() + this.hotelRent);
     }
-    else if(this.numOfHouses == 4){
-      current.setMoney(current.getMoney()-this.fourHouseRent);
-      owner.setMoney(owner.getMoney()+this.fourHouseRent);
+    else if (this.numOfHouses == 4) {
+      current.setMoney(current.getMoney() - this.fourHouseRent);
+      owner.setMoney(owner.getMoney() + this.fourHouseRent);
     }
-    else if(this.numOfHouses == 3){
-      current.setMoney(current.getMoney()-this.threeHouseRent);
-      owner.setMoney(owner.getMoney()+this.threeHouseRent);
+    else if (this.numOfHouses == 3) {
+      current.setMoney(current.getMoney() - this.threeHouseRent);
+      owner.setMoney(owner.getMoney() + this.threeHouseRent);
     }
-    else if(this.numOfHouses == 2){
-      current.setMoney(current.getMoney()-this.twoHouseRent);
-      owner.setMoney(owner.getMoney()+this.twoHouseRent);
+    else if (this.numOfHouses == 2) {
+      current.setMoney(current.getMoney() - this.twoHouseRent);
+      owner.setMoney(owner.getMoney() + this.twoHouseRent);
     }
-    else if(this.numOfHouses == 1){
-      current.setMoney(current.getMoney()-this.oneHouseRent);
-      owner.setMoney(owner.getMoney()+this.oneHouseRent);
+    else if (this.numOfHouses == 1) {
+      current.setMoney(current.getMoney() - this.oneHouseRent);
+      owner.setMoney(owner.getMoney() + this.oneHouseRent);
     }
-    else{
-      current.setMoney(current.getMoney()-this.rentPrice);
-      owner.setMoney(owner.getMoney()+this.rentPrice);
+    else {
+      current.setMoney(current.getMoney() - this.rentPrice);
+      owner.setMoney(owner.getMoney() + this.rentPrice);
     }
   }
       
     
-  public void actionPerformed(ActionEvent e){
+  public void actionPerformed(ActionEvent e) {
     String event = e.getActionCommand();
-    if(event.equals("Buy")){
-      if(current.money<this.cost){
-        JOptionPane.showMessageDialog(this,"Not enough money to buy this property","WARNING!",JOptionPane.ERROR_MESSAGE);
-      }else{
-        int reply = JOptionPane.showConfirmDialog(this,"Are you sure you want to buy this property?","CONFIRM YOUR CHOICE!",JOptionPane.YES_NO_OPTION);
-        if(reply == JOptionPane.YES_OPTION){
+    if (event.equals("Buy")) {
+      if (current.money < this.cost) {
+        JOptionPane.showMessageDialog(this, "Not enough money to buy this property", "WARNING!", JOptionPane.ERROR_MESSAGE);
+      }
+      else {
+        int reply = JOptionPane.showConfirmDialog(this, "Are you sure you want to buy this property?", "CONFIRM YOUR CHOICE!", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
           buyProperty(current);
         }
       }
