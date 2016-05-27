@@ -58,6 +58,7 @@ void mousePressed() {
       newGame.newBoard.currentTurn += 1;
       newGame.ranOnce = false;
       newGame.newBoard.nextPressed = false;
+      newGame.justGotIntoOrOutOfJail = false;
       newGame.newDie.doubleCount = 0;
       newGame.newBoard.done[newGame.newBoard.currentPlayer].over = false;
     }
@@ -73,13 +74,15 @@ void mousePressed() {
     }
     if (newGame.newBoard.payOutOfJail[newGame.newBoard.currentPlayer].over) {
       newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].money -= 50;
-      newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].inJail = true;
+      newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].inJail = false;
       newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].numInJail = -1;
+      newGame.newBoard.payOutOfJail[newGame.newBoard.currentPlayer].over = false;
     }
     if (newGame.newBoard.useJFC[newGame.newBoard.currentPlayer].over) {
       newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].JFCNum -= 1;
-      newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].inJail = true;
+      newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].inJail = false;
       newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].numInJail = -1;
+      newGame.newBoard.useJFC[newGame.newBoard.currentPlayer].over = false;
     }
   }
 }
