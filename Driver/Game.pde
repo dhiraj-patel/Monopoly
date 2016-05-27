@@ -73,12 +73,11 @@ class Game {
       else if (newBoard.numPlayers[newBoard.currentPlayer].location == 38) {
         newBoard.numPlayers[newBoard.currentPlayer].money -= 100;
       }
-      if (newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].buyable) {
+      else if (newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].buyable) {
         newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].display();
       }
     }
     //CHECK FOR PROPERTIES AND REST OF CHANCE CARDS
-    }
   }
 
   void draw() {
