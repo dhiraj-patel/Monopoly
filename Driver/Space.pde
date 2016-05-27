@@ -527,10 +527,7 @@ public class Space extends JFrame implements ActionListener {
     }        
   }
   
-  public void buyProperty(Player newOwn) {
-    newOwn.properties.add(this.location);
-    this.setOwner(newOwn);
-  }
+
 
   public void setOwner(Player owner) {
     this.owner = owner;
@@ -635,12 +632,19 @@ public class Space extends JFrame implements ActionListener {
       owner.setMoney(owner.getMoney() + this.rentPrice);
     }
   }
-      
-    
+  public void setCurrent(Player p){
+    current = p;
+  }
+  public void buyProperty(Player p){
+    p.properties.add(this);
+    this.owner = p;
+    this.purchased = true;
+    p.setMoney(p.getMoney()-this.cost);
+  }
   public void actionPerformed(ActionEvent e) {
     String event = e.getActionCommand();
     if(event.equals("Buy")){
-      System.out.println("eddiehope and the manni");
+      buyProperty(current);
     }
     else{
       System.out.println("eh");

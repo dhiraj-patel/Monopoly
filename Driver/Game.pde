@@ -77,6 +77,7 @@ class Game {
       else if (newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].buyable) {
         newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].display();
         displayIsOn = true;
+        newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].setCurrent(newBoard.numPlayers[newBoard.currentPlayer]);
       }
     }
     //CHECK FOR PROPERTIES AND REST OF CHANCE CARDS
