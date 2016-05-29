@@ -4,30 +4,58 @@ import java.awt.event.*;
 import java.util.concurrent.TimeUnit;
 
 public class Space extends JFrame implements ActionListener {
-  int location, cost, monopolyNum, numOfHouses, rentPrice, mortgage, oneHousePrice, oneHouseRent, twoHouseRent, threeHouseRent, fourHouseRent, hotelRent,r,g,b;
+  int location, cost, monopolyNum, numOfHouses, rentPrice, mortgage, oneHousePrice, oneHouseRent, twoHouseRent, threeHouseRent, fourHouseRent, hotelRent, hotelPrice, oneRailroadPrice, twoRailroadPrice, threeRailroadPrice, fourRailroadPrice;
   String name, spaceColor;
-  boolean purchased, buyable, monopolized, isRailroad, hasHotel; 
+  boolean purchased, buyable, monopolized, isRailroad, isUtility, hasHotel; 
   Player current, owner;
   JPanel currentProperty;
-  Color c; 
   JFrame frame;
+  Color hue;
+  
   public Space(int space) {
-     buyable = true;
-     purchased = false;
-     monopolized = false;
      initializeVars(space);  
      currentProperty = new JPanel();
      frame = new JFrame("Current Property");
      owner = null;
      current = null;
   }
-  public Space(int space, String name) {
-    this(space);
-    this.name = name;
+  
+  public Color getHue() {
+    if (spaceColor == "brown") {
+      hue = new Color(140, 70, 20);
+    }
+    else if (spaceColor == "skyblue") {
+      hue = new Color(135, 205, 250);
+    }
+    else if (spaceColor == "purple") {
+      hue = new Color(205, 0, 205);
+    }
+    else if (spaceColor == "orange") {
+      hue = new Color(255, 155, 50);
+    }
+    else if (spaceColor == "red") {
+      hue = new Color(255, 0, 0);
+    }
+    else if (spaceColor == "yellow") {
+      hue = new Color(255, 255, 0);
+    }
+    else if (spaceColor == "green") {
+      hue = new Color(0, 255, 0);
+    }
+    else if (spaceColor == "blue") {
+      hue = new Color(0, 0, 255);
+    }
+    else if (spaceColor == "white" || spaceColor == "black") {
+      hue = new Color(255, 255, 255);
+    }
+    return hue;
   }
   
   public void initializeVars(int space) {
     location = space;
+    buyable = true;
+    purchased = false;
+    monopolized = false;
     //NON BUYABLES
     if (space == 0 || space == 2 || space == 4 || space == 7 || space == 10 || space == 17 || space == 20 || space == 22 || space == 30 || space == 33 || space == 36 || space == 38) {
       buyable = false;
@@ -38,9 +66,10 @@ public class Space extends JFrame implements ActionListener {
       spaceColor = "brown";
       monopolyNum = 2;
       numOfHouses = 0;
-      hasHotel = false;;
+      hasHotel = false;
       name = "Mediterranean Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 2;
       mortgage = 30;
       oneHousePrice = 50;
@@ -49,18 +78,16 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 90;
       fourHouseRent = 160;
       hotelRent = 250;
-      r = 139;
-      g = 69;
-      b = 19;
     }
     else if (space == 3) {
       cost = 60;
       spaceColor = "brown";
       monopolyNum = 2;
       numOfHouses = 0;
-      hasHotel = false;;
+      hasHotel = false;
       name = "Baltic Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 4;
       mortgage = 30;
       oneHousePrice = 50;
@@ -69,9 +96,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 180;
       fourHouseRent = 320;
       hotelRent = 450;
-      r = 139;
-      g = 69;
-      b = 19;
     }
     //RAILROAD RAILROAD RAILROAD
     else if (space == 5) {
@@ -82,7 +106,11 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Reading Railraod";
       isRailroad = true;
-      //rentPrice = ;
+      isUtility = false;
+      oneRailroadPrice = 25;
+      twoRailroadPrice = 50;
+      threeRailroadPrice = 100;
+      fourRailroadPrice = 200;
       mortgage = 100;
     }
     else if (space == 15) {
@@ -93,7 +121,11 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Pennsylvania Railraod";
       isRailroad = true;
-      //rentPrice = 2;
+      isUtility = false;
+      oneRailroadPrice = 25;
+      twoRailroadPrice = 50;
+      threeRailroadPrice = 100;
+      fourRailroadPrice = 200;
       mortgage = 100;
     }
     else if (space == 25) {
@@ -104,7 +136,11 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "B&O Railraod";
       isRailroad = true;
-      //rentPrice = 2;
+      isUtility = false;
+      oneRailroadPrice = 25;
+      twoRailroadPrice = 50;
+      threeRailroadPrice = 100;
+      fourRailroadPrice = 200;
       mortgage = 100;
     }
     else if (space == 35) {
@@ -115,7 +151,11 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Short Line";
       isRailroad = true;
-      //rentPrice = 2;
+      isUtility = false;
+      oneRailroadPrice = 25;
+      twoRailroadPrice = 50;
+      threeRailroadPrice = 100;
+      fourRailroadPrice = 200;
       mortgage = 100;
     }
     //LIGHT BLUE LIGHT BLUE LIGHT BLUE
@@ -127,6 +167,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Oriental Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 6;
       mortgage = 50;
       oneHousePrice = 50;
@@ -135,9 +176,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 270;
       fourHouseRent = 400;
       hotelRent = 550;
-      r = 135;  
-      g = 206;
-      b = 250;
     }
     else if (space == 8) {
       cost = 100;
@@ -147,6 +185,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Vermont Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 6;
       mortgage = 50;
       oneHousePrice = 50;
@@ -155,9 +194,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 270;
       fourHouseRent = 400;
       hotelRent = 550;
-      r = 135;  
-      g = 206;
-      b = 250;
     }
     else if (space == 9) {
       cost = 120;
@@ -167,6 +203,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Connecticut Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 8;
       mortgage = 60;
       oneHousePrice = 50;
@@ -175,9 +212,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 300;
       fourHouseRent = 450;
       hotelRent = 600;
-      r = 135;  
-      g = 206;
-      b = 250;
     }
     //PURPLE PURPLE PURPLE
     else if (space == 11) {
@@ -188,6 +222,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "St. Charles Place";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 10;
       mortgage = 70;
       oneHousePrice = 100;
@@ -196,9 +231,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 450;
       fourHouseRent = 625;
       hotelRent = 750;
-      r = 204;
-      g = 0;
-      b = 204;
     }
     else if (space == 13) {
       cost = 140;
@@ -208,6 +240,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "States Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 10;
       mortgage = 70;
       oneHousePrice = 100;
@@ -216,9 +249,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 450;
       fourHouseRent = 625;
       hotelRent = 750;
-      r = 204;
-      g = 0;
-      b = 204;      
     }
     else if (space == 14) {
       cost = 160;
@@ -228,6 +258,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Virginia Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 12;
       mortgage = 80;
       oneHousePrice = 100;
@@ -236,9 +267,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 500;
       fourHouseRent = 700;
       hotelRent = 900;
-      r = 204;
-      g = 0;
-      b = 204;
     }
     //ORANGE ORANGE ORANGE
     else if (space == 16) {
@@ -249,6 +277,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "St. James Place";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 14;
       mortgage = 90;
       oneHousePrice = 100;
@@ -257,9 +286,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 550;
       fourHouseRent = 750;
       hotelRent = 950;
-      r = 255;
-      g = 153;
-      b = 51;
     }    
     else if (space == 18) {
       cost = 180;
@@ -269,6 +295,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Tennessee Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 14;
       mortgage = 90;
       oneHousePrice = 100;
@@ -277,9 +304,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 550;
       fourHouseRent = 750;
       hotelRent = 950;
-      r = 255;
-      g = 153;
-      b = 51;
     }
     else if (space == 19) {
       cost = 200;
@@ -289,6 +313,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "New York Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 16;
       mortgage = 100;
       oneHousePrice = 100;
@@ -297,9 +322,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 600;
       fourHouseRent = 800;
       hotelRent = 1000;
-      r = 255;
-      g = 153;
-      b = 51;
     }   
     //RED RED RED
     else if (space == 21) {
@@ -310,6 +332,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Kentucky Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 18;
       mortgage = 110;
       oneHousePrice = 150;
@@ -318,9 +341,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 700;
       fourHouseRent = 875;
       hotelRent = 1050;
-      r = 255;
-      g = 0;
-      b = 0;
     }   
     else if (space == 23) {
       cost = 220;
@@ -330,6 +350,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Indiana Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 18;
       mortgage = 110;
       oneHousePrice = 150;
@@ -338,9 +359,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 700;
       fourHouseRent = 875;
       hotelRent = 1050;
-      r = 255;
-      g = 0;
-      b = 0;
     }       
     else if (space == 24) {
       cost = 240;
@@ -350,6 +368,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Illinois Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 20;
       mortgage = 120;
       oneHousePrice = 150;
@@ -358,9 +377,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 750;
       fourHouseRent = 925;
       hotelRent = 1100;
-      r = 255;
-      g = 0;
-      b = 0;
     }   
     //YELLOW YELLOW YELLOW
     else if (space == 26) {
@@ -371,6 +387,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Atlantic Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 22;
       mortgage = 130;
       oneHousePrice = 150;
@@ -379,18 +396,16 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 800;
       fourHouseRent = 975;
       hotelRent = 1150;
-      r = 255;
-      g = 255;
-      b = 0; 
     }   
     else if (space == 27) {
       cost = 260;
-      spaceColor = "yellow";
+      spaceColor = "red";
       monopolyNum = 3;
       numOfHouses = 0;
       hasHotel = false;
       name = "Ventnor Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 22;
       mortgage = 130;
       oneHousePrice = 150;
@@ -399,18 +414,16 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 800;
       fourHouseRent = 975;
       hotelRent = 1150;
-      r = 255;
-      g = 255;
-      b = 0;
     }   
     else if (space == 29) {
       cost = 280;
-      spaceColor = "yellow";
+      spaceColor = "red";
       monopolyNum = 3;
       numOfHouses = 0;
       hasHotel = false;
       name = "Marvin Gardens";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 22;
       mortgage = 140;
       oneHousePrice = 150;
@@ -419,9 +432,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 850;
       fourHouseRent = 1025;
       hotelRent = 1200;
-      r = 255;
-      g = 255;
-      b = 0;
     }   
     //GREEN GREEN GREEN
     else if (space == 31) {
@@ -432,6 +442,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Pacific Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 26;
       mortgage = 150;
       oneHousePrice = 200;
@@ -440,9 +451,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 900;
       fourHouseRent = 1100;
       hotelRent = 1275;
-      r = 0;
-      g = 204;
-      b = 102;
     }   
     else if (space == 32) {
       cost = 300;
@@ -452,6 +460,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "North Carolina Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 26;
       mortgage = 150;
       oneHousePrice = 200;
@@ -460,9 +469,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 900;
       fourHouseRent = 1100;
       hotelRent = 1275;
-      r = 0;
-      g = 204;
-      b = 102;
     }     
     else if (space == 34) {
       cost = 320;
@@ -472,6 +478,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Pennsylvania Avenue";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 28;
       mortgage = 160;
       oneHousePrice = 200;
@@ -480,9 +487,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 1000;
       fourHouseRent = 1200;
       hotelRent = 1400;
-      r = 0;
-      g = 204;
-      b = 102;
     }         
     //BLUES BLUES BLUES 
     else if (space == 37) {
@@ -493,6 +497,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Park Place";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 35;
       mortgage = 175;
       oneHousePrice = 200;
@@ -501,9 +506,6 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 1100;
       fourHouseRent = 1300;
       hotelRent = 1500;
-      r = 0;
-      b = 204;
-      g = 102;
     }     
     else if (space == 39) {
       cost = 400;
@@ -513,6 +515,7 @@ public class Space extends JFrame implements ActionListener {
       hasHotel = false;
       name = "Boardwalk";
       isRailroad = false;
+      isUtility = false;
       rentPrice = 50;
       mortgage = 200;
       oneHousePrice = 200;
@@ -521,68 +524,111 @@ public class Space extends JFrame implements ActionListener {
       threeHouseRent = 1400;
       fourHouseRent = 1700;
       hotelRent = 2000;
-      r = 0;
-      b = 204;
-      g = 102;
-    }        
+    }
+    // UTILITIES UTILITIES UTILITIES
+    else if (space == 12) {
+      cost = 150;
+      spaceColor = "white";
+      monopolyNum = 2;
+      hasHotel = false;
+      name = "Water Works";
+      isRailroad = false;
+      isUtility = true;
+      //rentPrice = 4x dice roll, if monopoly, 10x
+      mortgage = 75;
+    }
+    else if (space == 28) {
+      cost = 150;
+      spaceColor = "white";
+      monopolyNum = 2;
+      hasHotel = false;
+      name = "Electric Company";
+      isRailroad = false;
+      isUtility = true;
+      //rentPrice = 4x dice roll, if monopoly, 10x
+      mortgage = 75;
+    }
   }
   
-
-
-  public void setOwner(Player owner) {
+  public void buySpace(Player owner) {
+    owner.properties.add(this);
     this.owner = owner;
     purchased = true;
+    owner.money -= cost;
   }
   
   public void removeOwner() {
     this.owner = null;
     purchased = false;
   }
+  
+  public void setCurrent(Player current) {
+    this.current = current;
+  }
 
   public void display() {
     if (!purchased) {
-      currentProperty.setLayout(new BoxLayout(currentProperty,BoxLayout.Y_AXIS));
+      currentProperty.setLayout(new BoxLayout(currentProperty, BoxLayout.Y_AXIS));
       JLabel l1 = new JLabel(this.name);
       l1.setAlignmentX(Component.CENTER_ALIGNMENT);
-      l1.setFont(new Font("fantasy",Font.ITALIC,20));
+      l1.setFont(new Font("Courier New", Font.BOLD, 20));
       
+      JLabel linebreak1 = new JLabel("\n");
       
       JLabel l2 = new JLabel("Rent $" + this.rentPrice);
       l2.setAlignmentX(Component.CENTER_ALIGNMENT);
+      l2.setFont(new Font("Courier New", Font.PLAIN, 14));
       
       JLabel l3 = new JLabel("With 1 House $" + this.oneHouseRent);
       l3.setAlignmentX(Component.CENTER_ALIGNMENT);
+      l3.setFont(new Font("Courier New", Font.PLAIN, 14));
       
       JLabel l4 = new JLabel("With 2 Houses $" + this.twoHouseRent);
       l4.setAlignmentX(Component.CENTER_ALIGNMENT);
+      l4.setFont(new Font("Courier New", Font.PLAIN, 14));
       
       JLabel l5 = new JLabel("With 3 Houses $" + this.threeHouseRent);
       l5.setAlignmentX(Component.CENTER_ALIGNMENT);
+      l5.setFont(new Font("Courier New", Font.PLAIN, 14));
       
       JLabel l6 = new JLabel("With 4 Houses $" + this.fourHouseRent);
-      l6.setAlignmentX(Component.CENTER_ALIGNMENT);  
+      l6.setAlignmentX(Component.CENTER_ALIGNMENT);
+      l6.setFont(new Font("Courier New", Font.PLAIN, 14));
       
       JLabel l7 = new JLabel("With Hotel $" + this.hotelRent);
-      l7.setAlignmentX(Component.CENTER_ALIGNMENT);  
+      l7.setAlignmentX(Component.CENTER_ALIGNMENT); 
+      l7.setFont(new Font("Courier New", Font.PLAIN, 14));
 
       JLabel l8 = new JLabel("Mortage Value $" + this.mortgage);
-      l8.setAlignmentX(Component.CENTER_ALIGNMENT); 
+      l8.setAlignmentX(Component.CENTER_ALIGNMENT);
+      l8.setFont(new Font("Courier New", Font.PLAIN, 14));
 
       JLabel l9 = new JLabel("House cost $" + this.oneHousePrice + " each");
-      l9.setAlignmentX(Component.CENTER_ALIGNMENT);  
+      l9.setAlignmentX(Component.CENTER_ALIGNMENT);
+      l9.setFont(new Font("Courier New", Font.PLAIN, 14));
 
-      JLabel l10 = new JLabel("Hotels, $" + this.oneHousePrice + " plus 4 houses");
-      l10.setAlignmentX(Component.CENTER_ALIGNMENT);  
+      JLabel l10 = new JLabel("Hotels, $" + this.oneHousePrice + " plus 4 houses \n");
+      l10.setAlignmentX(Component.CENTER_ALIGNMENT);
+      l10.setFont(new Font("Courier New", Font.PLAIN, 14));
+      
+      JLabel linebreak2 = new JLabel("\n");
 
       JButton b1 = new JButton("Buy");
+      b1.setFont(new Font("Courier New", Font.PLAIN, 14));
       b1.addActionListener(this);
       b1.setActionCommand("Buy");
       b1.setAlignmentX(Component.CENTER_ALIGNMENT);
+      
+      JLabel linebreak3 = new JLabel("\n");
+
       JButton b2 = new JButton("Don't Buy");
+      b2.setFont(new Font("Courier New", Font.PLAIN, 14));
       b2.addActionListener(this);
       b2.setActionCommand("Don't");
       b2.setAlignmentX(Component.CENTER_ALIGNMENT);
+
       currentProperty.add(l1);
+      currentProperty.add(linebreak1);
       currentProperty.add(l2);
       currentProperty.add(l3);
       currentProperty.add(l4);
@@ -592,84 +638,61 @@ public class Space extends JFrame implements ActionListener {
       currentProperty.add(l8);
       currentProperty.add(l9);
       currentProperty.add(l10);
+      currentProperty.add(linebreak2);
       currentProperty.add(b1);
+      currentProperty.add(linebreak3);
       currentProperty.add(b2);
-      currentProperty.setBackground(new Color(this.r,this.g,this.b));
-      frame.setSize(300,250);
-      frame.add(currentProperty);
-      //currentProperty.setBackground(new Color(this.r,this.g,this.b));
+      
+      currentProperty.setBackground(getHue());
       frame.setVisible(true);
+      frame.setSize(300, 400);
+      frame.add(currentProperty);
     }
-    else{
-      // code to pay the owner of the property the correct rent!
+    else {
       this.payOwner();
     }
   }
    
   public void payOwner() {
-    if (this.hasHotel) {
-      current.setMoney(current.getMoney() - this.hotelRent);
-      owner.setMoney(owner.getMoney() + this.hotelRent);
+    if (isRailroad) {
     }
-    else if (this.numOfHouses == 4) {
-      current.setMoney(current.getMoney() - this.fourHouseRent);
-      owner.setMoney(owner.getMoney() + this.fourHouseRent);
-    }
-    else if (this.numOfHouses == 3) {
-      current.setMoney(current.getMoney() - this.threeHouseRent);
-      owner.setMoney(owner.getMoney() + this.threeHouseRent);
-    }
-    else if (this.numOfHouses == 2) {
-      current.setMoney(current.getMoney() - this.twoHouseRent);
-      owner.setMoney(owner.getMoney() + this.twoHouseRent);
-    }
-    else if (this.numOfHouses == 1) {
-      current.setMoney(current.getMoney() - this.oneHouseRent);
-      owner.setMoney(owner.getMoney() + this.oneHouseRent);
+    else if (isUtility) {
     }
     else {
-      current.setMoney(current.getMoney() - this.rentPrice);
-      owner.setMoney(owner.getMoney() + this.rentPrice);
-    }
-  }
-  public void setCurrent(Player p){
-    current = p;
-  }
-  public void buyProperty(Player p){
-    p.properties.add(this);
-    this.owner = p;
-    this.purchased = true;
-    p.setMoney(p.getMoney()-this.cost);
-  }
-  public void actionPerformed(ActionEvent e) {
-    String event = e.getActionCommand();
-    if(event.equals("Buy")){
-      buyProperty(current);
-    }
-    else{
-      System.out.println("eh");
-    }
-    /*
-    if (event.equals("Buy")) {
-      if (current.money < this.cost) {
-        JOptionPane.showMessageDialog(this, "Not enough money to buy this property", "WARNING!", JOptionPane.ERROR_MESSAGE);
+      if (this.hasHotel) {
+        current.setMoney(current.getMoney() - this.hotelRent);
+        owner.setMoney(owner.getMoney() + this.hotelRent);
+      }
+      else if (this.numOfHouses == 4) {
+        current.setMoney(current.getMoney() - this.fourHouseRent);
+        owner.setMoney(owner.getMoney() + this.fourHouseRent);
+      }
+      else if (this.numOfHouses == 3) {
+        current.setMoney(current.getMoney() - this.threeHouseRent);
+        owner.setMoney(owner.getMoney() + this.threeHouseRent);
+      }
+      else if (this.numOfHouses == 2) {
+        current.setMoney(current.getMoney() - this.twoHouseRent);
+        owner.setMoney(owner.getMoney() + this.twoHouseRent);
+      }
+      else if (this.numOfHouses == 1) {
+        current.setMoney(current.getMoney() - this.oneHouseRent);
+        owner.setMoney(owner.getMoney() + this.oneHouseRent);
       }
       else {
-        int reply = JOptionPane.showConfirmDialog(this, "Are you sure you want to buy this property?", "CONFIRM YOUR CHOICE!", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-          buyProperty(current);
-        }
+        current.setMoney(current.getMoney() - this.rentPrice);
+        owner.setMoney(owner.getMoney() + this.rentPrice);
       }
-    }*/
+    }
   }
-
       
-      
-
-  
-
-  
-  
+    
+   public void actionPerformed(ActionEvent e) {
+     String event = e.getActionCommand();
+     if (event.equals("Buy")) {
+       buySpace(current);
+     }
+     else {
+     }
+   }
 }
-  
- 

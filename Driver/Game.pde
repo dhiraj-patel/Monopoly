@@ -75,9 +75,9 @@ class Game {
         newBoard.numPlayers[newBoard.currentPlayer].money -= 100;
       }
       else if (newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].buyable) {
+        newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].setCurrent(newBoard.numPlayers[newBoard.currentPlayer]);
         newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].display();
         displayIsOn = true;
-        newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].setCurrent(newBoard.numPlayers[newBoard.currentPlayer]);
       }
     }
     //CHECK FOR PROPERTIES AND REST OF CHANCE CARDS

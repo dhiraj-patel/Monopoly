@@ -58,7 +58,7 @@ public class Player {
   public void buySpace(Space s) {
     if (!s.purchased) {
       s.purchased = true;
-      s.setOwner(this);
+      s.owner = this;
       properties.add(s);
     }
   }
