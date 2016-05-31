@@ -1,6 +1,6 @@
 class Game {
   int totalPlayers;
-  boolean ranOnce, ranOnce2, isChanceCardGoBackThree, justGotIntoOrOutOfJail, displayIsOn;
+  boolean ranOnce, ranOnce2, isChanceCardGoBackThree, justGotIntoOrOutOfJail;
   Die newDie;
   Board newBoard;
   Chance newChance;
@@ -14,7 +14,6 @@ class Game {
     newChest = new Chest();
     ranOnce = false;
     ranOnce2 = false;
-    displayIsOn = false;
     isChanceCardGoBackThree = false;
     justGotIntoOrOutOfJail = false;
   }
@@ -66,9 +65,6 @@ class Game {
         else if (newChance.action.equals("GO TO JAIL. GO DIRECTLY TO JAIL, DO NOT PASS \"GO\", DO NOT COLLECT $200.")) {
           justGotIntoOrOutOfJail = true;
         }
-        else if (newChance.action.equals("ADVANCE TO ILLINOIS AVENUE. IF YOU PASS \"GO\" COLLECT $200.") || newChance.action.equals("ADVANCE TO ST. CHARLES PLACE. IF YOU PASS \"GO\" COLLECT $200.") || newChance.action.equals("TAKE A TRIP TO READING RAILROAD. IF YOU PASS \"GO\" COLLECT $200.") || newChance.action.equals("ADVANCE TO BOARDWALK.")) {
-          checkEvent();
-        }
       } 
       else if (newBoard.numPlayers[newBoard.currentPlayer].location == 30) {
         newBoard.numPlayers[newBoard.currentPlayer].setLocation(10);
@@ -80,7 +76,6 @@ class Game {
       else if (newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].buyable) {
         newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].setCurrent(newBoard.numPlayers[newBoard.currentPlayer]);
         newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].display();
-        displayIsOn = true;
       }
     }
     //CHECK FOR PROPERTIES AND REST OF CHANCE CARDS
@@ -112,7 +107,7 @@ class Game {
     }
     //what happens after the next is pressed and continually happens
     else if (newBoard.nextPressed && ranOnce) {
-      if (newDie.isDouble() && !justGotIntoOrOutOfJail && !displayIsOn) {
+      if (newDie.isDouble() && !justGotIntoOrOutOfJail && !newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].displayIsOn) {
         if (!ranOnce2) {
           newDie.doubleCount += 1;
           ranOnce2 = true;
@@ -138,7 +133,7 @@ class Game {
         }
       }
       
-      else if (!displayIsOn) {
+      else if (!newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].displayIsOn) {
         newBoard.done[newBoard.currentPlayer].draw();
         newDie.draw();
       }
