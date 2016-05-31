@@ -6,18 +6,37 @@ import java.util.concurrent.TimeUnit;
 public class Space extends JFrame implements ActionListener {
   int location, cost, monopolyNum, numOfHouses, rentPrice, mortgage, oneHousePrice, oneHouseRent, twoHouseRent, threeHouseRent, fourHouseRent, hotelRent, hotelPrice, oneRailroadPrice, twoRailroadPrice, threeRailroadPrice, fourRailroadPrice;
   String name, spaceColor;
-  boolean purchased, buyable, monopolized, isRailroad, isUtility, hasHotel; 
+  boolean purchased, buyable, monopolized, isRailroad, isUtility, hasHotel, displayIsOn; 
   Player current, owner;
   JPanel currentProperty;
   JFrame frame;
   Color hue;
-  
+  JLabel linebreak2, linebreak3;
+  JButton b1, b2;
+    
   public Space(int space) {
      initializeVars(space);  
      currentProperty = new JPanel();
      frame = new JFrame("Current Property");
      owner = null;
      current = null;
+     displayIsOn = false;
+      
+     linebreak2 = new JLabel("\n");
+  
+     b1 = new JButton("Buy");
+     b1.setFont(new Font("Courier New", Font.PLAIN, 14));
+     b1.addActionListener(this);
+     b1.setActionCommand("Buy");
+     b1.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+     linebreak3 = new JLabel("\n");
+     
+     b2 = new JButton("Don't Buy");
+     b2.setFont(new Font("Courier New", Font.PLAIN, 14));
+     b2.addActionListener(this);
+     b2.setActionCommand("Don't");
+     b2.setAlignmentX(Component.CENTER_ALIGNMENT);
   }
   
   public Color getHue() {
@@ -551,12 +570,12 @@ public class Space extends JFrame implements ActionListener {
   }
   
   public void buySpace(Player owner) {
-    if(!this.purchased){
+    //if(!this.purchased){
       owner.properties.add(this);
       this.owner = owner;
       purchased = true;
       owner.money -= cost;
-    }
+   // }
   }
   
   public void removeOwner() {
@@ -612,7 +631,7 @@ public class Space extends JFrame implements ActionListener {
       JLabel l10 = new JLabel("Hotels, $" + this.oneHousePrice + " plus 4 houses \n");
       l10.setAlignmentX(Component.CENTER_ALIGNMENT);
       l10.setFont(new Font("Courier New", Font.PLAIN, 14));
-      
+      /*
       JLabel linebreak2 = new JLabel("\n");
 
       JButton b1 = new JButton("Buy");
@@ -628,7 +647,7 @@ public class Space extends JFrame implements ActionListener {
       b2.addActionListener(this);
       b2.setActionCommand("Don't");
       b2.setAlignmentX(Component.CENTER_ALIGNMENT);
-
+*/
       currentProperty.add(l1);
       currentProperty.add(linebreak1);
       currentProperty.add(l2);
@@ -644,9 +663,9 @@ public class Space extends JFrame implements ActionListener {
       currentProperty.add(b1);
       currentProperty.add(linebreak3);
       currentProperty.add(b2);
-      
       currentProperty.setBackground(getHue());
       frame.setVisible(true);
+      displayIsOn = true;
       frame.setSize(300, 400);
       frame.add(currentProperty);
     }
@@ -687,14 +706,19 @@ public class Space extends JFrame implements ActionListener {
       }
     }
   }
-      
-    
+
    public void actionPerformed(ActionEvent e) {
      String event = e.getActionCommand();
      if (event.equals("Buy")) {
        buySpace(current);
+       b1.setEnabled(false);
+       b2.setEnabled(false);
+       frame.setVisible(false);
+       displayIsOn = false;
      }
      else {
+       frame.setVisible(false);
+       displayIsOn = false;
      }
    }
 }
