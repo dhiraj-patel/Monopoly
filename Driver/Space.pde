@@ -660,9 +660,11 @@ public class Space extends JFrame implements ActionListener {
       currentProperty.add(l9);
       currentProperty.add(l10);
       currentProperty.add(linebreak2);
-      currentProperty.add(b1);
-      currentProperty.add(linebreak3);
-      currentProperty.add(b2);
+      if (!purchased || current.money >= cost){
+        currentProperty.add(b1);
+        currentProperty.add(linebreak3);
+        currentProperty.add(b2);
+      }
       currentProperty.setBackground(getHue());
       frame.setVisible(true);
       displayIsOn = true;
@@ -676,6 +678,28 @@ public class Space extends JFrame implements ActionListener {
    
   public void payOwner() {
     if (isRailroad) {
+      int count = 0;
+      for(Space s: owner.properties){
+        if(s.isRailroad){
+          count++;
+        }
+      }
+      if(count == 1){
+        current.setMoney(current.getMoney()-this.oneRailroadPrice);
+        owner.setMoney(owner.getMoney()+this.oneRailroadPrice);
+      }
+      else if(count == 2){
+        current.setMoney(current.getMoney()-this.twoRailroadPrice);
+        owner.setMoney(owner.getMoney()+this.twoRailroadPrice);
+      }
+      else if(count == 3){
+        current.setMoney(current.getMoney()-this.threeRailroadPrice);
+        owner.setMoney(owner.getMoney()+this.threeRailroadPrice);
+      }
+      else if(count == 4){
+        current.setMoney(current.getMoney()-this.fourRailroadPrice);
+        owner.setMoney(owner.getMoney()+this.fourRailroadPrice);
+      }
     }
     else if (isUtility) {
     }
