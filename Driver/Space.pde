@@ -551,10 +551,12 @@ public class Space extends JFrame implements ActionListener {
   }
   
   public void buySpace(Player owner) {
-    owner.properties.add(this);
-    this.owner = owner;
-    purchased = true;
-    owner.money -= cost;
+    if(!this.purchased){
+      owner.properties.add(this);
+      this.owner = owner;
+      purchased = true;
+      owner.money -= cost;
+    }
   }
   
   public void removeOwner() {
