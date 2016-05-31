@@ -66,6 +66,9 @@ class Game {
         else if (newChance.action.equals("GO TO JAIL. GO DIRECTLY TO JAIL, DO NOT PASS \"GO\", DO NOT COLLECT $200.")) {
           justGotIntoOrOutOfJail = true;
         }
+        else if (newChance.action.equals("ADVANCE TO ILLINOIS AVENUE. IF YOU PASS \"GO\" COLLECT $200.") || newChance.action.equals("ADVANCE TO ST. CHARLES PLACE. IF YOU PASS \"GO\" COLLECT $200.") || newChance.action.equals("TAKE A TRIP TO READING RAILROAD. IF YOU PASS \"GO\" COLLECT $200.") || newChance.action.equals("ADVANCE TO BOARDWALK.")) {
+          checkEvent();
+        }
       } 
       else if (newBoard.numPlayers[newBoard.currentPlayer].location == 30) {
         newBoard.numPlayers[newBoard.currentPlayer].setLocation(10);
