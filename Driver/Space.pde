@@ -589,7 +589,7 @@ public class Space extends JFrame implements ActionListener {
 
   public void display() {
     if (!purchased) {
-      if(!isRailroad && !isUtility){
+      if (!isRailroad && !isUtility) {
         currentProperty.setLayout(new BoxLayout(currentProperty, BoxLayout.Y_AXIS));
         JLabel l1 = new JLabel(this.name);
         l1.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -645,7 +645,7 @@ public class Space extends JFrame implements ActionListener {
         currentProperty.add(l9);
         currentProperty.add(l10);
         currentProperty.add(linebreak2);
-        if (current.money >= cost){
+        if (current.money >= cost) {
           currentProperty.add(b1);
           currentProperty.add(linebreak3);
         }
@@ -656,7 +656,7 @@ public class Space extends JFrame implements ActionListener {
         frame.setSize(300, 400);
         frame.add(currentProperty);
       }
-      else if(isRailroad){
+      else if (isRailroad) {
         currentProperty.setLayout(new BoxLayout(currentProperty, BoxLayout.Y_AXIS));
         JLabel ql1 = new JLabel(this.name);
         ql1.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -683,7 +683,8 @@ public class Space extends JFrame implements ActionListener {
         JLabel ql6 = new JLabel("Mortage Value $" + this.mortgage);
         ql6.setAlignmentX(Component.CENTER_ALIGNMENT);
         ql6.setFont(new Font("Courier New", Font.PLAIN, 14));
-         currentProperty.add(ql1);
+        
+        currentProperty.add(ql1);
         currentProperty.add(qlinebreak1);
         currentProperty.add(ql2);
         currentProperty.add(ql3);
@@ -701,8 +702,7 @@ public class Space extends JFrame implements ActionListener {
         displayIsOn = true;
         frame.setSize(300, 400);
         frame.add(currentProperty);
-        
-    }
+      }
     }
     else {
       this.payOwner();
@@ -717,19 +717,19 @@ public class Space extends JFrame implements ActionListener {
           count++;
         }
       }
-      if(count == 1){
+      if (count == 1){
         current.setMoney(current.getMoney()-this.oneRailroadPrice);
         owner.setMoney(owner.getMoney()+this.oneRailroadPrice);
       }
-      else if(count == 2){
+      else if (count == 2){
         current.setMoney(current.getMoney()-this.twoRailroadPrice);
         owner.setMoney(owner.getMoney()+this.twoRailroadPrice);
       }
-      else if(count == 3){
+      else if (count == 3){
         current.setMoney(current.getMoney()-this.threeRailroadPrice);
         owner.setMoney(owner.getMoney()+this.threeRailroadPrice);
       }
-      else if(count == 4){
+      else if (count == 4){
         current.setMoney(current.getMoney()-this.fourRailroadPrice);
         owner.setMoney(owner.getMoney()+this.fourRailroadPrice);
       }
