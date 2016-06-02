@@ -589,87 +589,120 @@ public class Space extends JFrame implements ActionListener {
 
   public void display() {
     if (!purchased) {
-      currentProperty.setLayout(new BoxLayout(currentProperty, BoxLayout.Y_AXIS));
-      JLabel l1 = new JLabel(this.name);
-      l1.setAlignmentX(Component.CENTER_ALIGNMENT);
-      l1.setFont(new Font("Courier New", Font.BOLD, 20));
-      
-      JLabel linebreak1 = new JLabel("\n");
-      
-      JLabel l2 = new JLabel("Rent $" + this.rentPrice);
-      l2.setAlignmentX(Component.CENTER_ALIGNMENT);
-      l2.setFont(new Font("Courier New", Font.PLAIN, 14));
-      
-      JLabel l3 = new JLabel("With 1 House $" + this.oneHouseRent);
-      l3.setAlignmentX(Component.CENTER_ALIGNMENT);
-      l3.setFont(new Font("Courier New", Font.PLAIN, 14));
-      
-      JLabel l4 = new JLabel("With 2 Houses $" + this.twoHouseRent);
-      l4.setAlignmentX(Component.CENTER_ALIGNMENT);
-      l4.setFont(new Font("Courier New", Font.PLAIN, 14));
-      
-      JLabel l5 = new JLabel("With 3 Houses $" + this.threeHouseRent);
-      l5.setAlignmentX(Component.CENTER_ALIGNMENT);
-      l5.setFont(new Font("Courier New", Font.PLAIN, 14));
-      
-      JLabel l6 = new JLabel("With 4 Houses $" + this.fourHouseRent);
-      l6.setAlignmentX(Component.CENTER_ALIGNMENT);
-      l6.setFont(new Font("Courier New", Font.PLAIN, 14));
-      
-      JLabel l7 = new JLabel("With Hotel $" + this.hotelRent);
-      l7.setAlignmentX(Component.CENTER_ALIGNMENT); 
-      l7.setFont(new Font("Courier New", Font.PLAIN, 14));
+      if(!isRailroad && !isUtility){
+        currentProperty.setLayout(new BoxLayout(currentProperty, BoxLayout.Y_AXIS));
+        JLabel l1 = new JLabel(this.name);
+        l1.setAlignmentX(Component.CENTER_ALIGNMENT);
+        l1.setFont(new Font("Courier New", Font.BOLD, 20));
+        
+        JLabel linebreak1 = new JLabel("\n");
+        
+        JLabel l2 = new JLabel("Rent $" + this.rentPrice);
+        l2.setAlignmentX(Component.CENTER_ALIGNMENT);
+        l2.setFont(new Font("Courier New", Font.PLAIN, 14));
+        
+        JLabel l3 = new JLabel("With 1 House $" + this.oneHouseRent);
+        l3.setAlignmentX(Component.CENTER_ALIGNMENT);
+        l3.setFont(new Font("Courier New", Font.PLAIN, 14));
+        
+        JLabel l4 = new JLabel("With 2 Houses $" + this.twoHouseRent);
+        l4.setAlignmentX(Component.CENTER_ALIGNMENT);
+        l4.setFont(new Font("Courier New", Font.PLAIN, 14));
+        
+        JLabel l5 = new JLabel("With 3 Houses $" + this.threeHouseRent);
+        l5.setAlignmentX(Component.CENTER_ALIGNMENT);
+        l5.setFont(new Font("Courier New", Font.PLAIN, 14));
+        
+        JLabel l6 = new JLabel("With 4 Houses $" + this.fourHouseRent);
+        l6.setAlignmentX(Component.CENTER_ALIGNMENT);
+        l6.setFont(new Font("Courier New", Font.PLAIN, 14));
+        
+        JLabel l7 = new JLabel("With Hotel $" + this.hotelRent);
+        l7.setAlignmentX(Component.CENTER_ALIGNMENT); 
+        l7.setFont(new Font("Courier New", Font.PLAIN, 14));
+  
+        JLabel l8 = new JLabel("Mortage Value $" + this.mortgage);
+        l8.setAlignmentX(Component.CENTER_ALIGNMENT);
+        l8.setFont(new Font("Courier New", Font.PLAIN, 14));
+  
+        JLabel l9 = new JLabel("House cost $" + this.oneHousePrice + " each");
+        l9.setAlignmentX(Component.CENTER_ALIGNMENT);
+        l9.setFont(new Font("Courier New", Font.PLAIN, 14));
+  
+        JLabel l10 = new JLabel("Hotels, $" + this.oneHousePrice + " plus 4 houses \n");
+        l10.setAlignmentX(Component.CENTER_ALIGNMENT);
+        l10.setFont(new Font("Courier New", Font.PLAIN, 14));
 
-      JLabel l8 = new JLabel("Mortage Value $" + this.mortgage);
-      l8.setAlignmentX(Component.CENTER_ALIGNMENT);
-      l8.setFont(new Font("Courier New", Font.PLAIN, 14));
-
-      JLabel l9 = new JLabel("House cost $" + this.oneHousePrice + " each");
-      l9.setAlignmentX(Component.CENTER_ALIGNMENT);
-      l9.setFont(new Font("Courier New", Font.PLAIN, 14));
-
-      JLabel l10 = new JLabel("Hotels, $" + this.oneHousePrice + " plus 4 houses \n");
-      l10.setAlignmentX(Component.CENTER_ALIGNMENT);
-      l10.setFont(new Font("Courier New", Font.PLAIN, 14));
-      /*
-      JLabel linebreak2 = new JLabel("\n");
-
-      JButton b1 = new JButton("Buy");
-      b1.setFont(new Font("Courier New", Font.PLAIN, 14));
-      b1.addActionListener(this);
-      b1.setActionCommand("Buy");
-      b1.setAlignmentX(Component.CENTER_ALIGNMENT);
-      
-      JLabel linebreak3 = new JLabel("\n");
-
-      JButton b2 = new JButton("Don't Buy");
-      b2.setFont(new Font("Courier New", Font.PLAIN, 14));
-      b2.addActionListener(this);
-      b2.setActionCommand("Don't");
-      b2.setAlignmentX(Component.CENTER_ALIGNMENT);
-*/
-      currentProperty.add(l1);
-      currentProperty.add(linebreak1);
-      currentProperty.add(l2);
-      currentProperty.add(l3);
-      currentProperty.add(l4);
-      currentProperty.add(l5);
-      currentProperty.add(l6);
-      currentProperty.add(l7);
-      currentProperty.add(l8);
-      currentProperty.add(l9);
-      currentProperty.add(l10);
-      currentProperty.add(linebreak2);
-      if (!purchased || current.money >= cost){
-        currentProperty.add(b1);
-        currentProperty.add(linebreak3);
+        currentProperty.add(l1);
+        currentProperty.add(linebreak1);
+        currentProperty.add(l2);
+        currentProperty.add(l3);
+        currentProperty.add(l4);
+        currentProperty.add(l5);
+        currentProperty.add(l6);
+        currentProperty.add(l7);
+        currentProperty.add(l8);
+        currentProperty.add(l9);
+        currentProperty.add(l10);
+        currentProperty.add(linebreak2);
+        if (current.money >= cost){
+          currentProperty.add(b1);
+          currentProperty.add(linebreak3);
+        }
         currentProperty.add(b2);
+        currentProperty.setBackground(getHue());
+        frame.setVisible(true);
+        displayIsOn = true;
+        frame.setSize(300, 400);
+        frame.add(currentProperty);
       }
-      currentProperty.setBackground(getHue());
-      frame.setVisible(true);
-      displayIsOn = true;
-      frame.setSize(300, 400);
-      frame.add(currentProperty);
+      else if(isRailroad){
+        currentProperty.setLayout(new BoxLayout(currentProperty, BoxLayout.Y_AXIS));
+        JLabel ql1 = new JLabel(this.name);
+        ql1.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ql1.setFont(new Font("Courier New", Font.BOLD, 20));
+        
+        JLabel qlinebreak1 = new JLabel("\n");
+        
+        JLabel ql2 = new JLabel("Rent $" + this.rentPrice);
+        ql2.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ql2.setFont(new Font("Courier New", Font.PLAIN, 14));
+        
+        JLabel ql3 = new JLabel("If 2 R.R's are owned $50");
+        ql3.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ql3.setFont(new Font("Courier New", Font.PLAIN, 14));
+        
+        JLabel ql4 = new JLabel("If 3 R.R's are owned $100");
+        ql4.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ql4.setFont(new Font("Courier New", Font.PLAIN, 14));
+        
+        JLabel ql5 = new JLabel("If 4 R.R's are owned $200");
+        ql5.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ql5.setFont(new Font("Courier New", Font.PLAIN, 14));
+        
+        JLabel ql6 = new JLabel("Mortage Value $" + this.mortgage);
+        ql6.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ql6.setFont(new Font("Courier New", Font.PLAIN, 14));
+         currentProperty.add(ql1);
+        currentProperty.add(qlinebreak1);
+        currentProperty.add(ql2);
+        currentProperty.add(ql3);
+        currentProperty.add(ql4);
+        currentProperty.add(ql5);
+        currentProperty.add(ql6);
+        currentProperty.add(linebreak2);
+        if (current.money >= cost){
+          currentProperty.add(b1);
+          currentProperty.add(linebreak3);
+        }
+        currentProperty.add(b2);
+        currentProperty.setBackground(getHue());
+        frame.setVisible(true);
+        displayIsOn = true;
+        frame.setSize(300, 400);
+        frame.add(currentProperty);
+        
+    }
     }
     else {
       this.payOwner();
