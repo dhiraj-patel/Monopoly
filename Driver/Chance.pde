@@ -1,5 +1,4 @@
 import javax.swing.*;
-
 public class Chance {
   private ArrayList<String> cards;     
   String action;
