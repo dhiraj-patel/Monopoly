@@ -122,17 +122,26 @@ class Board {
     if (totalPlayers == 2) {
       text(("$" + numPlayers[0].getMoney()), 724, 30);
       text(("$" + numPlayers[1].getMoney()), 724, 210);
+      text(("JFC: " + numPlayers[0].JFCNum), 764, 30);
+      text(("JFC: " + numPlayers[1].JFCNum), 764, 210);
     }
     else if (totalPlayers == 3) {
       text(("$" + numPlayers[0].getMoney()), 724, 30);
       text(("$" + numPlayers[1].getMoney()), 724, 210);
       text(("$" + numPlayers[2].getMoney()), 724, 390);
+      text(("JFC: " + numPlayers[0].JFCNum), 764, 30);
+      text(("JFC: " + numPlayers[1].JFCNum), 764, 210);
+      text(("JFC: " + numPlayers[2].JFCNum), 764, 390);
     }
     else if (totalPlayers == 4) {
       text(("$" + numPlayers[0].getMoney()), 724, 30);
       text(("$" + numPlayers[1].getMoney()), 724, 210);
       text(("$" + numPlayers[2].getMoney()), 724, 390);
       text(("$" + numPlayers[3].getMoney()), 724, 570);
+      text(("JFC: " + numPlayers[0].JFCNum), 764, 30);
+      text(("JFC: " + numPlayers[1].JFCNum), 764, 210);
+      text(("JFC: " + numPlayers[2].JFCNum), 764, 390);
+      text(("JFC: " + numPlayers[3].JFCNum), 764, 570);
     } 
   }
 }
