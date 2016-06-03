@@ -550,7 +550,7 @@ public class Space extends JFrame implements ActionListener {
       spaceColor = "white";
       monopolyNum = 2;
       hasHotel = false;
-      name = "Water Works";
+      name = "Electric Company";
       isRailroad = false;
       isUtility = true;
       //rentPrice = 4x dice roll, if monopoly, 10x
@@ -561,7 +561,7 @@ public class Space extends JFrame implements ActionListener {
       spaceColor = "white";
       monopolyNum = 2;
       hasHotel = false;
-      name = "Electric Company";
+      name = "Water Works";
       isRailroad = false;
       isUtility = true;
       //rentPrice = 4x dice roll, if monopoly, 10x
@@ -691,6 +691,58 @@ public class Space extends JFrame implements ActionListener {
         currentProperty.add(ql4);
         currentProperty.add(ql5);
         currentProperty.add(ql6);
+        currentProperty.add(linebreak2);
+        if (current.money >= cost){
+          currentProperty.add(b1);
+          currentProperty.add(linebreak3);
+        }
+        currentProperty.add(b2);
+        currentProperty.setBackground(getHue());
+        frame.setVisible(true);
+        displayIsOn = true;
+        frame.setSize(300, 400);
+        frame.add(currentProperty);
+      }
+      else if(isUtility) {
+        currentProperty.setLayout(new BoxLayout(currentProperty, BoxLayout.Y_AXIS));
+        JLabel ul1 = new JLabel(this.name);
+        ul1.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ul1.setFont(new Font("Courier New", Font.BOLD, 20));
+        
+        JLabel ulinebreak1 = new JLabel("\n");
+        
+        JLabel ul2 = new JLabel("If ONE Utility is owned, rent is 4x"); //the number on the dice which landed the player on the utility");
+        ul2.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ul2.setFont(new Font("Courier New", Font.PLAIN, 14));
+        
+        JLabel qll = new JLabel("\n");
+        JLabel linebreak234 = new JLabel("\n");
+        
+        JLabel end1 = new JLabel("amount shown on dice.");
+        end1.setAlignmentX(Component.CENTER_ALIGNMENT);
+        end1.setFont(new Font("Courier New", Font.PLAIN, 14));
+
+        JLabel ul3 = new JLabel("If BOTH Utilities are owned, rent is 10x");
+        ul3.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ul3.setFont(new Font("Courier New", Font.PLAIN, 14));
+        
+        JLabel end2 = new JLabel("amount shown on the dice");
+        end2.setAlignmentX(Component.CENTER_ALIGNMENT);
+        end2.setFont(new Font("Courier New", Font.PLAIN, 14));
+        
+        JLabel ul4 = new JLabel("Mortage Value $" + this.mortgage);
+        ul4.setAlignmentX(Component.CENTER_ALIGNMENT);
+        ul4.setFont(new Font("Courier New", Font.PLAIN, 14));
+        
+        currentProperty.add(ul1);
+        currentProperty.add(ulinebreak1);
+        currentProperty.add(ul2);
+        currentProperty.add(end1);
+        currentProperty.add(qll);
+        currentProperty.add(ul3);
+        currentProperty.add(end2);
+        currentProperty.add(linebreak234);
+        currentProperty.add(ul4);
         currentProperty.add(linebreak2);
         if (current.money >= cost){
           currentProperty.add(b1);
