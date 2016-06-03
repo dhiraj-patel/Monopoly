@@ -26,14 +26,14 @@ public class Chest {
   
   public void execute(Player actor, String action) {
     if (action.equals("ADVANCE TO GO. (COLLECT $200)")) {
-      actor.setLocation(0);
-      actor.setMoney(actor.getMoney() + 200);
+      actor.location = 0;
+      actor.money += 200;
     }
     if (action.equals("BANK ERROR IN YOUR FAVOR. COLLECT $200.")) {
-      actor.setMoney(actor.getMoney()+75);
+      actor.money += 200;
     }
     if (action.equals("DOCTOR'S FEES. PAY $50.")) {
-      actor.setMoney(actor.getMoney()-50);
+      actor.money -= 50;
     }
     if (action.equals("GET OUT OF JAIL FREE. This card may be kept until needed or traded.")) {
       actor.incrementJFC();
@@ -42,37 +42,36 @@ public class Chest {
       actor.goToJail();
     }
     if (action.equals("IT IS YOUR BIRTHDAY. COLLECT $10 FROM EVERY PLAYER.")) {
-      // JACKEY
     }
     if (action.equals("INCOME TAX REFUND. COLLECT $20.")) {
-      actor.setMoney(actor.getMoney()+20);
+      actor.money += 20;
     }
     if (action.equals("LIFE INSURANCE MATURES. COLLECT $100.")) {
-      actor.setMoney(actor.getMoney()+100);
+      actor.money += 100;
     }
     if (action.equals("PAY HOSPITAL FEES OF $100.")) {
-      actor.setMoney(actor.getMoney()-100);
+      actor.money -= 100;
     }
     if (action.equals("PAY SCHOOL FEES OF $50.")) {
-      actor.setMoney(actor.getMoney()-50);
+      actor.money -= 50;
     }
     if (action.equals("RECEIVE $25 CONSULTANCY FEE.")) {
-      actor.setMoney(actor.getMoney()+25);
+      actor.money += 25;
     }
     if (action.equals("YOU ARE ASSESSED FOR STREET REPAIRS: $40 PER HOUSE, $115 PER HOTEL.")) {
-      // JACKEY LMAO
+      actor.money = actor.money - (40 * actor.numOfHouses) - (115 * actor.numOfHotels);
     }
     if (action.equals("YOU HAVE WON SECOND PRIZE IN A BEAUTY CONTEST. COLLECT $10.")) {
-      actor.setMoney(actor.getMoney()+10);
+      actor.money += 10;
     }
     if (action.equals("YOU INHERIT $100.")) {
-      actor.setMoney(actor.getMoney()+100);
+      actor.money += 100;
     }
     if (action.equals("FROM SALE OF STOCK YOU GET $50.")) {
-      actor.setMoney(actor.getMoney()+50);
+      actor.money += 50;
     }
     if (action.equals("HOLIDAY FUND MATURES. RECEIVE $100.")) {
-      actor.setMoney(actor.getMoney()+100);
+      actor.money += 100;
     }
   }
  
