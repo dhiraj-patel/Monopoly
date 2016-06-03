@@ -30,6 +30,17 @@ class Game {
     if (!(newDie.doubleCount == 2 && newDie.isDouble())) {
       if (newBoard.numPlayers[newBoard.currentPlayer].location == 2 || newBoard.numPlayers[newBoard.currentPlayer].location == 17 || newBoard.numPlayers[newBoard.currentPlayer].location == 33) {
         newChest.getChestCard(newBoard.numPlayers[newBoard.currentPlayer]);
+        if (newChest.action.equals("IT IS YOUR BIRTHDAY. COLLECT $10 FROM EVERY PLAYER.")) {
+          for (int i = 0; i < newBoard.totalPlayers; i ++) {
+            if (!newBoard.numPlayers[i].equals(newBoard.numPlayers[newBoard.currentPlayer])) {
+              newBoard.numPlayers[i].money -= 10;
+              newBoard.numPlayers[newBoard.currentPlayer].money += 10;
+            }
+          }
+        }
+        else if (newChest.action.equals("GO TO JAIL. GO DIRECTLY TO JAIL, DO NOT PASS \"GO\", DO NOT COLLECT $200.")) {
+          justGotIntoOrOutOfJail = true;
+        }
       } 
       else if (newBoard.numPlayers[newBoard.currentPlayer].location == 4) {
         newBoard.numPlayers[newBoard.currentPlayer].money -= 200;
@@ -65,7 +76,7 @@ class Game {
         else if (newChance.action.equals("GO TO JAIL. GO DIRECTLY TO JAIL, DO NOT PASS \"GO\", DO NOT COLLECT $200.")) {
           justGotIntoOrOutOfJail = true;
         }
-      } 
+      }
       else if (newBoard.numPlayers[newBoard.currentPlayer].location == 30) {
         newBoard.numPlayers[newBoard.currentPlayer].setLocation(10);
         newBoard.numPlayers[newBoard.currentPlayer].inJail = true;
