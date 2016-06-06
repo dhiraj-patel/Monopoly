@@ -5,7 +5,6 @@ class Game {
   Board newBoard;
   Chance newChance;
   Chest newChest;
-
   Game(int totalPlayers) {
     this.totalPlayers = totalPlayers;
     newDie = new Die();
@@ -17,8 +16,16 @@ class Game {
     isChanceCardGoBackThree = false;
     justGotIntoOrOutOfJail = false;
   }
-
+ /* void giveNewDie(){
+    int x = newDie.setOfDice[0];
+    int x2 = newDie.setOfDice[1];
+    newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].die1 = x;
+    newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].die2 = x2;
+    System.out.println(x);
+    System.out.println(x2);
+  }*/
   void checkEvent() {
+    //giveNewDie();
     if (!isChanceCardGoBackThree) {
       newDie.roll();
       if (!newBoard.numPlayers[newBoard.currentPlayer].inJail && !(newDie.doubleCount == 2 && newDie.isDouble())) {

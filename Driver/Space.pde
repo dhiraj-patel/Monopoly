@@ -13,7 +13,10 @@ public class Space extends JFrame implements ActionListener {
   Color hue;
   JLabel linebreak2, linebreak3;
   JButton b1, b2;
-    
+  House h;  
+  int die1, die2;
+  
+   
   public Space(int space) {
      initializeVars(space);  
      currentProperty = new JPanel();
@@ -21,7 +24,6 @@ public class Space extends JFrame implements ActionListener {
      owner = null;
      current = null;
      displayIsOn = false;
-      
      linebreak2 = new JLabel("\n");
   
      b1 = new JButton("Buy");
@@ -762,6 +764,7 @@ public class Space extends JFrame implements ActionListener {
   }
    
   public void payOwner() {
+    
     if (isRailroad) {
       int count = 0;
       for(Space s: owner.properties){
@@ -823,6 +826,8 @@ public class Space extends JFrame implements ActionListener {
       b2.setEnabled(false);
       frame.setVisible(false);
       displayIsOn = false;
+     // test.display();
+     
     }
     else{
       frame.setVisible(false);

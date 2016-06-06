@@ -2,58 +2,43 @@ public class House {
   int x, y;
   boolean fourYet, purchased;
   int price; // price for each house;
-  int rent; // rent for single house on the property. 
   PImage house;
   String colorOfPieceBeingPlacedOn;
   int howMany;
   Player owner, current;
   
-  
-  public House(int x, int y, PImage house, int howMany, Space space) {
+  public House(int x, int y, Space space) {
     this.x = x;
     this.y = y;
-    this.house = house;
     purchased = false;
-    if (howMany == 4) {
+    if(space.numOfHouses == 4){
       fourYet = true;
-    }
-    else {
+    }else{
       fourYet = false;
     }
-    rent = space.rentPrice;
-    price = getPrice(space);
+    //price = getPrice(space);
     colorOfPieceBeingPlacedOn = space.spaceColor;
-    this.howMany = howMany;
+    house = loadImage("../Images/Pieces/house.png");
   }
   
-  public int getPrice(Space s) {
-    if ((s.spaceColor.equals("brown")) || (s.spaceColor.equals("skyblue"))) {
-      return 50;
+  
+  public void buyHouse(Space s){
+    if(current.money<s.oneHousePrice && current.properties.contains(s) && s.monopolized && s.owner == current){
+      current.money = current.money - s.oneHousePrice;
+      s.numOfHouses++;
+      current.numOfHouses++;
     }
-    if ((s.spaceColor.equals("purple")) || (s.spaceColor.equals("orange"))) {
-      return 100;
-    }
-    if ((s.spaceColor.equals("red")) || (s.spaceColor.equals("yellow"))) {
-      return 150;
-    }
-    if ((s.spaceColor.equals("green")) || (s.spaceColor.equals("blue"))) {
-      return 200;
-    }
-    return -1;
   }
   
-  public void display() {
-    if ((!fourYet) && (purchased)) {
-      image(house, x, y, 66, 60);
-    }
+  public boolean checkMonopolized(Space s){
+    return ((s.owner == current)&&(s.numOfHouses == 4));
   }
-
   
-  public void buyHouse(int count){
-    int i = 0;
-    while(i<count){
-      if
-      
+  void draw() {
+    fill(0,0,0);
+    rect(width/2,height/2,500,500);
+    // fix this lmao
+  }   
     
   public int getNumHousesWithOutPieces(Space s) {
     Player p = s.owner;
