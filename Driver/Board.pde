@@ -124,6 +124,8 @@ class Board {
       text(("$" + numPlayers[1].getMoney()), 724, 210);
       text(("JFC: " + numPlayers[0].JFCNum), 764, 30);
       text(("JFC: " + numPlayers[1].JFCNum), 764, 210);
+      numPlayers[0].tester();
+      numPlayers[1].tester();
     }
     else if (totalPlayers == 3) {
       text(("$" + numPlayers[0].getMoney()), 724, 30);
@@ -132,6 +134,9 @@ class Board {
       text(("JFC: " + numPlayers[0].JFCNum), 764, 30);
       text(("JFC: " + numPlayers[1].JFCNum), 764, 210);
       text(("JFC: " + numPlayers[2].JFCNum), 764, 390);
+      numPlayers[0].tester();
+      numPlayers[1].tester();
+      numPlayers[2].tester();
     }
     else if (totalPlayers == 4) {
       text(("$" + numPlayers[0].getMoney()), 724, 30);
@@ -142,6 +147,10 @@ class Board {
       text(("JFC: " + numPlayers[1].JFCNum), 764, 210);
       text(("JFC: " + numPlayers[2].JFCNum), 764, 390);
       text(("JFC: " + numPlayers[3].JFCNum), 764, 570);
+      numPlayers[0].tester();
+      numPlayers[1].tester();
+      numPlayers[2].tester();
+      numPlayers[3].tester();
     } 
   }
 }

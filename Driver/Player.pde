@@ -112,7 +112,42 @@ public class Player {
       }
       else if (location < 40) {
         ellipse(680, 100 + (location - 31) * 60 + (playerNum * 5), 15, 15);
-      } 
+      }      
     }
+  }
+  public void helper(int r, int g, int b, Space space, int perma){
+    fill(r,g,b);
+    if(space.location < 10){
+      rect((575 - (perma - 1) * 60), 700,50, 15);  
+    }
+    else if (space.location < 20) {
+      rect(5, 575 - (perma - 11) * 60,15, 50);
+    }
+    else if (space.location <30){
+      rect(100 + (perma - 21) * 60, 30, 50, 15);
+    }
+    else if (space.location < 40){
+      rect(680, 100 + (perma - 31) * 60, 15, 50);
+    }
+  }
+  public void tester(){
+    for(Space space:properties){
+        if(space.purchased){
+          int permax = space.location;
+          String s = space.owner.playerColor;
+          if(s.equals("green")){
+            helper(0,255,0,space,permax);
+          }
+          else if(s.equals("yellow")){
+            helper(255,255,0,space,permax);
+          }
+          else if(s.equals("blue")){
+            helper(0,0,255,space,permax);
+          }
+          else if(s.equals("red")){
+            helper(255,0,0,space,permax);
+          }
+        }
+      }
   }
 }

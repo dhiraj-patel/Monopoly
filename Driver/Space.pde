@@ -815,19 +815,20 @@ public class Space extends JFrame implements ActionListener {
       }
     }
   }
+  public void actionPerformed(ActionEvent e) {
+    String event = e.getActionCommand();
+    if (event.equals("Buy")) {
+      buySpace(current);
+      b1.setEnabled(false);
+      b2.setEnabled(false);
+      frame.setVisible(false);
+      displayIsOn = false;
+    }
+    else{
+      frame.setVisible(false);
+      displayIsOn = false;
+    }
+  }
 
-   public void actionPerformed(ActionEvent e) {
-     String event = e.getActionCommand();
-     if (event.equals("Buy")) {
-       buySpace(current);
-       b1.setEnabled(false);
-       b2.setEnabled(false);
-       frame.setVisible(false);
-       displayIsOn = false;
-     }
-     else {
-       frame.setVisible(false);
-       displayIsOn = false;
-     }
-   }
+   
 }

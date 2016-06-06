@@ -89,7 +89,6 @@ class Game {
         newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].display();
       }
     }
-    //CHECK FOR PROPERTIES AND REST OF CHANCE CARDS
   }
 
   void draw() {
