@@ -6,6 +6,8 @@ public class House {
   PImage house;
   String colorOfPieceBeingPlacedOn;
   int howMany;
+  Player owner, current;
+  
   
   public House(int x, int y, PImage house, int howMany, Space space) {
     this.x = x;
@@ -45,7 +47,14 @@ public class House {
       image(house, x, y, 66, 60);
     }
   }
+
   
+  public void buyHouse(int count){
+    int i = 0;
+    while(i<count){
+      if
+      
+    
   public int getNumHousesWithOutPieces(Space s) {
     Player p = s.owner;
     String check = colorOfPieceBeingPlacedOn;
