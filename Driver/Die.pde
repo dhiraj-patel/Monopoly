@@ -14,10 +14,8 @@ class Die {
   
   void roll() {
     for (int i = 0; i < 2; i ++) {
-      //setOfDice[i] = r.nextInt(6) + 1;
+      setOfDice[i] = r.nextInt(6) + 1;
     }
-    setOfDice[0] = 1;
-    setOfDice[1] = 1;
   }
   
   int getTotal() {

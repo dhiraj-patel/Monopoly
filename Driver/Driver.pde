@@ -34,6 +34,7 @@ void mousePressed() {
   if (state == 0) {
     if (newMainMenu.mainMenuButtons[0].over == true) {
       state = 1;
+      newMainMenu.mainMenuButtons[0].over = false;
       println("Clicked Play");
     }
     else if (newMainMenu.mainMenuButtons[1].over == true) {
@@ -44,14 +45,17 @@ void mousePressed() {
     if (newPlayerSelect.playerSelectButtons[0].over == true) {
       newGame = new Game(2);
       state = 2;
+      newPlayerSelect.playerSelectButtons[0].over = false;
     }
     else if (newPlayerSelect.playerSelectButtons[1].over == true) {
       newGame = new Game(3);
       state = 2;
+      newPlayerSelect.playerSelectButtons[1].over = false;
     }
     else if (newPlayerSelect.playerSelectButtons[2].over == true) {
       newGame = new Game(4);
       state = 2;
+      newPlayerSelect.playerSelectButtons[2].over = false;
     }
   }
   if (state == 2) {

@@ -14,7 +14,7 @@ public class Player {
     this.name = name;
     this.playerNum = playerNum;
     this.playerColor = playerColor;
-    money = 1; //1500
+    money = 1500;
     numInJail = -1; 
     location = 0;
     inJail = false;
@@ -73,6 +73,15 @@ public class Player {
   }
   
   void draw() {
+    if (money <= 0) {
+      isBankrupt = true;
+      for (Space s:properties) {
+        s.purchased = false;
+      }
+      while (!properties.isEmpty()) {
+        properties.remove(0);
+      }
+    }
     if (!isBankrupt) {
       setColor();
       if (location == 0) {

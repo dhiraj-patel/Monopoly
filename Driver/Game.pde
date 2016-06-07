@@ -35,8 +35,14 @@ class Game {
         if (newChest.action.equals("IT IS YOUR BIRTHDAY. COLLECT $10 FROM EVERY PLAYER.")) {
           for (int i = 0; i < newBoard.totalPlayers; i ++) {
             if (!newBoard.numPlayers[i].equals(newBoard.numPlayers[newBoard.currentPlayer])) {
-              newBoard.numPlayers[i].money -= 10;
-              newBoard.numPlayers[newBoard.currentPlayer].money += 10;
+              if (newBoard.numPlayers[i].money <= 10) {
+                newBoard.numPlayers[newBoard.currentPlayer].money += newBoard.numPlayers[i].money;
+                newBoard.numPlayers[i].money = 0;
+              }
+              else {
+                newBoard.numPlayers[i].money -= 10;
+                newBoard.numPlayers[newBoard.currentPlayer].money += 10;
+              }
             }
           }
         }
@@ -126,16 +132,16 @@ class Game {
       newDie.draw();
       newBoard.draw();
     }
-    if (newBoard.numPlayers[newBoard.currentPlayer].money <= 0) {
-      newBoard.numPlayers[newBoard.currentPlayer].isBankrupt = true;
-      for (Space s:newBoard.numPlayers[newBoard.currentPlayer].properties) {
-        s.purchased = false;
+  }
+  
+  void getTotalActivePlayers() {
+    int temp = 0;
+    for (int i = 0; i < totalPlayers; i ++) {
+      if (!newBoard.numPlayers[i].isBankrupt) {
+        temp ++;
       }
-      while (!newBoard.numPlayers[newBoard.currentPlayer].properties.isEmpty()) {
-        newBoard.numPlayers[newBoard.currentPlayer].properties.remove(0);
-      }
-      numOfActivePlayers --;
-    } 
+    }
+    numOfActivePlayers = temp;
   }
   
   void findNextPlayer() {
@@ -150,11 +156,12 @@ class Game {
       newBoard.currentTurn ++;
       newBoard.setCurrentPlayer();
     }
-    return newBoard.currentPlayer;
+    return newBoard.currentPlayer + 1;
   }
     
 
   void draw() {
+    getTotalActivePlayers();
     newBoard.draw();
     //if the next button wasn't pressed
     if (!newBoard.nextPressed) {

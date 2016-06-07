@@ -13,8 +13,6 @@ public class Space extends JFrame implements ActionListener {
   Color hue;
   JLabel linebreak2, linebreak3;
   JButton b1, b2;
-  House h;  
-  int die1, die2;
   
    
   public Space(int space) {

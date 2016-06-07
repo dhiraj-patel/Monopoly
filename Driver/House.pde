@@ -23,7 +23,7 @@ public class House {
   }
   
   public void buyHouse(Space s) {
-    if (current.money<s.oneHousePrice && current.properties.contains(s) && s.monopolized && s.owner == current){
+    if (current.money<s.oneHousePrice && current.properties.contains(s) && s.monopolized && s.owner == current) {
       current.money = current.money - s.oneHousePrice;
       s.numOfHouses ++;
       current.numOfHouses ++;
