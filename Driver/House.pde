@@ -30,14 +30,8 @@ public class House {
     }
   }
   
-  public boolean checkMonopolized(Space s){
-    return ((s.owner == current)&&(s.numOfHouses == 4));
-  }
-  
   void draw() {
-    fill(0,0,0);
-    //rect(width / 2, height / 2, 500, 500);
-    // fix this lmao
+    image(house,x,y,20,20);
   }   
     
   public int getNumHousesWithOutPieces(Space s) {
