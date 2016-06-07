@@ -651,14 +651,14 @@ public class Space extends JFrame implements ActionListener {
           currentProperty.add(l9);
           currentProperty.add(l10);
           currentProperty.add(linebreak2);
-          if (current.money >= cost) {
-            currentProperty.add(b1);
-            currentProperty.add(linebreak3);
-          }
-          currentProperty.add(b2);
           frame.add(currentProperty);
           alreadySetUp = true;
         }
+        if (current.money >= cost) {
+          currentProperty.add(b1);
+          currentProperty.add(linebreak3);
+        }
+        currentProperty.add(b2);
         currentProperty.setBackground(getHue());
         frame.setVisible(true);
         displayIsOn = true;
@@ -706,15 +706,15 @@ public class Space extends JFrame implements ActionListener {
           currentProperty.add(ql5);
           currentProperty.add(ql6);
           currentProperty.add(linebreak2);
-          if (current.money >= cost) {
-            currentProperty.add(b1);
-            currentProperty.add(linebreak3);
-          }
-          currentProperty.add(b2);
+          
           frame.add(currentProperty);
           alreadySetUp = true;
         }
-        
+        if (current.money >= cost) {
+          currentProperty.add(b1);
+          currentProperty.add(linebreak3);
+        }
+        currentProperty.add(b2);
         currentProperty.setBackground(getHue());
         frame.setVisible(true);
         displayIsOn = true;
@@ -767,15 +767,15 @@ public class Space extends JFrame implements ActionListener {
           currentProperty.add(linebreak234);
           currentProperty.add(ul4);
           currentProperty.add(linebreak2);
-          if (current.money >= cost) {
-            currentProperty.add(b1);
-            currentProperty.add(linebreak3);
-          }
-          currentProperty.add(b2);
+          
           frame.add(currentProperty);
           alreadySetUp = true;
         }
-        
+        if (current.money >= cost) {
+          currentProperty.add(b1);
+          currentProperty.add(linebreak3);
+        }
+        currentProperty.add(b2);
         currentProperty.setBackground(getHue());
         frame.setVisible(true);
         displayIsOn = true;
@@ -814,7 +814,6 @@ public class Space extends JFrame implements ActionListener {
       }
     }
     else if (isUtility) {
-      //NEEDS WORK
     }
     else {
       if (this.hasHotel) {

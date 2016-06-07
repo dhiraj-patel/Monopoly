@@ -11,9 +11,10 @@ public class House {
     this.x = x;
     this.y = y;
     purchased = false;
-    if(space.numOfHouses == 4){
+    if (space.numOfHouses == 4){
       fourYet = true;
-    }else{
+    }
+    else {
       fourYet = false;
     }
     //price = getPrice(space);
@@ -21,17 +22,16 @@ public class House {
     house = loadImage("../Images/Pieces/house.png");
   }
   
-  
-  public void buyHouse(Space s){
-    if(current.money<s.oneHousePrice && current.properties.contains(s) && s.monopolized && s.owner == current){
+  public void buyHouse(Space s) {
+    if (current.money<s.oneHousePrice && current.properties.contains(s) && s.monopolized && s.owner == current){
       current.money = current.money - s.oneHousePrice;
-      s.numOfHouses++;
-      current.numOfHouses++;
+      s.numOfHouses ++;
+      current.numOfHouses ++;
     }
   }
   
   void draw() {
-    image(house,x,y,20,20);
+    image(house, x, y, 20, 20);
   }   
     
   public int getNumHousesWithOutPieces(Space s) {

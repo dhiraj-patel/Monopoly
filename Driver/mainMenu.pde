@@ -6,6 +6,7 @@ class mainMenu {
 
   
   mainMenu() {
+    noFill();
     colorMode(RGB);
     buttonNormal = color(255, 0, 0);
     buttonHover = color(205, 90, 90);

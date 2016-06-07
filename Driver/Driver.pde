@@ -21,6 +21,7 @@ void draw() {
   if (state == 2) {
     newGame.draw();
     if (newGame.numOfActivePlayers == 1) {
+      newGameOver = new gameOver(newGame.findWinner());
       state = 3;
     }
   }
@@ -62,7 +63,9 @@ void mousePressed() {
       if (newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].inJail) {
         newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].numInJail ++;
       }
-      newGame.newBoard.currentTurn += 1;
+      newGame.newBoard.currentTurn ++;
+      newGame.newBoard.setCurrentPlayer();
+      newGame.findNextPlayer();
       newGame.ranOnce = false;
       newGame.ranOnce2 = false;
       newGame.newBoard.nextPressed = false;
@@ -95,7 +98,7 @@ void mousePressed() {
   }
   if (state == 3) {
     if (newGameOver.backToMainMenu.over) {
-      state = 1;
+      state = 0;
       newGameOver.backToMainMenu.over = false;
     }
   }

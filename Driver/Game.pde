@@ -135,11 +135,6 @@ class Game {
         newBoard.numPlayers[newBoard.currentPlayer].properties.remove(0);
       }
       numOfActivePlayers --;
-      ranOnce = false;
-      ranOnce2 = false;
-      newBoard.nextPressed = false;
-      justGotIntoOrOutOfJail = false;
-      newDie.doubleCount = 0;
     } 
   }
   
@@ -149,9 +144,17 @@ class Game {
       newBoard.setCurrentPlayer();
     }
   }
+  
+  int findWinner() {
+    while (newBoard.numPlayers[newBoard.currentPlayer].isBankrupt) {
+      newBoard.currentTurn ++;
+      newBoard.setCurrentPlayer();
+    }
+    return newBoard.currentPlayer;
+  }
+    
 
   void draw() {
-    findNextPlayer();
     newBoard.draw();
     //if the next button wasn't pressed
     if (!newBoard.nextPressed) {
@@ -176,7 +179,7 @@ class Game {
     }
     //what happens after the next is pressed and continually happens
     else if (newBoard.nextPressed && ranOnce) {
-      if (newDie.isDouble() && !justGotIntoOrOutOfJail && !newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].displayIsOn) {
+      if (newDie.isDouble() && !justGotIntoOrOutOfJail && !newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].displayIsOn && !newBoard.numPlayers[newBoard.currentPlayer].isBankrupt) {
         if (!ranOnce2) {
           newDie.doubleCount += 1;
           ranOnce2 = true;
