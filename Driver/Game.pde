@@ -1,10 +1,11 @@
 class Game {
-  int totalPlayers;
-  boolean ranOnce, ranOnce2, isChanceCardGoBackThree, justGotIntoOrOutOfJail;
+  int totalPlayers, numberOfUtilities, numOfActivePlayers;
+  boolean ranOnce, ranOnce2, drewChanceCard, justGotIntoOrOutOfJail;
   Die newDie;
   Board newBoard;
   Chance newChance;
   Chest newChest;
+  
   Game(int totalPlayers) {
     this.totalPlayers = totalPlayers;
     newDie = new Die();
@@ -13,20 +14,14 @@ class Game {
     newChest = new Chest();
     ranOnce = false;
     ranOnce2 = false;
-    isChanceCardGoBackThree = false;
+    numberOfUtilities = 0;
+    drewChanceCard = false;
     justGotIntoOrOutOfJail = false;
+    numOfActivePlayers = totalPlayers;
   }
- /* void giveNewDie(){
-    int x = newDie.setOfDice[0];
-    int x2 = newDie.setOfDice[1];
-    newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].die1 = x;
-    newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].die2 = x2;
-    System.out.println(x);
-    System.out.println(x2);
-  }*/
+  
   void checkEvent() {
-    //giveNewDie();
-    if (!isChanceCardGoBackThree) {
+    if (!drewChanceCard && !newBoard.numPlayers[newBoard.currentPlayer].isBankrupt) {
       newDie.roll();
       if (!newBoard.numPlayers[newBoard.currentPlayer].inJail && !(newDie.doubleCount == 2 && newDie.isDouble())) {
         newBoard.numPlayers[newBoard.currentPlayer].move(newDie.getTotal());
@@ -34,7 +29,7 @@ class Game {
     }
     newBoard.draw();
     newDie.draw();
-    if (!(newDie.doubleCount == 2 && newDie.isDouble())) {
+    if (!(newDie.doubleCount == 2 && newDie.isDouble()) && !newBoard.numPlayers[newBoard.currentPlayer].isBankrupt) {
       if (newBoard.numPlayers[newBoard.currentPlayer].location == 2 || newBoard.numPlayers[newBoard.currentPlayer].location == 17 || newBoard.numPlayers[newBoard.currentPlayer].location == 33) {
         newChest.getChestCard(newBoard.numPlayers[newBoard.currentPlayer]);
         if (newChest.action.equals("IT IS YOUR BIRTHDAY. COLLECT $10 FROM EVERY PLAYER.")) {
@@ -48,9 +43,6 @@ class Game {
         else if (newChest.action.equals("GO TO JAIL. GO DIRECTLY TO JAIL, DO NOT PASS \"GO\", DO NOT COLLECT $200.")) {
           justGotIntoOrOutOfJail = true;
         }
-      } 
-      else if (newBoard.numPlayers[newBoard.currentPlayer].location == 4) {
-        newBoard.numPlayers[newBoard.currentPlayer].money -= 200;
       } 
       else if (newBoard.numPlayers[newBoard.currentPlayer].location == 7 || newBoard.numPlayers[newBoard.currentPlayer].location == 22 || newBoard.numPlayers[newBoard.currentPlayer].location == 36) {
         newChance.getChanceCard(newBoard.numPlayers[newBoard.currentPlayer]);
@@ -68,38 +60,98 @@ class Game {
             newBoard.numPlayers[newBoard.currentPlayer].money -= newDie.getTotal() * 10;
             newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].owner.money += newDie.getTotal() * 10;
           }
+          else {
+            drewChanceCard = true;
+            checkEvent();
+            drewChanceCard = false;
+          }
         } 
         else if (newChance.action.equals("ADVANCE TO THE NEAREST RAILROAD. If UNOWNED, you may buy it from the Bank. If OWNED, pay owner twice the rental to which they are otherwise entitled.")) {
           if (newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].purchased) {
-            newBoard.numPlayers[newBoard.currentPlayer].money -= newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].rentPrice * 2;
-            newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].owner.money += newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].rentPrice * 2;
+            newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].payOwner();
+            newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].payOwner();
+          }
+          else {
+            drewChanceCard = true;
+            checkEvent();
+            drewChanceCard = false;
           }
         } 
         else if (newChance.action.equals("GO BACK THREE SPACES.")) {
-          isChanceCardGoBackThree = true;
+          drewChanceCard = true;
           checkEvent();
-          isChanceCardGoBackThree = false;
+          drewChanceCard = false;
         }
         else if (newChance.action.equals("GO TO JAIL. GO DIRECTLY TO JAIL, DO NOT PASS \"GO\", DO NOT COLLECT $200.")) {
           justGotIntoOrOutOfJail = true;
         }
+        else if (newChance.action.equals("ADVANCE TO ILLINOIS AVENUE. IF YOU PASS \"GO\" COLLECT $200.") || newChance.action.equals("ADVANCE TO ST. CHARLES PLACE. IF YOU PASS \"GO\" COLLECT $200.") || newChance.action.equals("TAKE A TRIP TO READING RAILROAD. IF YOU PASS \"GO\" COLLECT $200.") || newChance.action.equals("ADVANCE TO BOARDWALK.")) {
+          drewChanceCard = true;
+          checkEvent();
+          drewChanceCard = false;
+        }
       }
       else if (newBoard.numPlayers[newBoard.currentPlayer].location == 30) {
-        newBoard.numPlayers[newBoard.currentPlayer].setLocation(10);
+        newBoard.numPlayers[newBoard.currentPlayer].location = 10;
         newBoard.numPlayers[newBoard.currentPlayer].inJail = true;
       }
+      else if (newBoard.numPlayers[newBoard.currentPlayer].location == 4) {
+        newBoard.numPlayers[newBoard.currentPlayer].money -= 200;
+      } 
       else if (newBoard.numPlayers[newBoard.currentPlayer].location == 38) {
         newBoard.numPlayers[newBoard.currentPlayer].money -= 100;
-      }
+      } 
       else if (newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].buyable) {
         newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].setCurrent(newBoard.numPlayers[newBoard.currentPlayer]);
-        newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].display();
+        newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].display(); // accounts for if it's purchased
+        if (newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].isUtility && newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].purchased && newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].owner != newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].current) {
+          numberOfUtilities = 0;
+          for (Space s: newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].owner.properties) {
+            if (s.isUtility) {
+              numberOfUtilities ++;
+            }
+          }
+          if (numberOfUtilities == 1) {
+            newDie.roll();
+            newBoard.numPlayers[newBoard.currentPlayer].money -= newDie.getTotal() * 4;
+            newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].owner.money += newDie.getTotal() * 4;
+          }
+          else if (numberOfUtilities == 2) {
+            newDie.roll();
+            newBoard.numPlayers[newBoard.currentPlayer].money -= newDie.getTotal() * 10;
+            newBoard.Spaces[newBoard.numPlayers[newBoard.currentPlayer].location].owner.money += newDie.getTotal() * 10;
+          }
+        }
       }
+      newDie.draw();
+      newBoard.draw();
+    }
+    if (newBoard.numPlayers[newBoard.currentPlayer].money <= 0) {
+      newBoard.numPlayers[newBoard.currentPlayer].isBankrupt = true;
+      for (Space s:newBoard.numPlayers[newBoard.currentPlayer].properties) {
+        s.purchased = false;
+      }
+      while (!newBoard.numPlayers[newBoard.currentPlayer].properties.isEmpty()) {
+        newBoard.numPlayers[newBoard.currentPlayer].properties.remove(0);
+      }
+      numOfActivePlayers --;
+      ranOnce = false;
+      ranOnce2 = false;
+      newBoard.nextPressed = false;
+      justGotIntoOrOutOfJail = false;
+      newDie.doubleCount = 0;
+    } 
+  }
+  
+  void findNextPlayer() {
+    while (newBoard.numPlayers[newBoard.currentPlayer].isBankrupt) {
+      newBoard.currentTurn ++;
+      newBoard.setCurrentPlayer();
     }
   }
 
   void draw() {
-    //println(newDie.doubleCount);
+    findNextPlayer();
     newBoard.draw();
     //if the next button wasn't pressed
     if (!newBoard.nextPressed) {

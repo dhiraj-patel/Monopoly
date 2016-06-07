@@ -36,7 +36,7 @@ public class House {
   
   void draw() {
     fill(0,0,0);
-    rect(width/2,height/2,500,500);
+    //rect(width / 2, height / 2, 500, 500);
     // fix this lmao
   }   
     

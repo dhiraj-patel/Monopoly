@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 public class Space extends JFrame implements ActionListener {
   int location, cost, monopolyNum, numOfHouses, rentPrice, mortgage, oneHousePrice, oneHouseRent, twoHouseRent, threeHouseRent, fourHouseRent, hotelRent, hotelPrice, oneRailroadPrice, twoRailroadPrice, threeRailroadPrice, fourRailroadPrice;
   String name, spaceColor;
-  boolean purchased, buyable, monopolized, isRailroad, isUtility, hasHotel, displayIsOn; 
+  boolean purchased, buyable, monopolized, isRailroad, isUtility, hasHotel, displayIsOn, alreadySetUp; 
   Player current, owner;
   JPanel currentProperty;
   JFrame frame;
@@ -64,7 +64,7 @@ public class Space extends JFrame implements ActionListener {
       hue = new Color(0, 255, 0);
     }
     else if (spaceColor == "blue") {
-      hue = new Color(0, 0, 255);
+      hue = new Color(100, 150, 190);
     }
     else if (spaceColor == "white" || spaceColor == "black") {
       hue = new Color(255, 255, 255);
@@ -572,12 +572,10 @@ public class Space extends JFrame implements ActionListener {
   }
   
   public void buySpace(Player owner) {
-    //if(!this.purchased){
       owner.properties.add(this);
       this.owner = owner;
       purchased = true;
       owner.money -= cost;
-   // }
   }
   
   public void removeOwner() {
@@ -598,6 +596,10 @@ public class Space extends JFrame implements ActionListener {
         l1.setFont(new Font("Courier New", Font.BOLD, 20));
         
         JLabel linebreak1 = new JLabel("\n");
+        
+        JLabel price = new JLabel("Price $" + this.cost);
+        price.setAlignmentX(Component.CENTER_ALIGNMENT);
+        price.setFont(new Font("Courier New", Font.PLAIN, 14));
         
         JLabel l2 = new JLabel("Rent $" + this.rentPrice);
         l2.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -634,29 +636,33 @@ public class Space extends JFrame implements ActionListener {
         JLabel l10 = new JLabel("Hotels, $" + this.oneHousePrice + " plus 4 houses \n");
         l10.setAlignmentX(Component.CENTER_ALIGNMENT);
         l10.setFont(new Font("Courier New", Font.PLAIN, 14));
-
-        currentProperty.add(l1);
-        currentProperty.add(linebreak1);
-        currentProperty.add(l2);
-        currentProperty.add(l3);
-        currentProperty.add(l4);
-        currentProperty.add(l5);
-        currentProperty.add(l6);
-        currentProperty.add(l7);
-        currentProperty.add(l8);
-        currentProperty.add(l9);
-        currentProperty.add(l10);
-        currentProperty.add(linebreak2);
-        if (current.money >= cost) {
-          currentProperty.add(b1);
-          currentProperty.add(linebreak3);
+        
+        if (!alreadySetUp) {
+          currentProperty.add(l1);
+          currentProperty.add(linebreak1);
+          currentProperty.add(price);
+          currentProperty.add(l2);
+          currentProperty.add(l3);
+          currentProperty.add(l4);
+          currentProperty.add(l5);
+          currentProperty.add(l6);
+          currentProperty.add(l7);
+          currentProperty.add(l8);
+          currentProperty.add(l9);
+          currentProperty.add(l10);
+          currentProperty.add(linebreak2);
+          if (current.money >= cost) {
+            currentProperty.add(b1);
+            currentProperty.add(linebreak3);
+          }
+          currentProperty.add(b2);
+          frame.add(currentProperty);
+          alreadySetUp = true;
         }
-        currentProperty.add(b2);
         currentProperty.setBackground(getHue());
         frame.setVisible(true);
         displayIsOn = true;
-        frame.setSize(300, 400);
-        frame.add(currentProperty);
+        frame.setSize(350, 400);
       }
       else if (isRailroad) {
         currentProperty.setLayout(new BoxLayout(currentProperty, BoxLayout.Y_AXIS));
@@ -665,6 +671,10 @@ public class Space extends JFrame implements ActionListener {
         ql1.setFont(new Font("Courier New", Font.BOLD, 20));
         
         JLabel qlinebreak1 = new JLabel("\n");
+        
+        JLabel price = new JLabel("Price $" + this.cost);
+        price.setAlignmentX(Component.CENTER_ALIGNMENT);
+        price.setFont(new Font("Courier New", Font.PLAIN, 14));
         
         JLabel ql2 = new JLabel("Rent $" + this.rentPrice);
         ql2.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -686,32 +696,41 @@ public class Space extends JFrame implements ActionListener {
         ql6.setAlignmentX(Component.CENTER_ALIGNMENT);
         ql6.setFont(new Font("Courier New", Font.PLAIN, 14));
         
-        currentProperty.add(ql1);
-        currentProperty.add(qlinebreak1);
-        currentProperty.add(ql2);
-        currentProperty.add(ql3);
-        currentProperty.add(ql4);
-        currentProperty.add(ql5);
-        currentProperty.add(ql6);
-        currentProperty.add(linebreak2);
-        if (current.money >= cost){
-          currentProperty.add(b1);
-          currentProperty.add(linebreak3);
+        if (!alreadySetUp) {
+          currentProperty.add(ql1);
+          currentProperty.add(qlinebreak1);
+          currentProperty.add(price);
+          currentProperty.add(ql2);
+          currentProperty.add(ql3);
+          currentProperty.add(ql4);
+          currentProperty.add(ql5);
+          currentProperty.add(ql6);
+          currentProperty.add(linebreak2);
+          if (current.money >= cost) {
+            currentProperty.add(b1);
+            currentProperty.add(linebreak3);
+          }
+          currentProperty.add(b2);
+          frame.add(currentProperty);
+          alreadySetUp = true;
         }
-        currentProperty.add(b2);
+        
         currentProperty.setBackground(getHue());
         frame.setVisible(true);
         displayIsOn = true;
-        frame.setSize(300, 400);
-        frame.add(currentProperty);
+        frame.setSize(350, 400);
       }
-      else if(isUtility) {
+      else if (isUtility) {
         currentProperty.setLayout(new BoxLayout(currentProperty, BoxLayout.Y_AXIS));
         JLabel ul1 = new JLabel(this.name);
         ul1.setAlignmentX(Component.CENTER_ALIGNMENT);
         ul1.setFont(new Font("Courier New", Font.BOLD, 20));
         
         JLabel ulinebreak1 = new JLabel("\n");
+        
+        JLabel price = new JLabel("Price $" + this.cost);
+        price.setAlignmentX(Component.CENTER_ALIGNMENT);
+        price.setFont(new Font("Courier New", Font.PLAIN, 14));
         
         JLabel ul2 = new JLabel("If ONE Utility is owned, rent is 4x"); //the number on the dice which landed the player on the utility");
         ul2.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -736,29 +755,34 @@ public class Space extends JFrame implements ActionListener {
         ul4.setAlignmentX(Component.CENTER_ALIGNMENT);
         ul4.setFont(new Font("Courier New", Font.PLAIN, 14));
         
-        currentProperty.add(ul1);
-        currentProperty.add(ulinebreak1);
-        currentProperty.add(ul2);
-        currentProperty.add(end1);
-        currentProperty.add(qll);
-        currentProperty.add(ul3);
-        currentProperty.add(end2);
-        currentProperty.add(linebreak234);
-        currentProperty.add(ul4);
-        currentProperty.add(linebreak2);
-        if (current.money >= cost){
-          currentProperty.add(b1);
-          currentProperty.add(linebreak3);
+        if (!alreadySetUp) {
+          currentProperty.add(ul1);
+          currentProperty.add(ulinebreak1);
+          currentProperty.add(price);
+          currentProperty.add(ul2);
+          currentProperty.add(end1);
+          currentProperty.add(qll);
+          currentProperty.add(ul3);
+          currentProperty.add(end2);
+          currentProperty.add(linebreak234);
+          currentProperty.add(ul4);
+          currentProperty.add(linebreak2);
+          if (current.money >= cost) {
+            currentProperty.add(b1);
+            currentProperty.add(linebreak3);
+          }
+          currentProperty.add(b2);
+          frame.add(currentProperty);
+          alreadySetUp = true;
         }
-        currentProperty.add(b2);
+        
         currentProperty.setBackground(getHue());
         frame.setVisible(true);
         displayIsOn = true;
-        frame.setSize(300, 400);
-        frame.add(currentProperty);
+        frame.setSize(350, 400);
       }
     }
-    else {
+    else if (purchased && owner != current) {
       this.payOwner();
     }
   }
@@ -767,54 +791,55 @@ public class Space extends JFrame implements ActionListener {
     
     if (isRailroad) {
       int count = 0;
-      for(Space s: owner.properties){
-        if(s.isRailroad){
-          count++;
+      for (Space s: owner.properties) {
+        if (s.isRailroad) {
+          count ++;
         }
       }
-      if (count == 1){
-        current.setMoney(current.getMoney()-this.oneRailroadPrice);
-        owner.setMoney(owner.getMoney()+this.oneRailroadPrice);
+      if (count == 1) {
+        current.money = current.money - this.oneRailroadPrice;
+        owner.money = owner.money + this.oneRailroadPrice;
       }
-      else if (count == 2){
-        current.setMoney(current.getMoney()-this.twoRailroadPrice);
-        owner.setMoney(owner.getMoney()+this.twoRailroadPrice);
+      else if (count == 2) {
+        current.money = current.money - this.twoRailroadPrice;
+        owner.money = owner.money + this.twoRailroadPrice;
       }
-      else if (count == 3){
-        current.setMoney(current.getMoney()-this.threeRailroadPrice);
-        owner.setMoney(owner.getMoney()+this.threeRailroadPrice);
+      else if (count == 3) {
+        current.money = current.money - this.threeRailroadPrice;
+        owner.money = owner.money + this.threeRailroadPrice;
       }
-      else if (count == 4){
-        current.setMoney(current.getMoney()-this.fourRailroadPrice);
-        owner.setMoney(owner.getMoney()+this.fourRailroadPrice);
+      else if (count == 4) {
+        current.money = current.money - this.fourRailroadPrice;
+        owner.money = owner.money + this.fourRailroadPrice;
       }
     }
     else if (isUtility) {
+      //NEEDS WORK
     }
     else {
       if (this.hasHotel) {
-        current.setMoney(current.getMoney() - this.hotelRent);
-        owner.setMoney(owner.getMoney() + this.hotelRent);
+        current.money = current.money - this.hotelRent;
+        owner.money = owner.money + this.hotelRent;
       }
       else if (this.numOfHouses == 4) {
-        current.setMoney(current.getMoney() - this.fourHouseRent);
-        owner.setMoney(owner.getMoney() + this.fourHouseRent);
+        current.money = current.money - this.fourHouseRent;
+        owner.money = owner.money + this.fourHouseRent;
       }
       else if (this.numOfHouses == 3) {
-        current.setMoney(current.getMoney() - this.threeHouseRent);
-        owner.setMoney(owner.getMoney() + this.threeHouseRent);
+        current.money = current.money - this.threeHouseRent;
+        owner.money = owner.money + this.threeHouseRent;
       }
       else if (this.numOfHouses == 2) {
-        current.setMoney(current.getMoney() - this.twoHouseRent);
-        owner.setMoney(owner.getMoney() + this.twoHouseRent);
+        current.money = current.money - this.twoHouseRent;
+        owner.money = owner.money + this.twoHouseRent;
       }
       else if (this.numOfHouses == 1) {
-        current.setMoney(current.getMoney() - this.oneHouseRent);
-        owner.setMoney(owner.getMoney() + this.oneHouseRent);
+        current.money = current.money - this.oneHouseRent;
+        owner.money = owner.money + this.oneHouseRent;
       }
       else {
-        current.setMoney(current.getMoney() - this.rentPrice);
-        owner.setMoney(owner.getMoney() + this.rentPrice);
+        current.money = current.money - this.rentPrice;
+        owner.money = owner.money + this.rentPrice;
       }
     }
   }
@@ -832,6 +857,7 @@ public class Space extends JFrame implements ActionListener {
     else{
       frame.setVisible(false);
       displayIsOn = false;
+      alreadySetUp = true;
     }
   }
 

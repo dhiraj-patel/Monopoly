@@ -2,6 +2,7 @@ static int state; //0 Main Menu, 1 Player Select, 2 Game
 mainMenu newMainMenu;
 playerSelect newPlayerSelect;
 Game newGame;
+gameOver newGameOver;
 
 void setup() {
   size(1000, 720);
@@ -19,6 +20,12 @@ void draw() {
   }
   if (state == 2) {
     newGame.draw();
+    if (newGame.numOfActivePlayers == 1) {
+      state = 3;
+    }
+  }
+  if (state == 3) {
+    newGameOver.draw();
   }
 }
 
@@ -84,6 +91,12 @@ void mousePressed() {
       newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].inJail = false;
       newGame.newBoard.numPlayers[newGame.newBoard.currentPlayer].numInJail = -1;
       newGame.newBoard.useJFC[newGame.newBoard.currentPlayer].over = false;
+    }
+  }
+  if (state == 3) {
+    if (newGameOver.backToMainMenu.over) {
+      state = 1;
+      newGameOver.backToMainMenu.over = false;
     }
   }
 }

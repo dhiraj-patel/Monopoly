@@ -33,52 +33,50 @@ public class Chance {
     if (action.equals("ADVANCE TO ILLINOIS AVENUE. IF YOU PASS \"GO\" COLLECT $200.")) {
       if (actor.location == 36) {
         actor.money += 200;
-        actor.setLocation(24);
+        actor.location = 24;
       }
       else if (actor.location == 7) {
-        actor.setLocation(24);
+        actor.location = 24;
       }
       else if (actor.location == 22) {
-        actor.setLocation(24);
+        actor.location = 24;
       }
     }
     if (action.equals("ADVANCE TO THE NEAREST UTILITY. If UNOWNED, you may buy it from the Bank. If OWNED, throw dice and pay owner a total ten times amount thrown.")) {
       if (actor.location == 36) {
         actor.money += 200;
-        actor.setLocation(12);
+        actor.location = 12;
       }
       else if (actor.location == 7) {
-        actor.setLocation(12);
+        actor.location = 12;
       }
       else if (actor.location == 22) {
-        actor.setLocation(28);
+        actor.location = 28;
       }
         
     }
     if (action.equals("ADVANCE TO THE NEAREST RAILROAD. If UNOWNED, you may buy it from the Bank. If OWNED, pay owner twice the rental to which they are otherwise entitled.")) {
       if (actor.location == 36) {
         actor.money += 200;
-        actor.setLocation(5);
+        actor.location = 5;
       }
       else if (actor.location == 7) {
-        actor.setLocation(15);
+        actor.location = 15;
       }
       else if (actor.location == 22) {
-        actor.setLocation(25);
+        actor.location = 25;
       }
     }
     if (action.equals("ADVANCE TO ST. CHARLES PLACE. IF YOU PASS \"GO\" COLLECT $200.")) {
       if (actor.location == 36) {
         actor.money += 200;
-        actor.setLocation(11);
       }
       else if (actor.location == 7) {
-        actor.setLocation(11);
       }
       else if (actor.location == 22) {
         actor.money += 200;
-        actor.setLocation(11);
       }
+      actor.location = 11;
     }
     if (action.equals("BANK PAYS YOU DIVIDEND OF $50.")) {
       actor.money += 50;
@@ -100,10 +98,10 @@ public class Chance {
     }
     if (action.equals("TAKE A TRIP TO READING RAILROAD. IF YOU PASS \"GO\" COLLECT $200.")) {
       actor.money += 200;
-      actor.setLocation(5);
+      actor.location = 5;
     }
     if (action.equals("ADVANCE TO BOARDWALK.")) {
-      actor.setLocation(39);
+      actor.location = 39;
     }
     if (action.equals("YOUR BUILDING LOAN MATURES. COLLECT $150.")) {
       actor.money += 150;
