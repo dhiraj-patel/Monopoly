@@ -1,6 +1,8 @@
 # Monopoly
 
-INSTRUCTIONS: Welcome to our recreation of Monopoly. If you're unfamiliar with the rules, click <a href="http://www.hasbro.com/common/instruct/00009.pdf">here</a> to learn how! Play with up to four friends for loads of fun!
+INSTRUCTIONS:
+
+<b>Welcome to our recreation of Monopoly. If you're unfamiliar with the rules, click <a href="http://www.hasbro.com/common/instruct/00009.pdf">here</a> to learn how! Play with up to four friends for loads of fun!</b>
 
 TEAM NAME: ButchNSundance
 
