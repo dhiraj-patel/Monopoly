@@ -104,20 +104,62 @@ public class Player {
   }
   
   public void setLabel() {
-    setColor();
-    for (Space space:properties) {
-      if (space.location <= 10) {
-        rect(568 - (space.location - 1) * 59, 647.5, 56, 3);
+    if(!hasMonopoly("brown") && !hasMonopoly("skyblue") && !hasMonopoly("purple") && !hasMonopoly("orange") && !hasMonopoly("red") && !hasMonopoly("yellow")
+        && !hasMonopoly("green") && !hasMonopoly("blue")){
+      setColor();
+      for (Space space:properties) {
+        if (space.location <= 10) {
+          rect(568 - (space.location - 1) * 59, 647.5, 56, 3);
+        }
+        else if (space.location <= 20) {
+          rect(69, 568.5 - (space.location - 11) * 59, 3, 56);
+        }
+        else if (space.location <= 30) {
+          rect(95 + (space.location - 21) * 59, 69, 56, 3);
+        }
+        else if (space.location < 40) {
+          rect(647.5, 94.5 + (location - 31) * 59, 3, 56);
+        }
       }
-      else if (space.location <= 20) {
-        rect(69, 568.5 - (space.location - 11) * 59, 3, 56);
-      }
-      else if (space.location <= 30) {
-        rect(95 + (space.location - 21) * 59, 69, 56, 3);
-      }
-      else if (space.location < 40) {
-        rect(647.5, 94.5 + (location - 31) * 59, 3, 56);
+    }
+    else{
+      setColor();
+      for (Space space:properties) {
+        if (space.location <= 10) {
+          rect(568 - (space.location - 1) * 59, 647.5, 56, 3);
+          txtButton tb1 = new txtButton(568-(space.location - 1) * 59, 647, "Buy Houses Here", 20, color(0, 0, 0), color(155, 155, 155));
+          tb1.draw();
+        }
+        else if (space.location <= 20) {
+          rect(69, 568.5 - (space.location - 11) * 59, 3, 56);
+          txtButton tb2 = new txtButton(568-(space.location - 1) * 59, 647, "Buy Houses Here", 20, color(0, 0, 0), color(155, 155, 155));
+          tb2.draw();
+        }
+        else if (space.location <= 30) {
+          rect(95 + (space.location - 21) * 59, 69, 56, 3);
+          txtButton tb3 = new txtButton(568-(space.location - 1) * 59, 647, "Buy Houses Here", 20, color(0, 0, 0), color(155, 155, 155));
+          tb3.draw();
+        }
+        else if (space.location < 40) {
+          rect(647.5, 94.5 + (location - 31) * 59, 3, 56);
+          txtButton tb4 = new txtButton(568-(space.location - 1) * 59, 647, "Buy Houses Here", 20, color(0, 0, 0), color(155, 155, 155));
+          tb4.draw();
+        }
       }
     }
   }
+  
+  // HOUSE STUFF
+  public boolean hasMonopoly(String scolor){
+    int count = 0;
+    for(Space s:properties){
+      if (s.spaceColor.equals(scolor)){
+        count++;
+      }
+    }
+    return count == 3;
+  }
+    
+  
+  
 }
