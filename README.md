@@ -1,5 +1,7 @@
 # Monopoly
 
+INSTRUCTIONS: Welcome to our recreation of Monopoly. If you're unfamiliar with the rules, click <a href="http://www.hasbro.com/common/instruct/00009.pdf">here</a> to learn how! Play with up to four friends for loads of fun!
+
 TEAM NAME: ButchNSundance
 
 PROJECT DESCRIPTION: Recreation of Monopoly
@@ -177,11 +179,16 @@ DEVELOPMENT LOG:
 
 	IN HOME:
 	
-		- Jackey: 
+		- Jackey: Added utility buying properties and railroad prices.
 
 		- Dhiraj: BUYING PROPERTY IS COMPLETE! debugged some space stuff
 
 5.28.16
+
+	IN HOME:
+	
+		- Jackey: Reverted changes that were overwritten by someone... 
+
 
 5.31.16
 
@@ -190,14 +197,32 @@ DEVELOPMENT LOG:
 			- added the pricing for a railroad since it was a unique case. 
 
 			- made player buying even more smoooooth and elegant. 
+			
+		- Jackey:
+		
+			- checked for exceptions in chance cards
+			
+			- made the game continue after buying/not buying from display
 
 6.02.16
 
 		- Dhiraj:
 
 			- fixed JFRAME stuff for railroad stupid unique cases
+			
+		- Jackey:
+		
+			- Chest community cards progress
+			
+			- fixed up syntax of code for clearer understanding
 
 6.03.16
+
+		- Jackey:
+			
+			- Implemented chest ingame and added an exception
+			
+			- Added JailFreeCard number to side panel
 
 		- Dhiraj:
 
@@ -205,13 +230,19 @@ DEVELOPMENT LOG:
 
 6.06.16
 
-		-Dhiraj:
+		- Dhiraj:
 
 			- got rid of cluttered code, and images
 
 			- furthered the basics of house
 
 			- got board to display which properties owned by which player. 
+			
+		- Jackey: 
+		
+			- bug testing
+			
+			- Added game over screen, checked for bankruptcy, optimized the label positions so it looks legitimate, fixed bug with showing property info twice when two players are on it
 		
 
 PROJECT PLAN:
