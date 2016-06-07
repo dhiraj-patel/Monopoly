@@ -6,7 +6,7 @@ gameOver newGameOver;
 
 void setup() {
   size(1000, 720);
-  state = 1;
+  state = 0;
   newMainMenu = new mainMenu();
   newPlayerSelect = new playerSelect();
 }
